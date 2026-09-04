@@ -1,0 +1,35 @@
+drivers:
+  - ticker: ^N225
+    name: 日経平均
+    group: common
+  - ticker: ^GSPC
+    name: S&P 500
+    group: common
+  - ticker: ^IXIC
+    name: NASDAQ総合
+    group: growth
+  - ticker: ^VIX
+    name: VIX
+    group: common
+  - ticker: JPY=X
+    name: ドル円
+    group: common
+  - ticker: CL=F
+    name: WTI原油
+    group: aviation
+  - ticker: DAL
+    name: デルタ航空
+    group: aviation
+  - ticker: UAL
+    name: ユナイテッド航空
+    group: aviation
+  - ticker: AAL
+    name: アメリカン航空
+    group: aviation
+  - ticker: LUV
+    name: サウスウエスト航空
+    group: aviation
+  - ticker: BA
+    name: ボーイング
+    group: aviation
+

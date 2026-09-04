@@ -1,0 +1,13 @@
+.env
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+htmlcov/
+.idea/
+.vscode/
+data/logs/*.log
+!data/logs/.gitkeep
+data/.yfinance-cache/
