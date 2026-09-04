@@ -38,21 +38,28 @@ def run(settings: Settings | None = None) -> dict:
 
     universe = load_universe(settings.universe_file)
     drivers = load_drivers(settings.drivers_file)
-    all_tickers = universe["ticker"].tolist() + [item["ticker"] for item in drivers]
-    frames = download_market_data(
-        all_tickers,
+    stock_frames = download_market_data(
+        universe["ticker"].tolist(),
         period=settings.lookback_period,
         retry_count=settings.retry_count,
         cache_dir=settings.market_cache_dir,
+        repair=True,
+    )
+    driver_frames = download_market_data(
+        [item["ticker"] for item in drivers],
+        period=settings.lookback_period,
+        retry_count=settings.retry_count,
+        cache_dir=settings.market_cache_dir,
+        repair=False,
     )
 
-    metrics = calculate_metrics(frames.close, frames.volume, universe)
+    metrics = calculate_metrics(stock_frames.close, stock_frames.volume, universe)
     if metrics.empty:
         raise RuntimeError("分析可能な銘柄がありません")
     current_date = str(metrics["as_of_date"].max())
     previous = load_previous_snapshot(settings.data_dir, settings.history_dir, current_date)
     scored = detect_changes(score_attention(metrics), previous)
-    driver_summary = summarize_drivers(frames.close, drivers)
+    driver_summary = summarize_drivers(driver_frames.close, drivers)
 
     candidate_limit = max(settings.top_n, settings.llm_max_targets)
     candidates = select_research_targets(scored, candidate_limit)

@@ -88,48 +88,127 @@ def _extract_field(
     return result
 
 
+def _download_once(
+    tickers: list[str],
+    *,
+    period: str,
+    repair: bool,
+    threads: bool,
+) -> MarketFrames:
+    data = yf.download(
+        tickers=tickers,
+        period=period,
+        interval="1d",
+        auto_adjust=True,
+        actions=False,
+        repair=repair,
+        progress=False,
+        threads=threads,
+        group_by="column",
+        timeout=30,
+    )
+    if data is None or data.empty:
+        return MarketFrames(close=pd.DataFrame(), volume=pd.DataFrame())
+    close = _extract_field(data, "Close", tickers)
+    volume = _extract_field(data, "Volume", tickers)
+    return MarketFrames(
+        close=close.sort_index().dropna(axis=1, how="all"),
+        volume=volume.sort_index().dropna(axis=1, how="all"),
+    )
+
+
+def _has_prices(close: pd.DataFrame, ticker: str) -> bool:
+    return ticker in close.columns and not close[ticker].dropna().empty
+
+
+def _merge_frame_columns(frames: list[pd.DataFrame]) -> pd.DataFrame:
+    usable = [frame for frame in frames if not frame.empty]
+    if not usable:
+        return pd.DataFrame()
+    merged = pd.concat(usable, axis=1).sort_index()
+    if merged.columns.duplicated().any():
+        merged = merged.T.groupby(level=0, sort=False).first().T
+    return merged
+
+
 def download_market_data(
     tickers: list[str],
     *,
     period: str = "1y",
     retry_count: int = 3,
     cache_dir: Path | None = None,
+    repair: bool = True,
+    retry_missing_individually: bool = True,
 ) -> MarketFrames:
     unique_tickers = list(dict.fromkeys(tickers))
     if cache_dir is not None:
         cache_dir.mkdir(parents=True, exist_ok=True)
         yf.set_tz_cache_location(str(cache_dir))
+    batch_frames = MarketFrames(close=pd.DataFrame(), volume=pd.DataFrame())
     last_error: Exception | None = None
     for attempt in range(1, retry_count + 1):
         try:
             logger.info("市場データ取得: %s系列（%s/%s）", len(unique_tickers), attempt, retry_count)
-            data = yf.download(
-                tickers=unique_tickers,
+            batch_frames = _download_once(
+                unique_tickers,
                 period=period,
-                interval="1d",
-                auto_adjust=True,
-                actions=False,
-                repair=True,
-                progress=False,
+                repair=repair,
                 threads=True,
-                group_by="column",
-                timeout=30,
             )
-            if data is None or data.empty:
+            if batch_frames.close.empty:
                 raise RuntimeError("yfinance の結果が空です")
-            close = _extract_field(data, "Close", unique_tickers)
-            volume = _extract_field(data, "Volume", unique_tickers)
-            close = close.sort_index().dropna(axis=1, how="all")
-            volume = volume.sort_index().dropna(axis=1, how="all")
-            if close.empty:
-                raise RuntimeError("終値を抽出できませんでした")
-            return MarketFrames(close=close, volume=volume)
+            break
         except Exception as exc:  # network/library errors vary by yfinance version
             last_error = exc
             logger.warning("市場データ取得失敗（%s/%s）: %s", attempt, retry_count, exc)
             if attempt < retry_count:
                 time.sleep(attempt * 3)
-    raise RuntimeError(f"市場データ取得に失敗しました: {last_error}")
+
+    missing = [ticker for ticker in unique_tickers if not _has_prices(batch_frames.close, ticker)]
+    recovered: list[MarketFrames] = []
+    if missing and retry_missing_individually:
+        logger.warning(
+            "一括取得で欠落した%s系列を個別再取得します: %s",
+            len(missing),
+            ", ".join(missing),
+        )
+        for ticker in missing:
+            ticker_frame: MarketFrames | None = None
+            repair_modes = list(dict.fromkeys([repair, not repair]))
+            for repair_mode in repair_modes:
+                try:
+                    candidate = _download_once(
+                        [ticker],
+                        period=period,
+                        repair=repair_mode,
+                        threads=False,
+                    )
+                    if _has_prices(candidate.close, ticker):
+                        ticker_frame = candidate
+                        logger.info(
+                            "個別再取得成功: %s (repair=%s)", ticker, repair_mode
+                        )
+                        break
+                except Exception as exc:  # keep trying the alternate repair mode
+                    logger.warning(
+                        "個別再取得失敗: %s (repair=%s): %s",
+                        ticker,
+                        repair_mode,
+                        exc,
+                    )
+            if ticker_frame is not None:
+                recovered.append(ticker_frame)
+
+    close = _merge_frame_columns([batch_frames.close, *(frame.close for frame in recovered)])
+    volume = _merge_frame_columns([batch_frames.volume, *(frame.volume for frame in recovered)])
+    still_missing = [ticker for ticker in unique_tickers if not _has_prices(close, ticker)]
+    if still_missing:
+        logger.warning(
+            "市場データを取得できなかった系列: %s", ", ".join(still_missing)
+        )
+    if close.empty:
+        raise RuntimeError(f"市場データ取得に失敗しました: {last_error}")
+    return MarketFrames(close=close, volume=volume)
 
 
 def safe_return(series: pd.Series, periods: int) -> float | None:
