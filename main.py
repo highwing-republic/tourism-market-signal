@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import logging
 import sys
+from datetime import datetime, timezone
 
 from app.gemini_analysis import analyze_targets, create_client
 from app.indicators import calculate_metrics
@@ -72,6 +73,7 @@ def run(settings: Settings | None = None) -> dict:
         model=settings.gemini_model,
         retry_count=settings.retry_count,
     )
+    analysis_completed_at = datetime.now(timezone.utc).isoformat(timespec="seconds") if analyses else None
     research_targets = candidates.head(settings.top_n)["ticker"].tolist()
     payload = build_snapshot(
         scored,
@@ -80,6 +82,9 @@ def run(settings: Settings | None = None) -> dict:
         model=settings.gemini_model,
         universe_size=len(universe),
         research_targets=research_targets,
+        stock_retrieved_at=stock_frames.retrieved_at,
+        driver_retrieved_at=driver_frames.retrieved_at,
+        analysis_completed_at=analysis_completed_at,
     )
     latest_path, history_path = save_snapshot(payload, settings.data_dir, settings.history_dir)
     html_paths = render_reports(payload, settings.docs_dir)

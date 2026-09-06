@@ -1,8 +1,55 @@
 from __future__ import annotations
 
+from datetime import datetime
 from html import escape
 from pathlib import Path
 from typing import Any
+from zoneinfo import ZoneInfo
+
+
+def _datetime_jst(value: Any) -> str:
+    if not value:
+        return "未記録"
+    try:
+        timestamp = datetime.fromisoformat(str(value))
+        if timestamp.tzinfo is None:
+            return "未記録"
+        return timestamp.astimezone(ZoneInfo("Asia/Tokyo")).strftime("%Y年%m月%d日%H時%M分%S秒")
+    except (ValueError, TypeError):
+        return "未記録"
+
+
+def _freshness_notice(payload: dict[str, Any], stock: dict[str, Any] | None = None) -> str:
+    generated_at = _datetime_jst(payload.get("generated_at"))
+    statement = (
+        f"{generated_at}（日本時間）現在の情報です。"
+        if generated_at != "未記録" else "レポート作成日時は未記録です。"
+    )
+    records = [stock] if stock is not None else [
+        *payload.get("market_drivers", {}).values(), *payload.get("stocks", [])
+    ]
+    rows = "".join(
+        f'<tr><th scope="row">{_text(item.get("name"))}<small>{_text(item.get("ticker"))}</small></th>'
+        f'<td>{_text(item.get("as_of_date"), "未記録")}</td>'
+        f'<td>{"取得不能" if item.get("status") == "unavailable" else _datetime_jst(item.get("retrieved_at"))}</td></tr>'
+        for item in records
+    )
+    ai_time = (
+        _datetime_jst(payload.get("analysis_completed_at"))
+        if payload.get("analysis_status") == "complete" else "未実行・取得不能"
+    )
+    return f"""
+<aside class="data-notice" aria-label="情報の日時とご利用にあたって">
+  <p class="data-notice__statement"><strong>{statement}投資は自己判断でお願いします。</strong></p>
+  <p>上記はレポート作成時点です。市場データはリアルタイムではありません。データ基準日は各市場の日付、取得日時とAI分析完了日時は日本時間で表示しています。</p>
+  <p>AI分析完了日時：{ai_time}</p>
+  <details>
+    <summary>各データの基準日・取得日時を確認する</summary>
+    <div class="table-wrap"><table><caption>データの取得日時（日本時間）</caption><thead><tr><th scope="col">データ</th><th scope="col">データ基準日</th><th scope="col">取得日時</th></tr></thead><tbody>{rows}</tbody></table></div>
+    <p>「未記録」は取得時刻の記録がないデータです。レポート作成日時を取得日時の代わりには使用していません。</p>
+  </details>
+</aside>
+"""
 
 
 def _text(value: Any, fallback: str = "—") -> str:
@@ -42,7 +89,7 @@ def _page(title: str, body: str, *, asset_prefix: str, home_href: str) -> str:
   </header>
   <main>{body}</main>
   <footer>
-    <p>本サイトは調査支援を目的としたもので、特定銘柄の売買を推奨するものではありません。</p>
+    <p>本サイトは調査支援を目的としたもので、特定銘柄の売買を推奨するものではありません。投資は自己判断でお願いします。</p>
     <p>株価データ: Yahoo Finance（yfinance経由）。公開・商用利用時は利用条件を別途確認してください。</p>
   </footer>
 </body>
@@ -133,8 +180,9 @@ def _dashboard_body(payload: dict[str, Any], *, detail_prefix: str) -> str:
   <p class="eyebrow">DAILY SIGNAL · {escape(report_date)}</p>
   <h1>今日、調べる価値が<br><em>生まれた企業</em></h1>
   <p>観光・インバウンド関連50銘柄から、価格・トレンド・出来高・前日差分をもとに調査候補を抽出します。</p>
-  <div class="quality"><span>分析 {quality.get('analyzed_stocks', 0)} / {quality.get('configured_stocks', 0)}銘柄</span><span>更新 {escape(str(payload.get('generated_at', '')))}</span></div>
+  <div class="quality"><span>分析 {quality.get('analyzed_stocks', 0)} / {quality.get('configured_stocks', 0)}銘柄</span><span>レポート作成日時 {_datetime_jst(payload.get('generated_at'))}（日本時間）</span></div>
 </section>
+{_freshness_notice(payload)}
 <section>
   <div class="section-heading"><div><p class="eyebrow">MARKET CONTEXT</p><h2>市場環境</h2></div><p>スコアへ混ぜず、判断材料として分離表示</p></div>
   <div class="driver-grid">{_driver_cards(payload.get('market_drivers', {}))}</div>
@@ -180,6 +228,7 @@ def _detail_body(stock: dict[str, Any], payload: dict[str, Any]) -> str:
   <div class="score large"><strong>{_number(stock.get('attention_score'), 0)}</strong><span>注目度</span><small>変化 {_number(stock.get('change_score'), 0)}</small></div>
 </section>
 <div class="badges detail-badges">{_signal_badges(stock)}</div>
+{_freshness_notice(payload, stock)}
 <section class="detail-grid">
   <article class="panel"><p class="eyebrow">WHY TODAY</p><h2>なぜ今日見るのか</h2><p class="lead">{_text(analysis.get('why_research_today'), 'AI分析は未実行です。定量データを確認してください。')}</p><p>{_text(analysis.get('summary'), '')}</p></article>
   <article class="panel"><p class="eyebrow">TECHNICAL</p><h2>定量データ</h2><dl class="detail-metrics">

@@ -2,7 +2,8 @@ from __future__ import annotations
 
 import logging
 import time
-from dataclasses import dataclass
+from dataclasses import dataclass, field
+from datetime import datetime, timezone
 from pathlib import Path
 
 import pandas as pd
@@ -25,6 +26,7 @@ REQUIRED_UNIVERSE_COLUMNS = {
 class MarketFrames:
     close: pd.DataFrame
     volume: pd.DataFrame
+    retrieved_at: dict[str, str] = field(default_factory=dict)
 
 
 def load_universe(path: Path) -> pd.DataFrame:
@@ -111,9 +113,11 @@ def _download_once(
         return MarketFrames(close=pd.DataFrame(), volume=pd.DataFrame())
     close = _extract_field(data, "Close", tickers)
     volume = _extract_field(data, "Volume", tickers)
+    retrieved_at = datetime.now(timezone.utc).isoformat(timespec="seconds")
     return MarketFrames(
         close=close.sort_index().dropna(axis=1, how="all"),
         volume=volume.sort_index().dropna(axis=1, how="all"),
+        retrieved_at={ticker: retrieved_at for ticker in tickers if _has_prices(close, ticker)},
     )
 
 
@@ -208,7 +212,10 @@ def download_market_data(
         )
     if close.empty:
         raise RuntimeError(f"市場データ取得に失敗しました: {last_error}")
-    return MarketFrames(close=close, volume=volume)
+    retrieved_at = dict(batch_frames.retrieved_at)
+    for frame in recovered:
+        retrieved_at.update(frame.retrieved_at)
+    return MarketFrames(close=close, volume=volume, retrieved_at=retrieved_at)
 
 
 def safe_return(series: pd.Series, periods: int) -> float | None:

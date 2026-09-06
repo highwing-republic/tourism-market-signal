@@ -46,3 +46,21 @@ def test_partial_result_is_returned_when_one_ticker_stays_unavailable() -> None:
         )
 
     assert list(frames.close.columns) == ["AAA"]
+
+
+def test_retry_preserves_actual_acquisition_time_per_ticker():
+    from datetime import datetime, timezone
+    batch_time = datetime(2026, 9, 6, 22, 30, tzinfo=timezone.utc)
+    retry_time = datetime(2026, 9, 6, 22, 32, tzinfo=timezone.utc)
+    with patch('app.market_data.yf.download') as download, patch('app.market_data.datetime') as clock:
+        download.side_effect = [_download_result(['AAA']), pd.DataFrame(), _download_result(['BBB'])]
+        clock.now.side_effect = [batch_time, retry_time]
+        frames = download_market_data(['AAA', 'BBB'], retry_count=1)
+    assert frames.retrieved_at == {'AAA': batch_time.isoformat(), 'BBB': retry_time.isoformat()}
+
+
+def test_missing_data_does_not_get_an_acquisition_time():
+    with patch('app.market_data.yf.download') as download:
+        download.side_effect = [_download_result(['AAA']), pd.DataFrame(), pd.DataFrame()]
+        frames = download_market_data(['AAA', 'MISSING'], retry_count=1)
+    assert set(frames.retrieved_at) == {'AAA'}

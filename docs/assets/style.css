@@ -94,6 +94,17 @@ footer { width: min(1180px, calc(100% - 40px)); margin: 100px auto 0; padding: 3
 .scenario-grid ul { padding-left: 18px; color: var(--muted); font-size: .78rem; }
 .empty { grid-column: 1 / -1; padding: 50px; border: 1px dashed var(--line); text-align: center; color: var(--muted); }
 
+.data-notice { margin: 32px 0; padding: 20px 24px; border: 1px solid var(--line); border-left: 4px solid var(--green); border-radius: 12px; background: var(--card); font-size: 1rem; }
+.data-notice p { margin: 8px 0; }
+.data-notice__statement { line-height: 1.8; }
+.data-notice details { margin-top: 16px; }
+.data-notice summary { padding: 8px 0; cursor: pointer; font-weight: 700; }
+.data-notice summary:focus-visible { outline: 2px solid var(--green); outline-offset: 4px; }
+.data-notice table { font-size: .875rem; }
+.data-notice caption { padding: 12px 0; text-align: left; }
+.data-notice th small { display: block; font-weight: 400; }
+.detail-badges + .data-notice { margin-top: 48px; }
+
 @media (max-width: 860px) {
   .signal-card, .signal-card:first-child, .signal-card:nth-child(2) { grid-column: span 6; }
   .detail-grid, .factor-grid { grid-template-columns: 1fr; }

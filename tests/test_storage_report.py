@@ -39,3 +39,43 @@ def test_snapshot_is_valid_json_and_report_escapes_html(tmp_path) -> None:
     assert "A&amp;B &lt;テスト&gt;" in index
     assert (docs_dir / "reports" / "2026-09-01" / "test-t.html").exists()
 
+
+
+def test_report_times_use_jst_and_do_not_invent_legacy_acquisition_times(tmp_path):
+    payload = _payload()
+    payload['generated_at'] = '2026-09-06T22:35:00+00:00'
+    payload['stocks'][0]['as_of_date'] = '2026-09-04'
+    payload['stocks'][0]['retrieved_at'] = '2026-09-06T22:30:12+00:00'
+    payload['market_drivers']['^N225']['as_of_date'] = '2026-09-04'
+    for path in render_reports(payload, tmp_path):
+        html = path.read_text(encoding='utf-8')
+        assert '2026年09月07日07時35分00秒（日本時間）現在の情報です。投資は自己判断でお願いします。' in html
+        assert '2026年09月07日07時30分12秒' in html
+        assert '2026-09-04' in html
+        assert '未記録' in html
+    assert '2026年09月07日07時35分00秒</td>' not in (tmp_path / 'index.html').read_text(encoding='utf-8')
+
+
+def test_datetime_rejects_unknown_or_naive_dates():
+    from app.report import _datetime_jst
+    for value in (None, '', 'invalid', '2026-09-07', '2026-09-07T07:30:00'):
+        assert _datetime_jst(value) == '未記録'
+
+
+def test_snapshot_preserves_per_source_timestamps():
+    import pandas as pd
+    from app.storage import build_snapshot
+    payload = _payload()
+    stock = {**payload['stocks'][0], 'as_of_date': '2026-09-04'}
+    drivers = {**payload['market_drivers'], 'MISSING': {'status': 'unavailable'}}
+    snapshot = build_snapshot(
+        pd.DataFrame([stock]), drivers, {}, model='test', universe_size=1,
+        research_targets=['TEST.T'],
+        stock_retrieved_at={'TEST.T': '2026-09-06T22:30:00+00:00'},
+        driver_retrieved_at={'^N225': '2026-09-06T22:31:00+00:00', 'MISSING': 'invalid'},
+        analysis_completed_at='2026-09-06T22:32:00+00:00',
+    )
+    assert snapshot['stocks'][0]['retrieved_at'] == '2026-09-06T22:30:00+00:00'
+    assert snapshot['market_drivers']['^N225']['retrieved_at'] == '2026-09-06T22:31:00+00:00'
+    assert snapshot['market_drivers']['MISSING']['retrieved_at'] is None
+    assert snapshot['analysis_completed_at'] is None

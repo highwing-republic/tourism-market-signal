@@ -71,10 +71,14 @@ def build_snapshot(
     model: str,
     universe_size: int,
     research_targets: list[str],
+    stock_retrieved_at: dict[str, str] | None = None,
+    driver_retrieved_at: dict[str, str] | None = None,
+    analysis_completed_at: str | None = None,
 ) -> dict[str, Any]:
     report_date = str(scored["as_of_date"].max())
     stocks = to_jsonable(scored.to_dict("records"))
     for stock in stocks:
+        stock["retrieved_at"] = (stock_retrieved_at or {}).get(stock["ticker"])
         analysis = analyses.get(stock["ticker"])
         stock["analysis"] = (
             to_jsonable(analysis.model_dump())
@@ -84,22 +88,30 @@ def build_snapshot(
 
     missing = universe_size - len(stocks)
     return {
-        "schema_version": 1,
+        "schema_version": 2,
         "title": "観光株シグナル / Tourism Market Signal",
         "report_date": report_date,
         "generated_at": datetime.now(JST).isoformat(timespec="seconds"),
         "timezone": "Asia/Tokyo",
         "model": model,
         "analysis_status": "complete" if analyses else "skipped_or_unavailable",
+        "analysis_completed_at": analysis_completed_at if analyses else None,
         "research_targets": research_targets,
         "data_quality": {
             "configured_stocks": universe_size,
             "analyzed_stocks": len(stocks),
             "missing_stocks": missing,
         },
-        "market_drivers": to_jsonable(driver_summary),
+        "market_drivers": to_jsonable({
+            ticker: {
+                **driver,
+                "retrieved_at": (driver_retrieved_at or {}).get(ticker)
+                if driver.get("status") == "ok" else None,
+            }
+            for ticker, driver in driver_summary.items()
+        }),
         "stocks": stocks,
-        "disclaimer": "調査支援を目的とした情報であり、特定銘柄の売買を推奨しません。",
+        "disclaimer": "調査支援を目的とした情報であり、特定銘柄の売買を推奨しません。投資は自己判断でお願いします。",
     }
 
 
