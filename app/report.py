@@ -351,7 +351,16 @@ def render_reports(payload: dict[str, Any], docs_dir: Path) -> list[Path]:
     written.append(daily_index)
 
     stock_map = {stock["ticker"]: stock for stock in payload["stocks"]}
-    for ticker in payload.get("research_targets", []):
+    existing_detail_tickers = [
+        ticker
+        for ticker in stock_map
+        if (daily_dir / f"{_slug(ticker)}.html").exists()
+    ]
+    detail_tickers = dict.fromkeys([
+        *payload.get("research_targets", []),
+        *existing_detail_tickers,
+    ])
+    for ticker in detail_tickers:
         stock = stock_map.get(ticker)
         if stock is None:
             continue
