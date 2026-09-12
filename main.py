@@ -4,6 +4,7 @@ import logging
 import sys
 from datetime import datetime, timezone
 
+from app.gemini_analysis import analyze_targets, create_client
 from app.indicators import calculate_metrics
 from app.market_data import (
     download_market_data,
@@ -11,7 +12,6 @@ from app.market_data import (
     load_universe,
     summarize_drivers,
 )
-from app.openai_analysis import analyze_targets, create_client
 from app.report import render_reports
 from app.scoring import detect_changes, score_attention, select_research_targets
 from app.settings import Settings
@@ -65,12 +65,12 @@ def run(settings: Settings | None = None) -> dict:
     candidate_limit = max(settings.top_n, settings.llm_max_targets)
     candidates = select_research_targets(scored, candidate_limit)
     llm_targets = candidates.head(settings.llm_max_targets)
-    client = create_client(settings.openai_api_key)
+    client = create_client(settings.gemini_api_key)
     analyses = analyze_targets(
         client,
         llm_targets,
         driver_summary,
-        model=settings.openai_model,
+        model=settings.gemini_model,
         retry_count=settings.retry_count,
     )
     analysis_completed_at = datetime.now(timezone.utc).isoformat(timespec="seconds") if analyses else None
@@ -79,7 +79,7 @@ def run(settings: Settings | None = None) -> dict:
         scored,
         driver_summary,
         analyses,
-        model=settings.openai_model,
+        model=settings.gemini_model,
         universe_size=len(universe),
         research_targets=research_targets,
         stock_retrieved_at=stock_frames.retrieved_at,

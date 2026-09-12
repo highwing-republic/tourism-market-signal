@@ -38,8 +38,8 @@ jobs:
 
       - name: Generate JSON and HTML reports
         env:
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-          OPENAI_MODEL: ${{ vars.OPENAI_MODEL || 'gpt-5.4-mini' }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GEMINI_MODEL: ${{ vars.GEMINI_MODEL || 'gemini-2.5-flash' }}
           TOP_N: "5"
           LLM_MAX_TARGETS: "5"
         run: python main.py

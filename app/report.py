@@ -83,6 +83,12 @@ def _number(value: Any, digits: int = 1, suffix: str = "") -> str:
     return f"{float(value):.{digits}f}{suffix}"
 
 
+def _yen_price(value: Any) -> str:
+    if value is None:
+        return "—"
+    return f"{float(value):,.2f}<small>円</small>"
+
+
 def _driver_level(driver: dict[str, Any]) -> str:
     value = driver.get("close")
     if value is None:
@@ -147,6 +153,7 @@ def _target_card(stock: dict[str, Any], report_date: str, *, detail_prefix: str)
     <div><span class="category">{_text(stock.get('category'))}</span><h3>{_text(stock.get('name'))}</h3><code>{_text(stock.get('code'))}</code></div>
     <div class="score"><strong>{_number(stock.get('attention_score'), 0)}</strong><span>注目度</span></div>
   </div>
+  <p class="stock-price"><span>取得時点の株価</span><strong>{_yen_price(stock.get('close'))}</strong></p>
   <div class="badges">{_signal_badges(stock)}</div>
   <dl class="metrics">
     <div><dt>20日</dt><dd>{_pct(stock.get('return_20d_pct'))}</dd></div>

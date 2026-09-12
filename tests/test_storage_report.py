@@ -9,7 +9,7 @@ def _payload() -> dict:
         "schema_version": 1,
         "report_date": "2026-09-01",
         "generated_at": "2026-09-01T07:30:00+09:00",
-        "model": "gpt-5.4-mini",
+        "model": "gemini-2.5-flash",
         "analysis_status": "skipped_or_unavailable",
         "research_targets": ["TEST.T"],
         "data_quality": {"configured_stocks": 50, "analyzed_stocks": 1, "missing_stocks": 49},
@@ -39,8 +39,8 @@ def test_snapshot_is_valid_json_and_report_escapes_html(tmp_path) -> None:
     assert "A&amp;B &lt;テスト&gt;" in index
     assert "42,123.45<small>円</small>" in index
     assert "基準日 2026-09-01" in index
+    assert "1,000.00<small>円</small>" in index
     assert (docs_dir / "reports" / "2026-09-01" / "test-t.html").exists()
-
 
 
 def test_report_times_use_jst_and_do_not_invent_legacy_acquisition_times(tmp_path):

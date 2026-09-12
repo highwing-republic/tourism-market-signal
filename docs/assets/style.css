@@ -51,6 +51,10 @@ section { margin: 78px 0; }
 .category { display: inline-block; margin-bottom: 8px; padding: 3px 9px; border-radius: 99px; color: var(--green); background: var(--green-soft); font-size: .66rem; font-weight: 800; }
 .card-heading h3 { max-width: 310px; margin: 0 0 2px; font-size: 1.25rem; line-height: 1.4; }
 code { color: var(--muted); font-family: inherit; font-size: .75rem; }
+.stock-price { display: flex; align-items: baseline; justify-content: space-between; gap: 18px; margin: 18px 0 0; padding: 13px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.stock-price > span { color: var(--muted); font-size: .68rem; font-weight: 700; }
+.stock-price strong { color: var(--ink); font-family: Georgia, "Yu Mincho", serif; font-size: 1.12rem; font-variant-numeric: tabular-nums; }
+.stock-price strong small { margin-left: 4px; color: var(--muted); font-family: "Yu Gothic UI", "Hiragino Kaku Gothic ProN", system-ui, sans-serif; font-size: .62rem; font-weight: 500; }
 .score { display: flex; min-width: 72px; aspect-ratio: 1; flex-direction: column; align-items: center; justify-content: center; border: 1px solid #c9ded5; border-radius: 50%; color: var(--green); background: #f2faf6; }
 .score strong { font-family: Georgia, serif; font-size: 1.6rem; line-height: 1; }
 .score span, .score small { color: var(--muted); font-size: .58rem; }

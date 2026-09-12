@@ -1,6 +1,6 @@
 import pandas as pd
 
-from app.openai_analysis import StockAnalysis, build_analysis_prompt
+from app.gemini_analysis import StockAnalysis, build_analysis_prompt
 
 
 def test_structured_output_schema_and_prompt() -> None:
@@ -30,8 +30,3 @@ def test_structured_output_schema_and_prompt() -> None:
     assert "株価予測や売買推奨ではなく" in prompt
     assert '"ticker": "TEST.T"' in prompt
 
-
-def test_openai_client_is_optional_without_api_key() -> None:
-    from app.openai_analysis import create_client
-
-    assert create_client(None) is None
