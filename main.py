@@ -3,6 +3,7 @@ from __future__ import annotations
 import logging
 import sys
 from datetime import datetime, timezone
+from zoneinfo import ZoneInfo
 
 from app.gemini_analysis import analyze_targets, create_client
 from app.indicators import calculate_metrics
@@ -10,6 +11,7 @@ from app.market_data import (
     download_market_data,
     load_drivers,
     load_universe,
+    retain_completed_closes_before,
     summarize_drivers,
 )
 from app.report import render_reports
@@ -36,6 +38,7 @@ def run(settings: Settings | None = None) -> dict:
     settings = settings or Settings()
     configure_logging(settings)
     logger = logging.getLogger(__name__)
+    report_date = datetime.now(ZoneInfo("Asia/Tokyo")).date().isoformat()
 
     universe = load_universe(settings.universe_file)
     drivers = load_drivers(settings.drivers_file)
@@ -53,12 +56,13 @@ def run(settings: Settings | None = None) -> dict:
         cache_dir=settings.market_cache_dir,
         repair=False,
     )
+    stock_frames = retain_completed_closes_before(stock_frames, report_date)
+    driver_frames = retain_completed_closes_before(driver_frames, report_date)
 
     metrics = calculate_metrics(stock_frames.close, stock_frames.volume, universe)
     if metrics.empty:
         raise RuntimeError("分析可能な銘柄がありません")
-    current_date = str(metrics["as_of_date"].max())
-    previous = load_previous_snapshot(settings.data_dir, settings.history_dir, current_date)
+    previous = load_previous_snapshot(settings.data_dir, settings.history_dir, report_date)
     scored = detect_changes(score_attention(metrics), previous)
     driver_summary = summarize_drivers(driver_frames.close, drivers)
 
@@ -79,6 +83,7 @@ def run(settings: Settings | None = None) -> dict:
         scored,
         driver_summary,
         analyses,
+        report_date=report_date,
         model=settings.gemini_model,
         universe_size=len(universe),
         research_targets=research_targets,

@@ -2,8 +2,8 @@ name: Daily tourism market signal
 
 on:
   schedule:
-    # GitHub cron is UTC. Sun-Thu 22:30 UTC = Mon-Fri 07:30 JST.
-    - cron: "30 22 * * 0-4"
+    # GitHub cron is UTC. Sun-Thu 21:00 UTC = Mon-Fri 06:00 JST.
+    - cron: "0 21 * * 0-4"
   workflow_dispatch:
 
 permissions:

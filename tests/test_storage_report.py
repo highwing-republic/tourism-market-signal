@@ -10,6 +10,10 @@ def _payload() -> dict:
         "report_date": "2026-09-01",
         "generated_at": "2026-09-01T07:30:00+09:00",
         "model": "gemini-2.5-flash",
+        "methodology": {
+            "scheduled_retrieval_time_jst": "06:00",
+            "price_basis": "previous_market_close",
+        },
         "analysis_status": "skipped_or_unavailable",
         "research_targets": ["TEST.T"],
         "data_quality": {"configured_stocks": 50, "analyzed_stocks": 1, "missing_stocks": 49},
@@ -47,6 +51,7 @@ def test_snapshot_is_valid_json_and_report_escapes_html(tmp_path) -> None:
     assert "株価基準日 2026年9月1日" in index
     assert "取得日時 2026年09月01日07時25分00秒（日本時間）" in index
     assert "前回レポートからの変化" in index
+    assert "レポート日の前日までに確定した直近取引日の終値" in index
     assert "今日" not in index
     assert "本日" not in index
     assert (docs_dir / "reports" / "2026-09-01" / "test-t.html").exists()
@@ -81,6 +86,7 @@ def test_snapshot_preserves_per_source_timestamps():
     drivers = {**payload['market_drivers'], 'MISSING': {'status': 'unavailable'}}
     snapshot = build_snapshot(
         pd.DataFrame([stock]), drivers, {}, model='test', universe_size=1,
+        report_date='2026-09-07',
         research_targets=['TEST.T'],
         stock_retrieved_at={'TEST.T': '2026-09-06T22:30:00+00:00'},
         driver_retrieved_at={'^N225': '2026-09-06T22:31:00+00:00', 'MISSING': 'invalid'},
@@ -90,3 +96,6 @@ def test_snapshot_preserves_per_source_timestamps():
     assert snapshot['market_drivers']['^N225']['retrieved_at'] == '2026-09-06T22:31:00+00:00'
     assert snapshot['market_drivers']['MISSING']['retrieved_at'] is None
     assert snapshot['analysis_completed_at'] is None
+    assert snapshot['report_date'] == '2026-09-07'
+    assert snapshot['stocks'][0]['as_of_date'] == '2026-09-04'
+    assert snapshot['methodology']['price_basis'] == 'previous_market_close'

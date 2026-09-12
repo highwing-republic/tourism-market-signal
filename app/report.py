@@ -82,10 +82,17 @@ def _freshness_notice(payload: dict[str, Any], stock: dict[str, Any] | None = No
         _datetime_jst(payload.get("analysis_completed_at"))
         if payload.get("analysis_status") == "complete" else "未実行・取得不能"
     )
+    methodology = payload.get("methodology") or {}
+    basis_note = (
+        "選定基準：平日朝6:00（日本時間）に取得処理を開始し、レポート日の前日までに確定した直近取引日の終値を使用しています。"
+        if methodology.get("price_basis") == "previous_market_close"
+        else "選定基準：各カードに記載した株価基準日の終値を使用しています。"
+    )
     return f"""
 <aside class="data-notice" aria-label="情報の日時とご利用にあたって">
   <p class="data-notice__statement"><strong>{statement}投資は自己判断でお願いします。</strong></p>
-  <p>上記はレポート作成時点です。市場データはリアルタイムではありません。データ基準日は各市場の日付、取得日時とAI分析完了日時は日本時間で表示しています。</p>
+  <p><strong>{basis_note}</strong></p>
+  <p>銘柄選定には、各カードに記載したデータ基準日の終値を使用しています。市場データはリアルタイムではありません。取得日時とAI分析完了日時は日本時間で表示しています。</p>
   <p>AI分析完了日時：{ai_time}</p>
   <details>
     <summary>各データの基準日・取得日時を確認する</summary>
@@ -247,8 +254,8 @@ def _dashboard_body(payload: dict[str, Any], *, detail_prefix: str) -> str:
 <section class="hero">
   <p class="eyebrow">DAILY SIGNAL</p>
   <p class="report-date">{report_date_ja} レポート</p>
-  <h1>この日に、調べる価値が<br><em>生まれた企業</em></h1>
-  <p>観光・インバウンド関連50銘柄から、価格・トレンド・出来高・前日差分をもとに調査候補を抽出します。</p>
+  <h1>前営業日終値をもとにした<br><em>{report_date_ja}の調査候補</em></h1>
+  <p>平日毎朝6:00（日本時間）に取得処理を開始し、前日までに確定した直近取引日の終値から、価格・トレンド・出来高・前回レポートとの差分を分析します。</p>
   <div class="quality"><span>分析 {quality.get('analyzed_stocks', 0)} / {quality.get('configured_stocks', 0)}銘柄</span><span>レポート作成日時 {_datetime_jst(payload.get('generated_at'))}（日本時間）</span></div>
 </section>
 {_freshness_notice(payload)}

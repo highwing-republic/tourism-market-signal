@@ -3,7 +3,7 @@ from __future__ import annotations
 import logging
 import time
 from dataclasses import dataclass, field
-from datetime import datetime, timezone
+from datetime import date, datetime, timezone
 from pathlib import Path
 
 import pandas as pd
@@ -101,7 +101,7 @@ def _download_once(
         tickers=tickers,
         period=period,
         interval="1d",
-        auto_adjust=True,
+        auto_adjust=False,
         actions=False,
         repair=repair,
         progress=False,
@@ -123,6 +123,28 @@ def _download_once(
 
 def _has_prices(close: pd.DataFrame, ticker: str) -> bool:
     return ticker in close.columns and not close[ticker].dropna().empty
+
+
+def retain_completed_closes_before(
+    frames: MarketFrames,
+    report_date: str,
+) -> MarketFrames:
+    cutoff = date.fromisoformat(report_date)
+
+    def before_cutoff(frame: pd.DataFrame) -> pd.DataFrame:
+        if frame.empty:
+            return frame.copy()
+        mask = [pd.Timestamp(value).date() < cutoff for value in frame.index]
+        return frame.loc[mask].copy()
+
+    close = before_cutoff(frames.close)
+    volume = before_cutoff(frames.volume)
+    retrieved_at = {
+        ticker: retrieved
+        for ticker, retrieved in frames.retrieved_at.items()
+        if _has_prices(close, ticker)
+    }
+    return MarketFrames(close=close, volume=volume, retrieved_at=retrieved_at)
 
 
 def _merge_frame_columns(frames: list[pd.DataFrame]) -> pd.DataFrame:

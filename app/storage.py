@@ -68,6 +68,7 @@ def build_snapshot(
     driver_summary: dict[str, dict],
     analyses: dict[str, Any],
     *,
+    report_date: str,
     model: str,
     universe_size: int,
     research_targets: list[str],
@@ -75,7 +76,6 @@ def build_snapshot(
     driver_retrieved_at: dict[str, str] | None = None,
     analysis_completed_at: str | None = None,
 ) -> dict[str, Any]:
-    report_date = str(scored["as_of_date"].max())
     stocks = to_jsonable(scored.to_dict("records"))
     for stock in stocks:
         stock["retrieved_at"] = (stock_retrieved_at or {}).get(stock["ticker"])
@@ -88,11 +88,15 @@ def build_snapshot(
 
     missing = universe_size - len(stocks)
     return {
-        "schema_version": 2,
+        "schema_version": 3,
         "title": "観光株シグナル / Tourism Market Signal",
         "report_date": report_date,
         "generated_at": datetime.now(JST).isoformat(timespec="seconds"),
         "timezone": "Asia/Tokyo",
+        "methodology": {
+            "scheduled_retrieval_time_jst": "06:00",
+            "price_basis": "previous_market_close",
+        },
         "model": model,
         "analysis_status": "complete" if analyses else "skipped_or_unavailable",
         "analysis_completed_at": analysis_completed_at if analyses else None,
