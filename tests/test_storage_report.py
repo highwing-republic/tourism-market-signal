@@ -47,11 +47,16 @@ def test_snapshot_is_valid_json_and_report_escapes_html(tmp_path) -> None:
     assert "基準日 2026-09-01" in index
     assert "1,000.00<small>円</small>" in index
     assert "2026年9月1日 レポート" in index
+    assert "この日に、調べる価値が" in index
+    assert "生まれた企業" in index
+    assert "前営業日終値をもとにした" not in index
     assert "2026年9月1日の注目銘柄" in index
     assert "株価基準日 2026年9月1日" in index
     assert "取得日時 2026年09月01日07時25分00秒（日本時間）" in index
     assert "前回レポートからの変化" in index
     assert "レポート日の前日までに確定した直近取引日の終値" in index
+    assert "<th>前日終値</th>" in index
+    assert '<td class="ranking-price"><span>1,000.00<small>円</small></span><small>2026年9月1日終値</small></td>' in index
     assert "今日" not in index
     assert "本日" not in index
     assert (docs_dir / "reports" / "2026-09-01" / "test-t.html").exists()

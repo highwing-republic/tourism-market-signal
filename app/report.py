@@ -230,10 +230,13 @@ def _driver_cards(drivers: dict[str, dict]) -> str:
 def _ranking_table(stocks: list[dict[str, Any]]) -> str:
     rows = []
     for stock in sorted(stocks, key=lambda item: item["rank"])[:15]:
+        stock_date = _date_ja(stock.get("as_of_date"))
         rows.append(
             "<tr>"
             f"<td>{int(stock['rank'])}</td><td>{_text(stock.get('code'))}</td>"
             f"<td>{_text(stock.get('name'))}<small>{_text(stock.get('category'))}</small></td>"
+            f'<td class="ranking-price"><span>{_yen_price(stock.get("close"))}</span>'
+            f"<small>{stock_date}終値</small></td>"
             f"<td>{_number(stock.get('attention_score'), 1)}</td>"
             f"<td>{_number(stock.get('change_score'), 1)}</td>"
             f"<td>{_pct(stock.get('return_20d_pct'))}</td>"
@@ -254,7 +257,7 @@ def _dashboard_body(payload: dict[str, Any], *, detail_prefix: str) -> str:
 <section class="hero">
   <p class="eyebrow">DAILY SIGNAL</p>
   <p class="report-date">{report_date_ja} レポート</p>
-  <h1>前営業日終値をもとにした<br><em>{report_date_ja}の調査候補</em></h1>
+  <h1>この日に、調べる価値が<br><em>生まれた企業</em></h1>
   <p>平日毎朝6:00（日本時間）に取得処理を開始し、前日までに確定した直近取引日の終値から、価格・トレンド・出来高・前回レポートとの差分を分析します。</p>
   <div class="quality"><span>分析 {quality.get('analyzed_stocks', 0)} / {quality.get('configured_stocks', 0)}銘柄</span><span>レポート作成日時 {_datetime_jst(payload.get('generated_at'))}（日本時間）</span></div>
 </section>
@@ -269,7 +272,7 @@ def _dashboard_body(payload: dict[str, Any], *, detail_prefix: str) -> str:
 </section>
 <section>
   <div class="section-heading"><div><p class="eyebrow">QUANT RANKING</p><h2>定量ランキング</h2></div><p>RSIは状態表示のみ。総合点には含めません。</p></div>
-  <div class="table-wrap"><table><thead><tr><th>順位</th><th>コード</th><th>銘柄</th><th>注目度</th><th>変化</th><th>20日</th><th>出来高</th></tr></thead><tbody>{_ranking_table(payload['stocks'])}</tbody></table></div>
+  <div class="table-wrap"><table class="ranking-table"><thead><tr><th>順位</th><th>コード</th><th>銘柄</th><th>前日終値</th><th>注目度</th><th>変化</th><th>20日</th><th>出来高</th></tr></thead><tbody>{_ranking_table(payload['stocks'])}</tbody></table></div>
 </section>
 """
 
@@ -310,7 +313,7 @@ def _detail_body(stock: dict[str, Any], payload: dict[str, Any]) -> str:
 <section class="detail-grid">
   <article class="panel"><p class="eyebrow">RESEARCH REASON</p><h2>{report_date_ja}に注目する理由</h2><p class="lead">{_dated_text(analysis.get('why_research_today'), report_date, 'AI分析は未実行です。定量データを確認してください。')}</p><p>{_dated_text(analysis.get('summary'), report_date)}</p></article>
   <article class="panel"><p class="eyebrow">TECHNICAL</p><h2>定量データ</h2><dl class="detail-metrics">
-    <div><dt>終値</dt><dd>{_number(stock.get('close'), 2)}</dd></div><div><dt>5日</dt><dd>{_pct(stock.get('return_5d_pct'))}</dd></div>
+    <div><dt>終値</dt><dd>{_yen_price(stock.get('close'))}</dd></div><div><dt>5日</dt><dd>{_pct(stock.get('return_5d_pct'))}</dd></div>
     <div><dt>20日</dt><dd>{_pct(stock.get('return_20d_pct'))}</dd></div><div><dt>MA20乖離</dt><dd>{_pct(stock.get('distance_ma20_pct'))}</dd></div>
     <div><dt>RSI</dt><dd>{_number(stock.get('rsi14'), 1)} {_text(stock.get('rsi_state'))}</dd></div><div><dt>出来高比</dt><dd>{_number(stock.get('volume_ratio'), 2, '倍')}</dd></div>
   </dl></article>
