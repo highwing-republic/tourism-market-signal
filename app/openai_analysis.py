@@ -6,9 +6,8 @@ import time
 from typing import Any, Literal
 
 import pandas as pd
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, ConfigDict, Field
 
-from app.market_data import driver_subset_for_category
 from app.storage import to_jsonable
 
 
@@ -16,20 +15,26 @@ logger = logging.getLogger(__name__)
 
 
 class AnalysisFactor(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
     title: str = Field(description="短い見出し")
     description: str = Field(description="入力データに基づく簡潔な説明")
     factor_type: Literal["fact", "interpretation", "general_risk"]
     impact: Literal["positive", "negative", "neutral"]
-    evidence_fields: list[str] = Field(default_factory=list)
+    evidence_fields: list[str]
 
 
 class Scenario(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
     name: Literal["bull", "base", "bear"]
     description: str
-    conditions: list[str] = Field(default_factory=list)
+    conditions: list[str]
 
 
 class StockAnalysis(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
     ticker: str
     company_name: str
     summary: str = Field(description="トップ画面用の120文字以内の要約")
@@ -39,9 +44,9 @@ class StockAnalysis(BaseModel):
     positive_factors: list[AnalysisFactor]
     negative_factors: list[AnalysisFactor]
     scenarios: list[Scenario]
-    counter_arguments: list[str] = Field(default_factory=list)
-    additional_data_needed: list[str] = Field(default_factory=list)
-    warnings: list[str] = Field(default_factory=list)
+    counter_arguments: list[str]
+    additional_data_needed: list[str]
+    warnings: list[str]
     conclusion: Literal[
         "new_research_candidate",
         "continue_monitoring",
@@ -53,11 +58,11 @@ class StockAnalysis(BaseModel):
 
 def create_client(api_key: str | None) -> Any | None:
     if not api_key:
-        logger.info("GEMINI_API_KEY 未設定のためAI分析を省略します")
+        logger.info("OPENAI_API_KEY 未設定のためChatGPTによる分析を省略します")
         return None
-    from google import genai
+    from openai import OpenAI
 
-    return genai.Client(api_key=api_key)
+    return OpenAI(api_key=api_key)
 
 
 def build_analysis_prompt(row: pd.Series, drivers: dict[str, dict]) -> str:
@@ -115,33 +120,29 @@ def analyze_stock(
     model: str,
     retry_count: int = 3,
 ) -> StockAnalysis | None:
-    from google.genai import types
-
     prompt = build_analysis_prompt(row, drivers)
     for attempt in range(1, retry_count + 1):
         try:
-            response = client.models.generate_content(
+            response = client.responses.create(
                 model=model,
-                contents=prompt,
-                config=types.GenerateContentConfig(
-                    temperature=0.2,
-                    response_mime_type="application/json",
-                    response_schema=StockAnalysis,
-                ),
+                input=prompt,
+                text={
+                    "format": {
+                        "type": "json_schema",
+                        "name": "stock_analysis",
+                        "schema": StockAnalysis.model_json_schema(),
+                        "strict": True,
+                    }
+                },
+                store=False,
             )
-            parsed = getattr(response, "parsed", None)
-            if isinstance(parsed, StockAnalysis):
-                analysis = parsed
-            elif parsed is not None:
-                analysis = StockAnalysis.model_validate(parsed)
-            else:
-                analysis = StockAnalysis.model_validate_json(response.text)
+            analysis = StockAnalysis.model_validate_json(response.output_text)
             if analysis.ticker != row["ticker"] or analysis.company_name != row["name"]:
-                raise ValueError("Geminiの銘柄識別子が入力と一致しません")
+                raise ValueError("ChatGPTの銘柄識別子が入力と一致しません")
             return analysis
         except Exception as exc:  # API errors are intentionally isolated per stock
             logger.warning(
-                "Gemini分析失敗: %s（%s/%s）%s",
+                "ChatGPT分析失敗: %s（%s/%s）%s",
                 row["ticker"],
                 attempt,
                 retry_count,
@@ -162,6 +163,8 @@ def analyze_targets(
 ) -> dict[str, StockAnalysis]:
     if client is None:
         return {}
+    from app.market_data import driver_subset_for_category
+
     results: dict[str, StockAnalysis] = {}
     for _, row in targets.iterrows():
         relevant_drivers = driver_subset_for_category(row["category"], driver_summary)
@@ -175,4 +178,3 @@ def analyze_targets(
         if analysis is not None:
             results[row["ticker"]] = analysis
     return results
-

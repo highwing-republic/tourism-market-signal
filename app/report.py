@@ -7,6 +7,21 @@ from typing import Any
 from zoneinfo import ZoneInfo
 
 
+DRIVER_UNITS = {
+    "^N225": "円",
+    "^GSPC": "ポイント",
+    "^IXIC": "ポイント",
+    "^VIX": "ポイント",
+    "JPY=X": "円/米ドル",
+    "CL=F": "米ドル/バレル",
+    "DAL": "米ドル",
+    "UAL": "米ドル",
+    "AAL": "米ドル",
+    "LUV": "米ドル",
+    "BA": "米ドル",
+}
+
+
 def _datetime_jst(value: Any) -> str:
     if not value:
         return "未記録"
@@ -66,6 +81,15 @@ def _number(value: Any, digits: int = 1, suffix: str = "") -> str:
     if value is None:
         return "—"
     return f"{float(value):.{digits}f}{suffix}"
+
+
+def _driver_level(driver: dict[str, Any]) -> str:
+    value = driver.get("close")
+    if value is None:
+        return "—"
+    digits = int(driver.get("digits", 2))
+    unit = _text(driver.get("unit") or DRIVER_UNITS.get(str(driver.get("ticker"))), "")
+    return f"{float(value):,.{digits}f}<small>{unit}</small>"
 
 
 def _slug(ticker: str) -> str:
@@ -140,15 +164,19 @@ def _driver_cards(drivers: dict[str, dict]) -> str:
     items: list[str] = []
     for driver in drivers.values():
         if driver.get("status") != "ok":
-            value, direction, css = "取得不能", "—", "flat"
+            level, change_text, direction, css, as_of = "取得不能", "—", "—", "flat", "未記録"
         else:
             change = driver.get("return_5d_pct")
-            value = _pct(change)
+            level = _driver_level(driver)
+            change_text = _pct(change)
             direction = "↑" if change is not None and change > 0.3 else "↓" if change is not None and change < -0.3 else "→"
             css = "up" if direction == "↑" else "down" if direction == "↓" else "flat"
+            as_of = _text(driver.get("as_of_date"), "未記録")
         items.append(
-            f'<div class="driver"><span>{_text(driver.get("name"))}</span>'
-            f'<strong class="{css}">{direction} {value}</strong><small>5日変化</small></div>'
+            f'<div class="driver"><span class="driver-name">{_text(driver.get("name"))}</span>'
+            f'<strong class="driver-level">{level}</strong>'
+            f'<span class="driver-change"><b class="{css}">{direction} {change_text}</b><small>5日変化</small></span>'
+            f'<small class="driver-as-of">基準日 {as_of}</small></div>'
         )
     return "".join(items)
 

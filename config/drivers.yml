@@ -2,34 +2,56 @@ drivers:
   - ticker: ^N225
     name: 日経平均
     group: common
+    unit: 円
+    digits: 2
   - ticker: ^GSPC
     name: S&P 500
     group: common
+    unit: ポイント
+    digits: 2
   - ticker: ^IXIC
     name: NASDAQ総合
     group: growth
+    unit: ポイント
+    digits: 2
   - ticker: ^VIX
     name: VIX
     group: common
+    unit: ポイント
+    digits: 2
   - ticker: JPY=X
     name: ドル円
     group: common
+    unit: 円/米ドル
+    digits: 2
   - ticker: CL=F
     name: WTI原油
     group: aviation
+    unit: 米ドル/バレル
+    digits: 2
   - ticker: DAL
     name: デルタ航空
     group: aviation
+    unit: 米ドル
+    digits: 2
   - ticker: UAL
     name: ユナイテッド航空
     group: aviation
+    unit: 米ドル
+    digits: 2
   - ticker: AAL
     name: アメリカン航空
     group: aviation
+    unit: 米ドル
+    digits: 2
   - ticker: LUV
     name: サウスウエスト航空
     group: aviation
+    unit: 米ドル
+    digits: 2
   - ticker: BA
     name: ボーイング
     group: aviation
+    unit: 米ドル
+    digits: 2
 

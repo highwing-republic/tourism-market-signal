@@ -9,7 +9,7 @@
 - 騰落率、MA20/MA60、RSI、20日ボラティリティ、出来高比を計算
 - `attention_score` と前回レポートとの差を表す `change_score` を分離
 - TOP10入り、順位急変、MA20クロス、出来高2倍、連続上昇、20日高値を検知
-- 上位候補だけをGeminiへ送り、Pydantic Structured Outputsで検証
+- 上位候補だけをOpenAIのChatGPT系モデルへ送り、Structured Outputsで検証
 - `data/latest.json` と `data/history/YYYY-MM-DD.json` を保存
 - `docs/index.html` と銘柄詳細ページを直接生成（Hugo不使用）
 - GitHub Actionsで日本時間の平日7:30に自動実行
@@ -45,7 +45,7 @@ python -m pip install -r requirements.txt
 Copy-Item .env.example .env
 ```
 
-`.env` の `GEMINI_API_KEY` にGoogle AI StudioのAPIキーを設定します。未設定でも定量分析・JSON・HTML生成は動き、AI分析だけを省略します。
+`.env` の `OPENAI_API_KEY` にOpenAI PlatformのAPIキーを設定します。未設定でも定量分析・JSON・HTML生成は動き、ChatGPTによる分析だけを省略します。
 
 ```powershell
 python scripts\validate_universe.py
@@ -58,7 +58,7 @@ python main.py
 ## GitHub Pagesと自動実行
 
 1. `Settings → Pages` でSourceを「Deploy from a branch」、Branchを `main`、Folderを `/docs` にします。
-2. `Settings → Secrets and variables → Actions` に `GEMINI_API_KEY` をRepository secretとして登録します。
+2. `Settings → Secrets and variables → Actions` に `OPENAI_API_KEY` をRepository secretとして登録します。
 3. Actionsから `Daily tourism market signal` を手動実行し、初回レポートを確認します。
 
 定期実行は `30 22 * * 0-4`（UTC）、日本時間では月曜〜金曜の7:30です。祝日判定はせず、休場日は直近取引日のファイルを更新します。

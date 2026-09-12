@@ -22,8 +22,8 @@ class Settings:
     market_cache_dir: Path = BASE_DIR / "data" / ".yfinance-cache"
     docs_dir: Path = BASE_DIR / "docs"
     reports_dir: Path = BASE_DIR / "docs" / "reports"
-    gemini_api_key: str | None = os.getenv("GEMINI_API_KEY") or None
-    gemini_model: str = os.getenv("GEMINI_MODEL", "gemini-2.5-flash")
+    openai_api_key: str | None = os.getenv("OPENAI_API_KEY") or None
+    openai_model: str = os.getenv("OPENAI_MODEL", "gpt-5.4-mini")
     top_n: int = int(os.getenv("TOP_N", "5"))
     llm_max_targets: int = int(os.getenv("LLM_MAX_TARGETS", "5"))
     lookback_period: str = os.getenv("LOOKBACK_PERIOD", "1y")

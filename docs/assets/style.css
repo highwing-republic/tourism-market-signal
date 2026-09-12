@@ -33,10 +33,14 @@ section { margin: 78px 0; }
 .section-heading h2 { margin: 4px 0 0; font-family: Georgia, "Yu Mincho", serif; font-size: clamp(1.9rem, 4vw, 3.2rem); line-height: 1.2; }
 .section-heading > p { margin: 0; color: var(--muted); font-size: .84rem; }
 .driver-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; }
-.driver { display: flex; min-height: 132px; padding: 20px; flex-direction: column; border: 1px solid var(--line); border-radius: 16px; background: rgba(255,253,248,.65); }
-.driver span { min-height: 2.8em; font-size: .78rem; font-weight: 700; }
-.driver strong { margin-top: auto; font-size: 1.08rem; }
-.driver small { color: var(--muted); font-size: .65rem; }
+.driver { display: flex; min-height: 174px; padding: 20px; flex-direction: column; border: 1px solid var(--line); border-radius: 16px; background: rgba(255,253,248,.65); }
+.driver-name { min-height: 2.8em; font-size: .78rem; font-weight: 700; }
+.driver-level { margin-top: 12px; color: var(--ink); font-family: Georgia, "Yu Mincho", serif; font-size: 1.08rem; line-height: 1.35; font-variant-numeric: tabular-nums; }
+.driver-level small { display: block; margin-top: 2px; color: var(--muted); font-family: "Yu Gothic UI", "Hiragino Kaku Gothic ProN", system-ui, sans-serif; font-size: .62rem; font-weight: 500; }
+.driver-change { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; margin-top: auto; padding-top: 10px; border-top: 1px solid var(--line); }
+.driver-change b { font-size: .92rem; font-variant-numeric: tabular-nums; }
+.driver-change small, .driver-as-of { color: var(--muted); font-size: .62rem; }
+.driver-as-of { margin-top: 4px; }
 .up { color: var(--green); } .down { color: var(--red); } .flat { color: var(--muted); }
 .signal-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 18px; }
 .signal-card { position: relative; grid-column: span 4; min-height: 440px; padding: 28px; border: 1px solid var(--line); border-radius: 22px; background: var(--card); box-shadow: var(--shadow); }
