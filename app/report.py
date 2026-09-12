@@ -34,6 +34,35 @@ def _datetime_jst(value: Any) -> str:
         return "未記録"
 
 
+def _date_ja(value: Any) -> str:
+    if not value:
+        return "日付未記録"
+    try:
+        parsed = datetime.strptime(str(value), "%Y-%m-%d")
+        return f"{parsed.year}年{parsed.month}月{parsed.day}日"
+    except (ValueError, TypeError):
+        return "日付未記録"
+
+
+def _replace_relative_date_text(value: Any, report_date: str) -> str:
+    report_date_ja = _date_ja(report_date)
+    return (
+        str(value)
+        .replace("本日の", f"{report_date_ja}の")
+        .replace("今日の", f"{report_date_ja}の")
+        .replace("本日", f"{report_date_ja}に")
+        .replace("今日", f"{report_date_ja}に")
+    )
+
+
+def _dated_text(value: Any, report_date: str, fallback: str = "") -> str:
+    return escape(_replace_relative_date_text(fallback if value is None else value, report_date))
+
+
+def _replace_relative_dates(html: str, report_date: str) -> str:
+    return _replace_relative_date_text(html, report_date)
+
+
 def _freshness_notice(payload: dict[str, Any], stock: dict[str, Any] | None = None) -> str:
     generated_at = _datetime_jst(payload.get("generated_at"))
     statement = (
@@ -127,11 +156,11 @@ def _page(title: str, body: str, *, asset_prefix: str, home_href: str) -> str:
 """
 
 
-def _signal_badges(stock: dict[str, Any]) -> str:
+def _signal_badges(stock: dict[str, Any], report_date: str) -> str:
     signals = stock.get("signals") or []
     if not signals:
         return '<span class="badge muted">継続監視</span>'
-    return "".join(f'<span class="badge">{escape(str(item))}</span>' for item in signals)
+    return "".join(f'<span class="badge">{_dated_text(item, report_date)}</span>' for item in signals)
 
 
 def _rank_label(stock: dict[str, Any]) -> str:
@@ -146,6 +175,8 @@ def _target_card(stock: dict[str, Any], report_date: str, *, detail_prefix: str)
     analysis = stock.get("analysis") or {}
     summary = analysis.get("summary") or "AI分析は未実行です。定量指標と変化シグナルを確認してください。"
     href = f"{detail_prefix}/{_slug(stock['ticker'])}.html"
+    stock_date = _date_ja(stock.get("as_of_date"))
+    retrieved_at = _datetime_jst(stock.get("retrieved_at"))
     return f"""
 <article class="signal-card">
   <div class="card-rank">#{int(stock['rank'])}</div>
@@ -153,15 +184,16 @@ def _target_card(stock: dict[str, Any], report_date: str, *, detail_prefix: str)
     <div><span class="category">{_text(stock.get('category'))}</span><h3>{_text(stock.get('name'))}</h3><code>{_text(stock.get('code'))}</code></div>
     <div class="score"><strong>{_number(stock.get('attention_score'), 0)}</strong><span>注目度</span></div>
   </div>
-  <p class="stock-price"><span>取得時点の株価</span><strong>{_yen_price(stock.get('close'))}</strong></p>
-  <div class="badges">{_signal_badges(stock)}</div>
+  <p class="stock-price"><span>株価基準日 {stock_date}</span><strong>{_yen_price(stock.get('close'))}</strong></p>
+  <p class="stock-retrieved">取得日時 {retrieved_at}（日本時間）</p>
+  <div class="badges">{_signal_badges(stock, report_date)}</div>
   <dl class="metrics">
     <div><dt>20日</dt><dd>{_pct(stock.get('return_20d_pct'))}</dd></div>
     <div><dt>出来高</dt><dd>{_number(stock.get('volume_ratio'), 2, '倍')}</dd></div>
     <div><dt>順位</dt><dd>{_rank_label(stock)}</dd></div>
     <div><dt>RSI</dt><dd>{_number(stock.get('rsi14'), 1)} <small>{_text(stock.get('rsi_state'))}</small></dd></div>
   </dl>
-  <p class="ai-summary"><span>AI / 定量コメント</span>{escape(str(summary))}</p>
+  <p class="ai-summary"><span>AI / 定量コメント</span>{_dated_text(summary, report_date)}</p>
   <a class="detail-link" href="{href}">詳細を見る <span aria-hidden="true">→</span></a>
 </article>
 """
@@ -206,14 +238,16 @@ def _ranking_table(stocks: list[dict[str, Any]]) -> str:
 
 def _dashboard_body(payload: dict[str, Any], *, detail_prefix: str) -> str:
     report_date = str(payload["report_date"])
+    report_date_ja = _date_ja(report_date)
     stock_map = {stock["ticker"]: stock for stock in payload["stocks"]}
     targets = [stock_map[ticker] for ticker in payload.get("research_targets", []) if ticker in stock_map]
     quality = payload.get("data_quality", {})
     cards = "".join(_target_card(stock, report_date, detail_prefix=detail_prefix) for stock in targets)
     return f"""
 <section class="hero">
-  <p class="eyebrow">DAILY SIGNAL · {escape(report_date)}</p>
-  <h1>今日、調べる価値が<br><em>生まれた企業</em></h1>
+  <p class="eyebrow">DAILY SIGNAL</p>
+  <p class="report-date">{report_date_ja} レポート</p>
+  <h1>この日に、調べる価値が<br><em>生まれた企業</em></h1>
   <p>観光・インバウンド関連50銘柄から、価格・トレンド・出来高・前日差分をもとに調査候補を抽出します。</p>
   <div class="quality"><span>分析 {quality.get('analyzed_stocks', 0)} / {quality.get('configured_stocks', 0)}銘柄</span><span>レポート作成日時 {_datetime_jst(payload.get('generated_at'))}（日本時間）</span></div>
 </section>
@@ -223,7 +257,7 @@ def _dashboard_body(payload: dict[str, Any], *, detail_prefix: str) -> str:
   <div class="driver-grid">{_driver_cards(payload.get('market_drivers', {}))}</div>
 </section>
 <section>
-  <div class="section-heading"><div><p class="eyebrow">TODAY'S RESEARCH</p><h2>今日の注目</h2></div><p>注目度 × 昨日からの変化</p></div>
+  <div class="section-heading"><div><p class="eyebrow">RESEARCH TARGETS</p><h2>{report_date_ja}の注目銘柄</h2></div><p>注目度 × 前回レポートからの変化</p></div>
   <div class="signal-grid">{cards or '<p class="empty">表示できる調査候補がありません。</p>'}</div>
 </section>
 <section>
@@ -249,6 +283,8 @@ def _simple_list(items: list[Any]) -> str:
 
 def _detail_body(stock: dict[str, Any], payload: dict[str, Any]) -> str:
     analysis = stock.get("analysis") or {}
+    report_date = str(payload["report_date"])
+    report_date_ja = _date_ja(report_date)
     scenarios = {item.get("name"): item for item in analysis.get("scenarios", [])}
     scenario_labels = (("bull", "強気"), ("base", "基本"), ("bear", "弱気"))
     scenario_html = "".join(
@@ -259,13 +295,13 @@ def _detail_body(stock: dict[str, Any], payload: dict[str, Any]) -> str:
     return f"""
 <nav class="breadcrumb"><a href="../../index.html">トップ</a><span>/</span><span>{_text(stock.get('name'))}</span></nav>
 <section class="detail-hero">
-  <div><p class="eyebrow">RESEARCH NOTE · {escape(str(payload['report_date']))}</p><span class="category">{_text(stock.get('category'))}</span><h1>{_text(stock.get('name'))}</h1><p>{_text(stock.get('ticker'))}</p></div>
+  <div><p class="eyebrow">RESEARCH NOTE · {report_date_ja}</p><span class="category">{_text(stock.get('category'))}</span><h1>{_text(stock.get('name'))}</h1><p>{_text(stock.get('ticker'))}</p></div>
   <div class="score large"><strong>{_number(stock.get('attention_score'), 0)}</strong><span>注目度</span><small>変化 {_number(stock.get('change_score'), 0)}</small></div>
 </section>
-<div class="badges detail-badges">{_signal_badges(stock)}</div>
+<div class="badges detail-badges">{_signal_badges(stock, report_date)}</div>
 {_freshness_notice(payload, stock)}
 <section class="detail-grid">
-  <article class="panel"><p class="eyebrow">WHY TODAY</p><h2>なぜ今日見るのか</h2><p class="lead">{_text(analysis.get('why_research_today'), 'AI分析は未実行です。定量データを確認してください。')}</p><p>{_text(analysis.get('summary'), '')}</p></article>
+  <article class="panel"><p class="eyebrow">RESEARCH REASON</p><h2>{report_date_ja}に注目する理由</h2><p class="lead">{_dated_text(analysis.get('why_research_today'), report_date, 'AI分析は未実行です。定量データを確認してください。')}</p><p>{_dated_text(analysis.get('summary'), report_date)}</p></article>
   <article class="panel"><p class="eyebrow">TECHNICAL</p><h2>定量データ</h2><dl class="detail-metrics">
     <div><dt>終値</dt><dd>{_number(stock.get('close'), 2)}</dd></div><div><dt>5日</dt><dd>{_pct(stock.get('return_5d_pct'))}</dd></div>
     <div><dt>20日</dt><dd>{_pct(stock.get('return_20d_pct'))}</dd></div><div><dt>MA20乖離</dt><dd>{_pct(stock.get('distance_ma20_pct'))}</dd></div>
@@ -286,11 +322,14 @@ def render_reports(payload: dict[str, Any], docs_dir: Path) -> list[Path]:
 
     index_path = docs_dir / "index.html"
     index_path.write_text(
-        _page(
-            "観光株シグナル / Tourism Market Signal",
-            _dashboard_body(payload, detail_prefix=f"reports/{report_date}"),
-            asset_prefix="assets",
-            home_href="index.html",
+        _replace_relative_dates(
+            _page(
+                "観光株シグナル / Tourism Market Signal",
+                _dashboard_body(payload, detail_prefix=f"reports/{report_date}"),
+                asset_prefix="assets",
+                home_href="index.html",
+            ),
+            report_date,
         ),
         encoding="utf-8",
     )
@@ -298,11 +337,14 @@ def render_reports(payload: dict[str, Any], docs_dir: Path) -> list[Path]:
 
     daily_index = daily_dir / "index.html"
     daily_index.write_text(
-        _page(
-            f"観光株シグナル {report_date}",
-            _dashboard_body(payload, detail_prefix="."),
-            asset_prefix="../../assets",
-            home_href="../../index.html",
+        _replace_relative_dates(
+            _page(
+                f"観光株シグナル {report_date}",
+                _dashboard_body(payload, detail_prefix="."),
+                asset_prefix="../../assets",
+                home_href="../../index.html",
+            ),
+            report_date,
         ),
         encoding="utf-8",
     )
@@ -315,11 +357,14 @@ def render_reports(payload: dict[str, Any], docs_dir: Path) -> list[Path]:
             continue
         detail_path = daily_dir / f"{_slug(ticker)}.html"
         detail_path.write_text(
-            _page(
-                f"{stock['name']} | 観光株シグナル",
-                _detail_body(stock, payload),
-                asset_prefix="../../assets",
-                home_href="../../index.html",
+            _replace_relative_dates(
+                _page(
+                    f"{stock['name']} | 観光株シグナル",
+                    _detail_body(stock, payload),
+                    asset_prefix="../../assets",
+                    home_href="../../index.html",
+                ),
+                report_date,
             ),
             encoding="utf-8",
         )

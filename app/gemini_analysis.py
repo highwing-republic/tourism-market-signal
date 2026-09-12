@@ -90,11 +90,12 @@ def build_analysis_prompt(row: pd.Series, drivers: dict[str, dict]) -> str:
     input_data = to_jsonable({"stock": stock_data, "external_drivers": drivers})
     return f"""
 あなたは日本の観光・インバウンド関連株を扱う調査支援アナリストです。
-目的は株価予測や売買推奨ではなく、「なぜ今日この銘柄を追加調査すべきか」を説明することです。
+目的は株価予測や売買推奨ではなく、「入力データの基準日に、なぜこの銘柄を追加調査すべきか」を説明することです。
 
 厳守事項:
 - 下記JSONにない企業固有の事実やニュースを作らない。
 - 数値を変更・再計算しない。
+- 「今日」「本日」などの相対日付は使わず、入力JSONの as_of_date を具体的に記載する。
 - fact（入力上の事実）、interpretation（解釈）、general_risk（一般論）を区別する。
 - 強気・弱気材料を両方示し、定量順位への反対材料も挙げる。
 - RSIが70超なら短期過熱、30未満なら売られ過ぎという状態を明示する。
@@ -175,4 +176,3 @@ def analyze_targets(
         if analysis is not None:
             results[row["ticker"]] = analysis
     return results
-

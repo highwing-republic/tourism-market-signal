@@ -17,9 +17,11 @@ def _payload() -> dict:
         "stocks": [{
             "ticker": "TEST.T", "code": "0000", "name": "A&B <テスト>", "category": "ホテル",
             "rank": 1, "previous_rank": None, "attention_score": 80.0, "change_score": 0.0,
+            "as_of_date": "2026-09-01", "retrieved_at": "2026-09-01T07:25:00+09:00",
             "return_20d_pct": 4.2, "return_5d_pct": 1.1, "close": 1000,
             "distance_ma20_pct": 2.0, "rsi14": 65, "rsi_state": "強い", "volume_ratio": 1.5,
-            "signals": [], "analysis": None,
+            "signals": ["今日初めてTOP10入り"],
+            "analysis": {"summary": "本日の要約", "why_research_today": "今日見る理由"},
         }],
         "disclaimer": "test",
     }
@@ -40,6 +42,13 @@ def test_snapshot_is_valid_json_and_report_escapes_html(tmp_path) -> None:
     assert "42,123.45<small>円</small>" in index
     assert "基準日 2026-09-01" in index
     assert "1,000.00<small>円</small>" in index
+    assert "2026年9月1日 レポート" in index
+    assert "2026年9月1日の注目銘柄" in index
+    assert "株価基準日 2026年9月1日" in index
+    assert "取得日時 2026年09月01日07時25分00秒（日本時間）" in index
+    assert "前回レポートからの変化" in index
+    assert "今日" not in index
+    assert "本日" not in index
     assert (docs_dir / "reports" / "2026-09-01" / "test-t.html").exists()
 
 
