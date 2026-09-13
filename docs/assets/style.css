@@ -122,7 +122,43 @@ footer { width: min(1180px, calc(100% - 40px)); margin: 100px auto 0; padding: 3
 .data-notice th small { display: block; font-weight: 400; }
 .detail-badges + .data-notice { margin-top: 48px; }
 
+.wind-section { margin-top: 58px; }
+.wind-lead { max-width: 850px; margin: -8px 0 24px; color: #3f4b45; }
+.wind-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.wind-card { --wind-color: var(--muted); overflow: hidden; padding: 24px; border: 1px solid var(--line); border-top: 5px solid var(--wind-color); border-radius: 20px; background: var(--card); box-shadow: var(--shadow); }
+.wind-card--tailwind, .wind-card--strong_tailwind { --wind-color: var(--green); }
+.wind-card--headwind, .wind-card--strong_headwind { --wind-color: var(--red); }
+.wind-card--mixed { --wind-color: var(--orange); }
+.wind-card__top { display: flex; align-items: center; justify-content: space-between; gap: 18px; }
+.wind-card__top h3 { margin: 1px 0 0; font-family: Georgia, "Yu Mincho", serif; font-size: 1.65rem; }
+.wind-period { margin: 0; color: var(--muted); font-family: var(--numeric-font); font-size: .72rem; font-weight: 700; }
+.wind-icon { width: 64px; height: 64px; flex: 0 0 auto; color: var(--wind-color); }
+.wind-icon g { fill: none; stroke: currentColor; stroke-width: 3.5; stroke-linecap: round; stroke-linejoin: round; }
+.wind-verdict { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin-top: 16px; padding: 14px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.wind-verdict > strong { color: var(--wind-color); font-size: 1.45rem; }
+.wind-verdict > span { color: var(--muted); font-size: .72rem; }
+.wind-verdict b { margin-left: 4px; color: var(--ink); font-family: var(--numeric-font); font-size: 1.1rem; font-variant-numeric: tabular-nums lining-nums; }
+.wind-summary { min-height: 5.2em; margin: 18px 0; font-size: .9rem; }
+.wind-factors { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.wind-factors h4 { margin: 0 0 8px; color: var(--muted); font-size: .72rem; }
+.wind-factors ul { margin: 0; padding: 0; list-style: none; }
+.wind-factors li { display: flex; flex-direction: column; margin-bottom: 8px; padding: 9px; border-radius: 9px; background: #f2efe7; font-size: .72rem; }
+.wind-factors li strong { font-family: var(--numeric-font); font-size: .84rem; font-variant-numeric: tabular-nums lining-nums; }
+.wind-factor-empty { color: var(--muted); }
+.wind-confidence { margin: 14px 0 0; color: var(--muted); font-family: var(--numeric-font); font-size: .72rem; font-variant-numeric: tabular-nums lining-nums; }
+.wind-sources { margin-top: 18px; padding: 14px 18px; border: 1px solid var(--line); border-radius: 12px; background: rgba(255,253,248,.65); }
+.wind-sources summary { cursor: pointer; font-size: .84rem; font-weight: 800; }
+.wind-sources summary:focus-visible { outline: 2px solid var(--green); outline-offset: 4px; }
+.wind-sources ul { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin: 16px 0; padding: 0; list-style: none; }
+.wind-sources li { padding: 10px; border-left: 3px solid var(--green); background: var(--card); font-size: .72rem; }
+.wind-sources li span, .wind-sources li small { display: block; color: var(--muted); }
+.wind-sources li strong { font-family: var(--numeric-font); font-size: .84rem; }
+.wind-sources p { color: var(--muted); font-size: .78rem; }
+
 @media (max-width: 860px) {
+  .wind-grid { grid-template-columns: 1fr; }
+  .wind-summary { min-height: 0; }
+  .wind-sources ul { grid-template-columns: 1fr; }
   .signal-card, .signal-card:first-child, .signal-card:nth-child(2) { grid-column: span 6; }
   .detail-grid, .factor-grid { grid-template-columns: 1fr; }
   .scenario-grid { grid-template-columns: 1fr; }
@@ -136,5 +172,7 @@ footer { width: min(1180px, calc(100% - 40px)); margin: 100px auto 0; padding: 3
   .signal-card { padding: 22px; }
   .detail-hero { align-items: start; } .score.large { min-width: 98px; }
   .detail-badges { margin-bottom: -24px; }
+  .wind-card { padding: 20px; }
+  .wind-factors { grid-template-columns: 1fr; }
 }
 

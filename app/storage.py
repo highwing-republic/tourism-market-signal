@@ -75,6 +75,7 @@ def build_snapshot(
     stock_retrieved_at: dict[str, str] | None = None,
     driver_retrieved_at: dict[str, str] | None = None,
     analysis_completed_at: str | None = None,
+    market_wind: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
     stocks = to_jsonable(scored.to_dict("records"))
     for stock in stocks:
@@ -88,7 +89,7 @@ def build_snapshot(
 
     missing = universe_size - len(stocks)
     return {
-        "schema_version": 3,
+        "schema_version": 4,
         "title": "観光株シグナル / Tourism Market Signal",
         "report_date": report_date,
         "generated_at": datetime.now(JST).isoformat(timespec="seconds"),
@@ -114,6 +115,7 @@ def build_snapshot(
             }
             for ticker, driver in driver_summary.items()
         }),
+        "market_wind": to_jsonable(market_wind),
         "stocks": stocks,
         "disclaimer": "調査支援を目的とした情報であり、特定銘柄の売買を推奨しません。投資は自己判断でお願いします。",
     }

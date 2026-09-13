@@ -104,3 +104,23 @@ def test_snapshot_preserves_per_source_timestamps():
     assert snapshot['report_date'] == '2026-09-07'
     assert snapshot['stocks'][0]['as_of_date'] == '2026-09-04'
     assert snapshot['methodology']['price_basis'] == 'previous_market_close'
+
+
+def test_report_renders_market_wind_cards_and_inline_icons(tmp_path):
+    payload = _payload()
+    payload["market_wind"] = {
+        "overall_summary": "短期は逆風、中期は凪、長期は追い風です。",
+        "methodology_note": "比較条件に注意してください。",
+        "source_periods": [{"name": "JNTO", "period": "2026-07", "published_date": "2026-08-19"}],
+        "horizons": {
+            "short": {"label": "短期", "period": "1〜2週間", "state": "headwind", "state_label": "逆風", "score": -35, "confidence": 90, "coverage": 100, "summary": "VIXが重荷です。", "positive_factors": [], "negative_factors": [{"label": "VIXの上昇", "raw_value": 20, "unit": "%"}]},
+            "medium": {"label": "中期", "period": "1〜3か月", "state": "calm", "state_label": "凪", "score": 0, "confidence": 80, "coverage": 90, "summary": "方向感は限定的です。", "positive_factors": [], "negative_factors": []},
+            "long": {"label": "長期", "period": "6〜12か月", "state": "tailwind", "state_label": "追い風", "score": 40, "confidence": 75, "coverage": 80, "summary": "需要が下支えです。", "positive_factors": [{"label": "訪日外客数", "raw_value": 12, "unit": "%"}], "negative_factors": []},
+        },
+    }
+    render_reports(payload, tmp_path)
+    html = (tmp_path / "index.html").read_text(encoding="utf-8")
+    assert "観光マーケットの風向き" in html
+    assert "wind-card--headwind" in html
+    assert '<svg class="wind-icon"' in html
+    assert "短期は逆風、中期は凪、長期は追い風です。" in html

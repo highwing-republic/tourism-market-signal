@@ -1,5 +1,5 @@
 {
-  "schema_version": 2,
+  "schema_version": 4,
   "title": "観光株シグナル / Tourism Market Signal",
   "report_date": "2026-09-11",
   "generated_at": "2026-09-11T09:24:30+09:00",
@@ -3103,5 +3103,251 @@
       "analysis": null
     }
   ],
-  "disclaimer": "調査支援を目的とした情報であり、特定銘柄の売買を推奨しません。投資は自己判断でお願いします。"
+  "disclaimer": "調査支援を目的とした情報であり、特定銘柄の売買を推奨しません。投資は自己判断でお願いします。",
+  "market_wind": {
+    "methodology_version": "1.0.0",
+    "calculated_for": "2026-09-11",
+    "overall_summary": "短期は強い逆風、中期は凪、長期は方向感混在です。",
+    "horizons": {
+      "short": {
+        "label": "短期",
+        "period": "1〜2週間",
+        "score": -67.8,
+        "state": "strong_headwind",
+        "state_label": "強い逆風",
+        "confidence": 90,
+        "confidence_label": "高",
+        "market_basis_date": "2026-09-11",
+        "coverage": 100,
+        "summary": "5日上昇銘柄の広がりを中心に、観光マーケットへの逆風が確認できます。",
+        "positive_factors": [],
+        "negative_factors": [
+          {
+            "indicator": "positive_5d_share",
+            "label": "5日上昇銘柄の広がり",
+            "raw_value": 0.22,
+            "unit": "比率",
+            "normalized": -93.3,
+            "weight": 20.0,
+            "contribution": -18.7
+          },
+          {
+            "indicator": "vix_5d",
+            "label": "VIXの上昇",
+            "raw_value": 24.581,
+            "unit": "%",
+            "normalized": -98.3,
+            "weight": 15.0,
+            "contribution": -14.7
+          }
+        ],
+        "missing_indicators": []
+      },
+      "medium": {
+        "label": "中期",
+        "period": "1〜3か月",
+        "score": -23.7,
+        "state": "calm",
+        "state_label": "凪",
+        "confidence": 88,
+        "confidence_label": "高",
+        "market_basis_date": "2026-09-11",
+        "coverage": 95,
+        "summary": "MA20上回り銘柄の広がりが重荷になる一方、全国客室稼働率が下支えしています。",
+        "positive_factors": [
+          {
+            "indicator": "occupancy_rate",
+            "label": "全国客室稼働率",
+            "raw_value": 61.1,
+            "unit": "%",
+            "normalized": 7.3,
+            "weight": 10.0,
+            "contribution": 0.8
+          },
+          {
+            "indicator": "visitor_yoy",
+            "label": "訪日外客数の前年同月比",
+            "raw_value": 0.145,
+            "unit": "%",
+            "normalized": 1.0,
+            "weight": 15.0,
+            "contribution": 0.2
+          }
+        ],
+        "negative_factors": [
+          {
+            "indicator": "above_ma20_share",
+            "label": "MA20上回り銘柄の広がり",
+            "raw_value": 0.28,
+            "unit": "比率",
+            "normalized": -73.3,
+            "weight": 15.0,
+            "contribution": -11.6
+          },
+          {
+            "indicator": "positive_20d_share",
+            "label": "20日上昇銘柄の広がり",
+            "raw_value": 0.38,
+            "unit": "比率",
+            "normalized": -40.0,
+            "weight": 20.0,
+            "contribution": -8.4
+          }
+        ],
+        "missing_indicators": []
+      },
+      "long": {
+        "label": "長期",
+        "period": "6〜12か月",
+        "score": 22.7,
+        "state": "mixed",
+        "state_label": "方向感混在",
+        "confidence": 81,
+        "confidence_label": "高",
+        "market_basis_date": "2026-09-11",
+        "coverage": 82,
+        "summary": "延べ宿泊者数の12か月比較が重荷になる一方、60日上昇銘柄の広がりが下支えしています。",
+        "positive_factors": [
+          {
+            "indicator": "positive_60d_share",
+            "label": "60日上昇銘柄の広がり",
+            "raw_value": 0.8,
+            "unit": "比率",
+            "normalized": 100.0,
+            "weight": 15.0,
+            "contribution": 18.2
+          },
+          {
+            "indicator": "median_60d",
+            "label": "観光関連株の60日騰落",
+            "raw_value": 6.894,
+            "unit": "%",
+            "normalized": 34.5,
+            "weight": 15.0,
+            "contribution": 6.3
+          }
+        ],
+        "negative_factors": [
+          {
+            "indicator": "lodging_12m_yoy",
+            "label": "延べ宿泊者数の12か月比較",
+            "raw_value": -2.467,
+            "unit": "%",
+            "normalized": -24.7,
+            "weight": 7.5,
+            "contribution": -2.2
+          },
+          {
+            "indicator": "above_ma60_share",
+            "label": "MA60上回り銘柄の広がり",
+            "raw_value": 0.48,
+            "unit": "比率",
+            "normalized": -6.7,
+            "weight": 10.0,
+            "contribution": -0.8
+          }
+        ],
+        "missing_indicators": [
+          "1人当たり旅行支出の前年同期比"
+        ]
+      }
+    },
+    "public_statistics": {
+      "schema_version": 1,
+      "generated_at": "2026-09-13T18:42:27+09:00",
+      "sources": {
+        "jnto_visitors": {
+          "source_name": "JNTO「訪日外客統計」",
+          "source_url": "https://www.jnto.go.jp/statistics/data/visitors-statistics/",
+          "excel_url": "https://www.jnto.go.jp/statistics/data/_files/20260819_1615-5.xlsx",
+          "reference_period": "2026-07",
+          "published_date": "2026-08-19",
+          "release_type": "推計値・暫定値を含む時系列表",
+          "retrieved_at": "2026-09-13T18:42:27+09:00"
+        },
+        "lodging_statistics": {
+          "source_name": "観光庁「宿泊旅行統計調査」",
+          "source_url": "https://www.mlit.go.jp/kankocho/tokei_hakusyo/shukuhakutokei.html",
+          "excel_url": "https://www.mlit.go.jp/kankocho/content/002018998.xlsx",
+          "reference_period": "2026-06",
+          "published_date": "2026-08-31",
+          "release_type": "第2次速報",
+          "survey_scope": "客室数20室以上の施設",
+          "retrieved_at": "2026-09-13T18:42:27+09:00"
+        },
+        "inbound_consumption": {
+          "source_name": "観光庁「インバウンド消費動向調査」",
+          "source_url": "https://www.mlit.go.jp/kankocho/tokei_hakusyo/gaikokujinshohidoko.html",
+          "excel_url": "https://www.mlit.go.jp/kankocho/content/002011743.xlsx",
+          "reference_period": "2026年4-6月期",
+          "published_date": "2026-07-15",
+          "release_type": "第1次速報",
+          "retrieved_at": "2026-09-13T18:42:27+09:00"
+        }
+      },
+      "indicators": {
+        "visitor_arrivals": {
+          "value": 3442100,
+          "unit": "人",
+          "yoy_pct": 0.1449470166575602,
+          "source_key": "jnto_visitors"
+        },
+        "foreign_guest_nights": {
+          "value": 10863490,
+          "unit": "人泊",
+          "yoy_pct": null,
+          "source_key": "lodging_statistics"
+        },
+        "total_guest_nights_12m": {
+          "value": 639773530,
+          "unit": "人泊",
+          "yoy_pct": -2.467,
+          "source_key": "lodging_statistics"
+        },
+        "occupancy_rate": {
+          "value": 61.1,
+          "unit": "%",
+          "yoy_pct": null,
+          "source_key": "lodging_statistics"
+        },
+        "spend_per_visitor": {
+          "value": 244457,
+          "unit": "円/人",
+          "yoy_pct": null,
+          "source_key": "inbound_consumption"
+        }
+      },
+      "comparability": {
+        "lodging_2026_boundary": true,
+        "lodging_growth_weight_multiplier": 0.5,
+        "note": "宿泊旅行統計調査は2026年1月から集計・層化基準が変更されています。2025年以前との比較には、この変更の影響が含まれる可能性があります。"
+      },
+      "update_errors": [],
+      "is_stale": false
+    },
+    "source_periods": [
+      {
+        "name": "JNTO「訪日外客統計」",
+        "period": "2026-07",
+        "published_date": "2026-08-19",
+        "url": "https://www.jnto.go.jp/statistics/data/visitors-statistics/",
+        "release_type": "推計値・暫定値を含む時系列表"
+      },
+      {
+        "name": "観光庁「宿泊旅行統計調査」",
+        "period": "2026-06",
+        "published_date": "2026-08-31",
+        "url": "https://www.mlit.go.jp/kankocho/tokei_hakusyo/shukuhakutokei.html",
+        "release_type": "第2次速報"
+      },
+      {
+        "name": "観光庁「インバウンド消費動向調査」",
+        "period": "2026年4-6月期",
+        "published_date": "2026-07-15",
+        "url": "https://www.mlit.go.jp/kankocho/tokei_hakusyo/gaikokujinshohidoko.html",
+        "release_type": "第1次速報"
+      }
+    ],
+    "methodology_note": "宿泊旅行統計調査は2026年1月から集計・層化基準が変更されています。2025年以前との比較には、この変更の影響が含まれる可能性があります。"
+  }
 }

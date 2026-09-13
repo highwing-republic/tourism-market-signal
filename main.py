@@ -14,6 +14,8 @@ from app.market_data import (
     retain_completed_closes_before,
     summarize_drivers,
 )
+from app.market_wind import calculate_market_wind
+from app.public_statistics import refresh_public_statistics
 from app.report import render_reports
 from app.scoring import detect_changes, score_attention, select_research_targets
 from app.settings import Settings
@@ -65,6 +67,7 @@ def run(settings: Settings | None = None) -> dict:
     previous = load_previous_snapshot(settings.data_dir, settings.history_dir, report_date)
     scored = detect_changes(score_attention(metrics), previous)
     driver_summary = summarize_drivers(driver_frames.close, drivers)
+    public_statistics = refresh_public_statistics(settings.public_statistics_file)
 
     candidate_limit = max(settings.top_n, settings.llm_max_targets)
     candidates = select_research_targets(scored, candidate_limit)
@@ -79,6 +82,10 @@ def run(settings: Settings | None = None) -> dict:
     )
     analysis_completed_at = datetime.now(timezone.utc).isoformat(timespec="seconds") if analyses else None
     research_targets = candidates.head(settings.top_n)["ticker"].tolist()
+    market_wind = calculate_market_wind(
+        scored.to_dict("records"), driver_summary, public_statistics,
+        report_date=report_date, config_path=settings.market_wind_file,
+    )
     payload = build_snapshot(
         scored,
         driver_summary,
@@ -90,6 +97,7 @@ def run(settings: Settings | None = None) -> dict:
         stock_retrieved_at=stock_frames.retrieved_at,
         driver_retrieved_at=driver_frames.retrieved_at,
         analysis_completed_at=analysis_completed_at,
+        market_wind=market_wind,
     )
     latest_path, history_path = save_snapshot(payload, settings.data_dir, settings.history_dir)
     html_paths = render_reports(payload, settings.docs_dir)

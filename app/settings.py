@@ -16,10 +16,12 @@ class Settings:
     base_dir: Path = BASE_DIR
     universe_file: Path = BASE_DIR / "config" / "universe.csv"
     drivers_file: Path = BASE_DIR / "config" / "drivers.yml"
+    market_wind_file: Path = BASE_DIR / "config" / "market_wind.yml"
     data_dir: Path = BASE_DIR / "data"
     history_dir: Path = BASE_DIR / "data" / "history"
     logs_dir: Path = BASE_DIR / "data" / "logs"
     market_cache_dir: Path = BASE_DIR / "data" / ".yfinance-cache"
+    public_statistics_file: Path = BASE_DIR / "data" / "public_statistics" / "latest.json"
     docs_dir: Path = BASE_DIR / "docs"
     reports_dir: Path = BASE_DIR / "docs" / "reports"
     gemini_api_key: str | None = os.getenv("GEMINI_API_KEY") or None

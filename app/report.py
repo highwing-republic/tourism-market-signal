@@ -4,6 +4,7 @@ from datetime import datetime
 from html import escape
 from pathlib import Path
 from typing import Any
+from urllib.parse import urlparse
 from zoneinfo import ZoneInfo
 
 
@@ -227,6 +228,92 @@ def _driver_cards(drivers: dict[str, dict]) -> str:
     return "".join(items)
 
 
+def _wind_icon(state: str) -> str:
+    """Decorative, currentColor SVGs keep the signal readable without external assets."""
+    if state in {"tailwind", "strong_tailwind"}:
+        paths = '<path d="M8 29h27c8 0 8-10 2-11-4-.7-6 2-6 4"/><path d="M8 39h39c9 0 9 11 2 12-5 .8-7-3-6-6"/><path d="M8 49h20"/><path d="m22 22 8 7-8 7"/>'
+    elif state in {"headwind", "strong_headwind"}:
+        paths = '<path d="M56 29H29c-8 0-8-10-2-11 4-.7 6 2 6 4"/><path d="M56 39H17c-9 0-9 11-2 12 5 .8 7-3 6-6"/><path d="M56 49H36"/><path d="m42 22-8 7 8 7"/>'
+    elif state == "mixed":
+        paths = '<path d="M8 24h32c8 0 8-9 2-10-4-.6-6 2-6 4"/><path d="M56 42H24c-8 0-8 9-2 10 4 .6 6-2 6-4"/><path d="m18 18-7 6 7 6"/><path d="m46 36 7 6-7 6"/>'
+    elif state == "insufficient":
+        paths = '<path d="M32 10a22 22 0 1 0 22 22A22 22 0 0 0 32 10Z"/><path d="M32 22v13"/><path d="M32 44h.01"/>'
+    else:
+        paths = '<path d="M8 32h48"/><path d="M14 24h36"/><path d="M18 40h28"/><path d="M24 17h16"/>'
+    return f'<svg class="wind-icon" viewBox="0 0 64 64" aria-hidden="true" focusable="false"><g>{paths}</g></svg>'
+
+
+def _wind_value(item: dict[str, Any]) -> str:
+    value = item.get("raw_value")
+    if value is None:
+        return "—"
+    unit = item.get("unit", "%")
+    if unit == "比率":
+        return f"{float(value) * 100:.0f}%"
+    return f"{float(value):+.1f}{escape(str(unit))}"
+
+
+def _wind_factor_list(items: list[dict[str, Any]], empty: str) -> str:
+    if not items:
+        return f'<li class="wind-factor-empty">{escape(empty)}</li>'
+    return "".join(
+        f'<li><span>{_text(item.get("label"))}</span><strong>{_wind_value(item)}</strong></li>'
+        for item in items
+    )
+
+
+def _market_wind_section(payload: dict[str, Any]) -> str:
+    wind = payload.get("market_wind") or {}
+    horizons = wind.get("horizons") or {}
+    if not horizons:
+        return ""
+    cards: list[str] = []
+    for key in ("short", "medium", "long"):
+        item = horizons.get(key)
+        if not item:
+            continue
+        state = str(item.get("state", "insufficient"))
+        score = float(item.get("score") or 0)
+        score_text = f"{score:+.0f}"
+        cards.append(f"""
+<article class="wind-card wind-card--{escape(state)}">
+  <div class="wind-card__top">
+    <div><p class="wind-period">{_text(item.get('period'))}</p><h3>{_text(item.get('label'))}</h3></div>
+    {_wind_icon(state)}
+  </div>
+  <div class="wind-verdict"><strong>{_text(item.get('state_label'))}</strong><span>風向き指数 <b>{score_text}</b></span></div>
+  <p class="wind-summary">{_text(item.get('summary'))}</p>
+  <div class="wind-factors">
+    <div><h4>追い風材料</h4><ul>{_wind_factor_list(item.get('positive_factors') or [], '明確な材料なし')}</ul></div>
+    <div><h4>逆風材料</h4><ul>{_wind_factor_list(item.get('negative_factors') or [], '明確な材料なし')}</ul></div>
+  </div>
+  <p class="wind-confidence">判定確度 {_text(item.get('confidence_label'))} {_number(item.get('confidence'), 0, '%')} <span>・有効データ {_number(item.get('coverage'), 0, '%')}・市場基準日 {_text(item.get('market_basis_date'), '未記録')}</span></p>
+</article>""")
+    source_rows = ""
+    for source in wind.get("source_periods") or []:
+        url = str(source.get("url") or "")
+        parsed = urlparse(url)
+        source_name = _text(source.get("name"))
+        if parsed.scheme == "https" and parsed.hostname in {"www.jnto.go.jp", "www.mlit.go.jp"}:
+            source_name = f'<a href="{escape(url, quote=True)}" target="_blank" rel="noopener noreferrer">{source_name}</a>'
+        source_rows += (
+            f'<li><span>{source_name}</span><strong>{_text(source.get("period"))}</strong>'
+            f'<small>{_text(source.get("release_type"), "区分未記録")}・公表日 {_text(source.get("published_date"), "未記録")}</small></li>'
+        )
+    methodology_note = _text(wind.get("methodology_note"), "")
+    return f"""
+<section class="wind-section" aria-labelledby="market-wind-title">
+  <div class="section-heading"><div><p class="eyebrow">TOURISM MARKET WIND</p><h2 id="market-wind-title">観光マーケットの風向き</h2></div><p>市場データと公的統計を期間別に総合判定</p></div>
+  <p class="wind-lead">{_text(wind.get('overall_summary'))} 指数は−100（強い逆風）から＋100（強い追い風）で表します。</p>
+  <div class="wind-grid">{''.join(cards)}</div>
+  <details class="wind-sources"><summary>判定に使用した公的統計と算出上の注意</summary>
+    <ul>{source_rows or '<li>利用できる公的統計はありません。</li>'}</ul>
+    <p>{methodology_note}</p>
+    <p>株価・指数の動き、公的な需要統計、客室稼働率を同じ尺度に正規化した独自判定です。将来の価格や需要を保証するものではありません。</p>
+  </details>
+</section>"""
+
+
 def _ranking_table(stocks: list[dict[str, Any]]) -> str:
     rows = []
     for stock in sorted(stocks, key=lambda item: item["rank"])[:15]:
@@ -262,6 +349,7 @@ def _dashboard_body(payload: dict[str, Any], *, detail_prefix: str) -> str:
   <div class="quality"><span>分析 {quality.get('analyzed_stocks', 0)} / {quality.get('configured_stocks', 0)}銘柄</span><span>レポート作成日時 {_datetime_jst(payload.get('generated_at'))}（日本時間）</span></div>
 </section>
 {_freshness_notice(payload)}
+{_market_wind_section(payload)}
 <section>
   <div class="section-heading"><div><p class="eyebrow">MARKET CONTEXT</p><h2>市場環境</h2></div><p>スコアへ混ぜず、判断材料として分離表示</p></div>
   <div class="driver-grid">{_driver_cards(payload.get('market_drivers', {}))}</div>

@@ -1,0 +1,34 @@
+horizons:
+  short:
+    label: 短期
+    period: 1〜2週間
+    signals:
+      - {key: positive_5d_share, label: 5日上昇銘柄の広がり, weight: 20, neutral: 0.5, scale: 0.3, unit: 比率}
+      - {key: median_5d, label: 観光関連株の5日騰落, weight: 20, scale: 5}
+      - {key: above_ma20_share, label: MA20上回り銘柄の広がり, weight: 10, neutral: 0.5, scale: 0.3, unit: 比率}
+      - {key: vix_5d, label: VIXの上昇, weight: 15, scale: 25, direction: -1}
+      - {key: oil_5d, label: 原油価格の上昇, weight: 15, scale: 15, direction: -1}
+      - {key: nikkei_5d, label: 日経平均の5日騰落, weight: 10, scale: 5}
+      - {key: airline_median_5d, label: 航空関連株の5日騰落, weight: 10, scale: 8}
+  medium:
+    label: 中期
+    period: 1〜3か月
+    signals:
+      - {key: positive_20d_share, label: 20日上昇銘柄の広がり, weight: 20, neutral: 0.5, scale: 0.3, unit: 比率}
+      - {key: median_20d, label: 観光関連株の20日騰落, weight: 20, scale: 10}
+      - {key: above_ma20_share, label: MA20上回り銘柄の広がり, weight: 15, neutral: 0.5, scale: 0.3, unit: 比率}
+      - {key: above_ma60_share, label: MA60上回り銘柄の広がり, weight: 10, neutral: 0.5, scale: 0.3, unit: 比率}
+      - {key: visitor_yoy, label: 訪日外客数の前年同月比, weight: 15, scale: 15}
+      - {key: lodging_12m_yoy, label: 延べ宿泊者数の12か月比較, weight: 10, scale: 10}
+      - {key: occupancy_rate, label: 全国客室稼働率, weight: 10, neutral: 60, scale: 15, unit: "%"}
+  long:
+    label: 長期
+    period: 6〜12か月
+    signals:
+      - {key: positive_60d_share, label: 60日上昇銘柄の広がり, weight: 15, neutral: 0.5, scale: 0.3, unit: 比率}
+      - {key: median_60d, label: 観光関連株の60日騰落, weight: 15, scale: 20}
+      - {key: above_ma60_share, label: MA60上回り銘柄の広がり, weight: 10, neutral: 0.5, scale: 0.3, unit: 比率}
+      - {key: visitor_yoy, label: 訪日外客数の前年同月比, weight: 25, scale: 15}
+      - {key: lodging_12m_yoy, label: 延べ宿泊者数の12か月比較, weight: 15, scale: 10}
+      - {key: occupancy_rate, label: 全国客室稼働率, weight: 10, neutral: 60, scale: 15, unit: "%"}
+      - {key: spend_yoy, label: 1人当たり旅行支出の前年同期比, weight: 10, scale: 15}
