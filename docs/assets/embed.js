@@ -3,13 +3,25 @@
 
   if (window.parent === window || !document.referrer) return;
 
-  let parentOrigin;
+  const parentOriginKey = 'tourism-market-signal-parent-origin';
+
+  function isAllowedParentOrigin(value) {
+    try {
+      const url = new URL(value);
+      return url.origin === 'https://lab.ugatta-llc.com' || url.hostname === '127.0.0.1' || url.hostname === 'localhost';
+    } catch (error) {
+      return false;
+    }
+  }
+
+  let parentOrigin = window.sessionStorage.getItem(parentOriginKey);
   try {
-    const referrer = new URL(document.referrer);
-    const isProduction = referrer.origin === 'https://lab.ugatta-llc.com';
-    const isLocalPreview = referrer.hostname === '127.0.0.1' || referrer.hostname === 'localhost';
-    if (!isProduction && !isLocalPreview) return;
-    parentOrigin = referrer.origin;
+    if (!isAllowedParentOrigin(parentOrigin)) {
+      const referrerOrigin = new URL(document.referrer).origin;
+      if (!isAllowedParentOrigin(referrerOrigin)) return;
+      parentOrigin = referrerOrigin;
+      window.sessionStorage.setItem(parentOriginKey, parentOrigin);
+    }
   } catch (error) {
     return;
   }
