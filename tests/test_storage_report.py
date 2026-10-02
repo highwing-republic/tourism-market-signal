@@ -59,6 +59,9 @@ def test_snapshot_is_valid_json_and_report_escapes_html(tmp_path) -> None:
     assert '<td class="ranking-price"><span>1,000.00<small>円</small></span><small>2026年9月1日終値</small></td>' in index
     assert "今日" not in index
     assert "本日" not in index
+    assert '<script src="assets/embed.js" defer></script>' in index
+    detail = (docs_dir / "reports" / "2026-09-01" / "test-t.html").read_text(encoding="utf-8")
+    assert '<script src="../../assets/embed.js" defer></script>' in detail
     assert (docs_dir / "reports" / "2026-09-01" / "test-t.html").exists()
 
 

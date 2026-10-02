@@ -148,6 +148,7 @@ def _page(title: str, body: str, *, asset_prefix: str, home_href: str) -> str:
   <meta name="description" content="観光・インバウンド関連株の変化を毎朝抽出する調査支援レポート">
   <title>{escape(title)}</title>
   <link rel="stylesheet" href="{asset_prefix}/style.css">
+  <script src="{asset_prefix}/embed.js" defer></script>
 </head>
 <body>
   <header class="site-header">
