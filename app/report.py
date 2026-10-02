@@ -183,7 +183,7 @@ def _rank_label(stock: dict[str, Any]) -> str:
 def _target_card(stock: dict[str, Any], report_date: str, *, detail_prefix: str) -> str:
     analysis = stock.get("analysis") or {}
     summary = analysis.get("summary") or "AI分析は未実行です。定量指標と変化シグナルを確認してください。"
-    href = f"{detail_prefix}/{_slug(stock['ticker'])}.html"
+    href = f"{detail_prefix}/{_slug(stock['ticker'])}.html?embed=20261002b"
     stock_date = _date_ja(stock.get("as_of_date"))
     retrieved_at = _datetime_jst(stock.get("retrieved_at"))
     return f"""
