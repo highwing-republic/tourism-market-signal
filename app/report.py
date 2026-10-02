@@ -85,7 +85,7 @@ def _freshness_notice(payload: dict[str, Any], stock: dict[str, Any] | None = No
     )
     methodology = payload.get("methodology") or {}
     basis_note = (
-        "選定基準：平日朝6:00（日本時間）に取得処理を開始し、レポート日の前日までに確定した直近取引日の終値を使用しています。"
+        "選定基準：平日朝4:30（日本時間）に取得処理を開始し、レポート日の前日までに確定した直近取引日の終値を使用しています。"
         if methodology.get("price_basis") == "previous_market_close"
         else "選定基準：各カードに記載した株価基準日の終値を使用しています。"
     )
@@ -346,7 +346,7 @@ def _dashboard_body(payload: dict[str, Any], *, detail_prefix: str) -> str:
   <p class="eyebrow">DAILY SIGNAL</p>
   <p class="report-date">{report_date_ja} レポート</p>
   <h1>この日に、調べる価値が<br><em>生まれた企業</em></h1>
-  <p>平日毎朝6:00（日本時間）に取得処理を開始し、前日までに確定した直近取引日の終値から、価格・トレンド・出来高・前回レポートとの差分を分析します。</p>
+  <p>平日毎朝4:30（日本時間）に取得処理を開始し、前日までに確定した直近取引日の終値から、価格・トレンド・出来高・前回レポートとの差分を分析します。</p>
   <div class="quality"><span>分析 {quality.get('analyzed_stocks', 0)} / {quality.get('configured_stocks', 0)}銘柄</span><span>レポート作成日時 {_datetime_jst(payload.get('generated_at'))}（日本時間）</span></div>
 </section>
 {_freshness_notice(payload)}

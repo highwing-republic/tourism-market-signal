@@ -11,7 +11,7 @@ def _payload() -> dict:
         "generated_at": "2026-09-01T07:30:00+09:00",
         "model": "gemini-2.5-flash",
         "methodology": {
-            "scheduled_retrieval_time_jst": "06:00",
+            "scheduled_retrieval_time_jst": "04:30",
             "price_basis": "previous_market_close",
         },
         "analysis_status": "skipped_or_unavailable",

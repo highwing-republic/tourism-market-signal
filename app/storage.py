@@ -95,7 +95,7 @@ def build_snapshot(
         "generated_at": datetime.now(JST).isoformat(timespec="seconds"),
         "timezone": "Asia/Tokyo",
         "methodology": {
-            "scheduled_retrieval_time_jst": "06:00",
+            "scheduled_retrieval_time_jst": "04:30",
             "price_basis": "previous_market_close",
         },
         "model": model,
