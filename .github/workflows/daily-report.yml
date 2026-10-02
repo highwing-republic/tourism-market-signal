@@ -2,8 +2,9 @@ name: Daily tourism market signal
 
 on:
   schedule:
-    # GitHub cron is UTC. Sun-Thu 21:00 UTC = Mon-Fri 06:00 JST.
-    - cron: "0 21 * * 0-4"
+    # GitHub cron is UTC. Sun-Thu 19:30 UTC = Mon-Fri 04:30 JST.
+    # Scheduled runs often start 2-4 hours late, so start early to publish by morning.
+    - cron: "30 19 * * 0-4"
   workflow_dispatch:
 
 permissions:
@@ -55,5 +56,9 @@ jobs:
             exit 0
           fi
           git commit -m "Update tourism market signal"
-          git push
+          for attempt in 1 2 3; do
+            git pull --rebase origin main && git push && exit 0
+            sleep 10
+          done
+          exit 1
 

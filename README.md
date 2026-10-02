@@ -1,6 +1,6 @@
 # 観光株シグナル / Tourism Market Signal
 
-観光・インバウンド関連50銘柄を平日朝6:00（日本時間）に監視し、前日までに確定した直近取引日の終値をもとに、その日の調査候補を5社に絞るMVPです。株価予測や売買自動化を行うものではありません。
+観光・インバウンド関連50銘柄を平日朝4:30（日本時間）に監視し、前日までに確定した直近取引日の終値をもとに、その日の調査候補を5社に絞るMVPです。株価予測や売買自動化を行うものではありません。
 
 ## MVPの機能
 
@@ -12,7 +12,7 @@
 - 上位候補だけをGeminiへ送り、Pydantic Structured Outputsで検証
 - `data/latest.json` と `data/history/YYYY-MM-DD.json` を保存
 - `docs/index.html` と銘柄詳細ページを直接生成（Hugo不使用）
-- GitHub Actionsで日本時間の平日6:00に自動実行
+- GitHub Actionsで日本時間の平日4:30に自動実行
 
 DuckDB、観光統計、企業IR、バックテストはMVPの対象外です。
 
@@ -61,7 +61,7 @@ python main.py
 2. `Settings → Secrets and variables → Actions` に `GEMINI_API_KEY` をRepository secretとして登録します。
 3. Actionsから `Daily tourism market signal` を手動実行し、初回レポートを確認します。
 
-定期実行は `0 21 * * 0-4`（UTC）、日本時間では月曜〜金曜の6:00です。祝日判定はせず、休場日も前日までに確定した直近取引日の終値を使って当日分のレポートを生成します。
+定期実行は `30 19 * * 0-4`（UTC）、日本時間では月曜〜金曜の4:30です。祝日判定はせず、休場日も前日までに確定した直近取引日の終値を使って当日分のレポートを生成します。
 
 ## 構成
 
