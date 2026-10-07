@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-07T19:56:34+09:00",
+  "generated_at": "2026-10-08T08:38:28+09:00",
   "sources": {
     "jnto_visitors": {
       "source_name": "JNTO「訪日外客統計」",
@@ -9,7 +9,7 @@
       "reference_period": "2026-08",
       "published_date": "2026-09-16",
       "release_type": "推計値・暫定値を含む時系列表",
-      "retrieved_at": "2026-10-07T19:56:34+09:00"
+      "retrieved_at": "2026-10-08T08:38:28+09:00"
     },
     "lodging_statistics": {
       "source_name": "観光庁「宿泊旅行統計調査」",
@@ -19,7 +19,7 @@
       "published_date": "2026-09-30",
       "release_type": "第2次速報",
       "survey_scope": "客室数20室以上の施設",
-      "retrieved_at": "2026-10-07T19:56:34+09:00"
+      "retrieved_at": "2026-10-08T08:38:28+09:00"
     },
     "inbound_consumption": {
       "source_name": "観光庁「インバウンド消費動向調査」",
