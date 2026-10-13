@@ -1,8 +1,8 @@
 {
   "schema_version": 4,
   "title": "観光株シグナル / Tourism Market Signal",
-  "report_date": "2026-10-12",
-  "generated_at": "2026-10-12T08:01:43+09:00",
+  "report_date": "2026-10-13",
+  "generated_at": "2026-10-13T10:30:33+09:00",
   "timezone": "Asia/Tokyo",
   "methodology": {
     "scheduled_retrieval_time_jst": "04:30",
@@ -10,13 +10,13 @@
   },
   "model": "gemini-2.5-flash",
   "analysis_status": "complete",
-  "analysis_completed_at": "2026-10-11T23:01:43+00:00",
+  "analysis_completed_at": "2026-10-13T01:30:33+00:00",
   "research_targets": [
-    "3769.T",
-    "9616.T",
-    "2477.T",
     "7453.T",
-    "9722.T"
+    "9722.T",
+    "3086.T",
+    "6098.T",
+    "4680.T"
   ],
   "data_quality": {
     "configured_stocks": 50,
@@ -36,7 +36,7 @@
       "return_1d_pct": -0.0162,
       "return_5d_pct": 1.0562,
       "return_20d_pct": 5.7632,
-      "retrieved_at": "2026-10-11T22:59:57+00:00"
+      "retrieved_at": "2026-10-13T01:28:47+00:00"
     },
     "^GSPC": {
       "ticker": "^GSPC",
@@ -45,12 +45,12 @@
       "unit": "ポイント",
       "digits": 2,
       "status": "ok",
-      "as_of_date": "2026-10-09",
-      "close": 7811.54,
-      "return_1d_pct": 0.5947,
-      "return_5d_pct": 1.1501,
-      "return_20d_pct": 2.0186,
-      "retrieved_at": "2026-10-11T22:59:57+00:00"
+      "as_of_date": "2026-10-12",
+      "close": 7807.2402,
+      "return_1d_pct": -0.055,
+      "return_5d_pct": 0.4282,
+      "return_20d_pct": 2.4575,
+      "retrieved_at": "2026-10-13T01:28:47+00:00"
     },
     "^IXIC": {
       "ticker": "^IXIC",
@@ -59,12 +59,12 @@
       "unit": "ポイント",
       "digits": 2,
       "status": "ok",
-      "as_of_date": "2026-10-09",
-      "close": 27366.1699,
-      "return_1d_pct": 0.6356,
-      "return_5d_pct": 0.6447,
-      "return_20d_pct": 3.9233,
-      "retrieved_at": "2026-10-11T22:59:57+00:00"
+      "as_of_date": "2026-10-12",
+      "close": 27245.9023,
+      "return_1d_pct": -0.4395,
+      "return_5d_pct": -0.8422,
+      "return_20d_pct": 4.046,
+      "retrieved_at": "2026-10-13T01:28:47+00:00"
     },
     "^VIX": {
       "ticker": "^VIX",
@@ -73,12 +73,12 @@
       "unit": "ポイント",
       "digits": 2,
       "status": "ok",
-      "as_of_date": "2026-10-09",
-      "close": 14.84,
-      "return_1d_pct": -3.6989,
-      "return_5d_pct": -3.0699,
-      "return_20d_pct": -6.3131,
-      "retrieved_at": "2026-10-11T22:59:57+00:00"
+      "as_of_date": "2026-10-12",
+      "close": 15.21,
+      "return_1d_pct": 2.4933,
+      "return_5d_pct": -1.9974,
+      "return_20d_pct": -11.0526,
+      "retrieved_at": "2026-10-13T01:28:47+00:00"
     },
     "JPY=X": {
       "ticker": "JPY=X",
@@ -87,12 +87,12 @@
       "unit": "円/米ドル",
       "digits": 2,
       "status": "ok",
-      "as_of_date": "2026-10-11",
-      "close": 158.305,
-      "return_1d_pct": 0.1531,
-      "return_5d_pct": 0.362,
-      "return_20d_pct": 3.1814,
-      "retrieved_at": "2026-10-11T22:59:57+00:00"
+      "as_of_date": "2026-10-09",
+      "close": 158.063,
+      "return_1d_pct": 0.0019,
+      "return_5d_pct": 0.0861,
+      "return_20d_pct": 2.3181,
+      "retrieved_at": "2026-10-13T01:28:47+00:00"
     },
     "CL=F": {
       "ticker": "CL=F",
@@ -101,12 +101,12 @@
       "unit": "米ドル/バレル",
       "digits": 2,
       "status": "ok",
-      "as_of_date": "2026-10-11",
-      "close": 92.37,
-      "return_1d_pct": 0.5661,
-      "return_5d_pct": 3.2875,
-      "return_20d_pct": -8.8963,
-      "retrieved_at": "2026-10-11T22:59:57+00:00"
+      "as_of_date": "2026-10-12",
+      "close": 92.71,
+      "return_1d_pct": 0.9363,
+      "return_5d_pct": 3.6677,
+      "return_20d_pct": -8.561,
+      "retrieved_at": "2026-10-13T01:28:47+00:00"
     },
     "DAL": {
       "ticker": "DAL",
@@ -115,12 +115,12 @@
       "unit": "米ドル",
       "digits": 2,
       "status": "ok",
-      "as_of_date": "2026-10-09",
-      "close": 82.17,
-      "return_1d_pct": 0.0365,
-      "return_5d_pct": -2.2833,
-      "return_20d_pct": 2.8282,
-      "retrieved_at": "2026-10-11T22:59:57+00:00"
+      "as_of_date": "2026-10-12",
+      "close": 80.11,
+      "return_1d_pct": -2.507,
+      "return_5d_pct": -3.5749,
+      "return_20d_pct": 0.3885,
+      "retrieved_at": "2026-10-13T01:28:47+00:00"
     },
     "UAL": {
       "ticker": "UAL",
@@ -129,12 +129,12 @@
       "unit": "米ドル",
       "digits": 2,
       "status": "ok",
-      "as_of_date": "2026-10-09",
-      "close": 107.46,
-      "return_1d_pct": 0.0186,
-      "return_5d_pct": -4.4885,
-      "return_20d_pct": -2.149,
-      "retrieved_at": "2026-10-11T22:59:57+00:00"
+      "as_of_date": "2026-10-12",
+      "close": 104.44,
+      "return_1d_pct": -2.8103,
+      "return_5d_pct": -5.0545,
+      "return_20d_pct": -4.1483,
+      "retrieved_at": "2026-10-13T01:28:47+00:00"
     },
     "AAL": {
       "ticker": "AAL",
@@ -143,12 +143,12 @@
       "unit": "米ドル",
       "digits": 2,
       "status": "ok",
-      "as_of_date": "2026-10-09",
-      "close": 12.76,
-      "return_1d_pct": -0.3125,
-      "return_5d_pct": -1.391,
-      "return_20d_pct": -1.9216,
-      "retrieved_at": "2026-10-11T22:59:57+00:00"
+      "as_of_date": "2026-10-12",
+      "close": 12.62,
+      "return_1d_pct": -1.0972,
+      "return_5d_pct": -1.6368,
+      "return_20d_pct": -3.6641,
+      "retrieved_at": "2026-10-13T01:28:47+00:00"
     },
     "LUV": {
       "ticker": "LUV",
@@ -157,12 +157,12 @@
       "unit": "米ドル",
       "digits": 2,
       "status": "ok",
-      "as_of_date": "2026-10-09",
-      "close": 41.66,
-      "return_1d_pct": 0.7253,
-      "return_5d_pct": -1.9072,
-      "return_20d_pct": 6.1672,
-      "retrieved_at": "2026-10-11T22:59:57+00:00"
+      "as_of_date": "2026-10-12",
+      "close": 40.76,
+      "return_1d_pct": -2.1603,
+      "return_5d_pct": -2.6045,
+      "return_20d_pct": 3.1376,
+      "retrieved_at": "2026-10-13T01:28:47+00:00"
     },
     "BA": {
       "ticker": "BA",
@@ -171,28 +171,28 @@
       "unit": "米ドル",
       "digits": 2,
       "status": "ok",
-      "as_of_date": "2026-10-09",
-      "close": 190.37,
-      "return_1d_pct": 1.3955,
-      "return_5d_pct": -1.6481,
-      "return_20d_pct": -9.5415,
-      "retrieved_at": "2026-10-11T22:59:57+00:00"
+      "as_of_date": "2026-10-12",
+      "close": 189.5,
+      "return_1d_pct": -0.457,
+      "return_5d_pct": -1.6708,
+      "return_20d_pct": -9.8778,
+      "retrieved_at": "2026-10-13T01:28:47+00:00"
     }
   },
   "market_wind": {
     "methodology_version": "1.0.0",
-    "calculated_for": "2026-10-12",
+    "calculated_for": "2026-10-13",
     "overall_summary": "短期は凪、中期は逆風、長期は逆風です。",
     "horizons": {
       "short": {
         "label": "短期",
         "period": "1〜2週間",
-        "score": 1.3,
+        "score": 0.3,
         "state": "calm",
         "state_label": "凪",
         "confidence": 75,
         "confidence_label": "中",
-        "market_basis_date": "2026-10-11",
+        "market_basis_date": "2026-10-12",
         "coverage": 100,
         "summary": "MA20上回り銘柄の広がりが重荷になる一方、5日上昇銘柄の広がりが下支えしています。",
         "positive_factors": [
@@ -228,11 +228,11 @@
           {
             "indicator": "oil_5d",
             "label": "原油価格の上昇",
-            "raw_value": 3.288,
+            "raw_value": 3.668,
             "unit": "%",
-            "normalized": -21.9,
+            "normalized": -24.5,
             "weight": 15.0,
-            "contribution": -3.3
+            "contribution": -3.7
           }
         ],
         "missing_indicators": []
@@ -245,7 +245,7 @@
         "state_label": "逆風",
         "confidence": 72,
         "confidence_label": "中",
-        "market_basis_date": "2026-10-11",
+        "market_basis_date": "2026-10-12",
         "coverage": 95,
         "summary": "20日上昇銘柄の広がりが重荷になる一方、全国客室稼働率が下支えしています。",
         "positive_factors": [
@@ -289,7 +289,7 @@
         "state_label": "逆風",
         "confidence": 66,
         "confidence_label": "中",
-        "market_basis_date": "2026-10-11",
+        "market_basis_date": "2026-10-12",
         "coverage": 82,
         "summary": "訪日外客数の前年同月比が重荷になる一方、60日上昇銘柄の広がりが下支えしています。",
         "positive_factors": [
@@ -339,7 +339,7 @@
     },
     "public_statistics": {
       "schema_version": 1,
-      "generated_at": "2026-10-12T07:59:58+09:00",
+      "generated_at": "2026-10-13T10:28:47+09:00",
       "sources": {
         "jnto_visitors": {
           "source_name": "JNTO「訪日外客統計」",
@@ -348,7 +348,7 @@
           "reference_period": "2026-08",
           "published_date": "2026-09-16",
           "release_type": "推計値・暫定値を含む時系列表",
-          "retrieved_at": "2026-10-12T07:59:58+09:00"
+          "retrieved_at": "2026-10-13T10:28:47+09:00"
         },
         "lodging_statistics": {
           "source_name": "観光庁「宿泊旅行統計調査」",
@@ -358,7 +358,7 @@
           "published_date": "2026-09-30",
           "release_type": "第2次速報",
           "survey_scope": "客室数20室以上の施設",
-          "retrieved_at": "2026-10-12T07:59:58+09:00"
+          "retrieved_at": "2026-10-13T10:28:47+09:00"
         },
         "inbound_consumption": {
           "source_name": "観光庁「インバウンド消費動向調査」",
@@ -474,86 +474,90 @@
       "rank": 1,
       "previous_rank": 1,
       "rank_change": 0,
-      "attention_change": 1.0,
-      "change_score": 16.5,
+      "attention_change": 0.0,
+      "change_score": 15.0,
       "signals": [
         "5日連続上昇",
         "20日高値を更新"
       ],
-      "priority_score": 68.02,
-      "retrieved_at": "2026-10-11T22:59:57+00:00",
+      "priority_score": 67.57,
+      "retrieved_at": "2026-10-13T01:28:46+00:00",
       "analysis": {
         "ticker": "7453.T",
         "company_name": "良品計画",
-        "summary": "良品計画は2026年10月9日時点でランキング1位を維持。5日連続上昇、20日高値更新と好調で、インバウンド関連として注目。",
-        "why_research_today": "2026年10月9日時点で、良品計画はランキング1位を維持しており、5日連続上昇、20日高値更新という強い上昇シグナルを示しています。インバウンド関連銘柄としての注目度も高く、市場からの関心が高いことが伺えるため、追加調査の価値があります。",
+        "summary": "良品計画はインバウンド・小売銘柄。2026-10-09時点で5日連続上昇、20日高値を更新し、株価は好調。インバウンド関連として注目度が高い。",
+        "why_research_today": "良品計画は2026-10-09時点で、5日連続上昇し、20日高値を更新するなど、非常に強い株価パフォーマンスを示しています。過去60日間で22.05%の上昇を記録しており、当日のランキングでも1位を維持しています。インバウンド関連銘柄としての注目度も高く、現在の円安傾向も追い風となる可能性があります。これらの要因から、追加調査の価値が高いと判断されます。",
         "inbound_relevance_score": 5,
-        "inbound_relevance_reason": "良品計画は「無印良品」を展開しており、そのブランド力と商品ラインナップは訪日外国人観光客に人気が高く、インバウンド需要の恩恵を強く受けるため、インバウンド関連株としての関連性は非常に高いと評価されます。",
+        "inbound_relevance_reason": "良品計画は「無印良品」を展開しており、そのシンプルで高品質な商品は訪日外国人観光客に人気があります。特に、生活雑貨、衣料品、食品などは日本土産としても需要が高く、インバウンド消費の恩恵を受けやすいと考えられます。",
         "positive_factors": [
           {
-            "title": "高順位と注目度",
-            "description": "2026年10月9日時点でランキング1位を維持しており、attention_scoreも90.1と非常に高い水準です。",
-            "factor_type": "fact",
-            "impact": "positive",
-            "evidence_fields": [
-              "stock.rank",
-              "stock.attention_score"
-            ]
-          },
-          {
-            "title": "強い株価パフォーマンス",
-            "description": "5日連続上昇し、20日高値を更新しています。5日、20日、60日リターンもそれぞれ4.94%、6.91%、22.05%と堅調です。",
+            "title": "5日連続上昇と20日高値更新",
+            "description": "2026-10-09時点で、良品計画の株価は5日連続で上昇し、20日高値を更新しました。これは短期的な上昇トレンドを示唆しています。",
             "factor_type": "fact",
             "impact": "positive",
             "evidence_fields": [
               "stock.signals",
               "stock.return_5d_pct",
+              "stock.return_1d_pct"
+            ]
+          },
+          {
+            "title": "中長期的な株価の好調",
+            "description": "過去20日間で6.91%、過去60日間で22.05%と、中長期的に株価が大きく上昇しています。",
+            "factor_type": "fact",
+            "impact": "positive",
+            "evidence_fields": [
               "stock.return_20d_pct",
               "stock.return_60d_pct"
             ]
           },
           {
-            "title": "RSIの「強い」状態",
-            "description": "RSI14が66.47であり、「強い」状態を示しており、買い圧力が継続していることを示唆しています。",
+            "title": "高い注目度とランキング1位維持",
+            "description": "2026-10-09時点のattention_scoreが90.1と高く、ランキングも1位を維持しており、市場からの関心が高いことを示しています。",
             "factor_type": "fact",
             "impact": "positive",
+            "evidence_fields": [
+              "stock.attention_score",
+              "stock.rank",
+              "stock.previous_rank"
+            ]
+          },
+          {
+            "title": "円安によるインバウンド需要増加の可能性",
+            "description": "2026-10-09時点でドル円は158.063円/米ドルと円安傾向が続いており、訪日外国人観光客にとって日本の商品が相対的に安価になるため、インバウンド消費の増加に繋がりやすいと解釈されます。",
+            "factor_type": "interpretation",
+            "impact": "positive",
+            "evidence_fields": [
+              "external_drivers.JPY=X.close",
+              "external_drivers.JPY=X.return_20d_pct"
+            ]
+          }
+        ],
+        "negative_factors": [
+          {
+            "title": "RSIの過熱感への警戒",
+            "description": "RSI14が66.47と「強い」状態にあり、短期的な過熱感に近づいています。一般的にRSIが70を超えると短期的な過熱状態と見なされるため、今後の動向には注意が必要です。",
+            "factor_type": "interpretation",
+            "impact": "negative",
             "evidence_fields": [
               "stock.rsi14",
               "stock.rsi_state"
             ]
           },
           {
-            "title": "円安の恩恵",
-            "description": "2026年10月11日時点でドル円が158.305円と円安傾向にあり、訪日外国人観光客の購買意欲を高め、インバウンド需要にプラスに作用する可能性があります。",
-            "factor_type": "interpretation",
-            "impact": "positive",
-            "evidence_fields": [
-              "external_drivers.JPY=X.close"
-            ]
-          },
-          {
-            "title": "市場の不確実性低下",
-            "description": "VIX指数が20日間で-6.31%と低下しており、市場全体の不確実性が減少傾向にあることを示しています。",
+            "title": "主要株価指数の下落",
+            "description": "2026-10-09時点で日経平均は前日比-0.01%とわずかに下落しており、S&P 500やNASDAQ総合も2026-10-12時点で前日比で下落しています。市場全体が軟調な場合、個別銘柄にも影響が及ぶ可能性があります。",
             "factor_type": "fact",
-            "impact": "positive",
-            "evidence_fields": [
-              "external_drivers.^VIX.return_20d_pct"
-            ]
-          }
-        ],
-        "negative_factors": [
-          {
-            "title": "短期的な過熱感",
-            "description": "RSI14が66.47と70に近づいており、短期的な過熱感から調整が入る可能性も考慮する必要があります。RSIが70を超えると一般的に短期的な過熱状態と見なされます。",
-            "factor_type": "interpretation",
             "impact": "negative",
             "evidence_fields": [
-              "stock.rsi14"
+              "external_drivers.^N225.return_1d_pct",
+              "external_drivers.^GSPC.return_1d_pct",
+              "external_drivers.^IXIC.return_1d_pct"
             ]
           },
           {
-            "title": "円安によるコスト増",
-            "description": "ドル円が158.305円と円安傾向にあることは、海外からの原材料や商品の輸入コスト増加、燃料費の上昇など、企業収益を圧迫する要因となり得ます。",
+            "title": "円安による輸入コスト増加リスク",
+            "description": "円安は訪日需要にプラスとなり得る一方、良品計画のような小売業にとっては、海外からの原材料や商品の輸入コストが増加し、利益率を圧迫する可能性があります。",
             "factor_type": "general_risk",
             "impact": "negative",
             "evidence_fields": [
@@ -562,74 +566,62 @@
           },
           {
             "title": "高いボラティリティ",
-            "description": "20日間のボラティリティが23.72%と比較的高い水準にあり、株価の変動が大きい可能性があるため、投資には注意が必要です。",
+            "description": "20日ボラティリティが23.72%と高く、株価の変動が大きいことを示しており、投資リスクが増す可能性があります。",
             "factor_type": "fact",
             "impact": "negative",
             "evidence_fields": [
               "stock.volatility20_pct"
-            ]
-          },
-          {
-            "title": "市場全体の動向",
-            "description": "2026年10月9日の日経平均は-0.0162%とわずかに下落しており、市場全体の地合いによっては個別株にも影響が及ぶ可能性があります。",
-            "factor_type": "fact",
-            "impact": "negative",
-            "evidence_fields": [
-              "external_drivers.^N225.return_1d_pct"
             ]
           }
         ],
         "scenarios": [
           {
             "name": "bull",
-            "description": "訪日外国人観光客数が想定以上に増加し、円安がさらに進行することでインバウンド消費が拡大。良品計画の海外事業も好調を維持し、国内店舗での売上も堅調に推移する。",
+            "description": "訪日外国人観光客数が想定以上に回復し、良品計画の店舗での売上が大幅に増加する。円安がさらに進行し、インバウンド消費を強力に後押しする。国内消費も堅調に推移し、既存店売上高が伸びる。",
             "conditions": [
               "訪日外国人観光客数の大幅な増加",
-              "円安の継続またはさらなる進行",
-              "海外事業の成長加速",
-              "国内消費の堅調な推移"
+              "継続的な円安傾向",
+              "国内消費の堅調な推移",
+              "商品ラインナップの拡充による顧客層拡大"
             ]
           },
           {
             "name": "base",
-            "description": "訪日外国人観光客数は緩やかに回復し、良品計画の既存店売上も安定的に推移。円安は維持されるものの、輸入コスト増は価格転嫁や効率化で吸収される。",
+            "description": "訪日外国人観光客数は緩やかに回復し、良品計画のインバウンド売上も安定的に推移する。円相場は現在の水準で安定し、輸入コストとインバウンド需要のバランスが取れる。国内事業も安定成長を維持する。",
             "conditions": [
               "訪日外国人観光客数の緩やかな回復",
-              "円安の現状維持",
-              "輸入コスト増の適切な管理",
-              "国内既存店売上の安定"
+              "円相場の安定",
+              "国内既存店売上高の安定成長"
             ]
           },
           {
             "name": "bear",
-            "description": "世界経済の減速や地政学的リスクの高まりにより訪日外国人観光客数が減少。円高に転換しインバウンド需要が冷え込む、または輸入コスト増が収益を圧迫。国内消費の低迷も重なる。",
+            "description": "世界経済の減速や地政学リスクの高まりにより、訪日外国人観光客数が伸び悩む、または減少する。円高に転換し、インバウンド需要が減退するとともに、輸出競争力が低下する。国内消費が低迷し、競争激化により収益性が悪化する。",
             "conditions": [
-              "世界経済の減速または景気後退",
-              "円高への転換",
-              "訪日外国人観光客数の減少",
-              "輸入コスト増の収益圧迫",
-              "国内消費の低迷"
+              "世界経済の減速による訪日需要の低迷",
+              "急激な円高への転換",
+              "国内消費の低迷と競争激化"
             ]
           }
         ],
         "counter_arguments": [
-          "現在の高いランキングや株価の好調は、既に市場に織り込まれている可能性があり、今後の上昇余地が限定的であるという見方もできます。",
-          "RSIが70に近づいているため、短期的な調整局面に入る可能性があり、現在の株価水準での新規参入には慎重な検討が必要であるという意見もあります。"
+          "良品計画の株価は既に高いパフォーマンスを示しており、現在の好材料は株価に織り込み済みである可能性があります。",
+          "RSIが70に近づいているため、短期的な調整局面に入る可能性も考慮すべきです。",
+          "円安はインバウンドにプラスですが、同時に輸入コスト増というマイナス面も持ち合わせており、その影響のバランスを慎重に見極める必要があります。"
         ],
         "additional_data_needed": [
-          "良品計画の最新の決算情報（特にインバウンド関連売上高や海外事業の進捗）",
-          "競合他社の動向や市場シェアに関する情報",
-          "今後の出店計画や商品戦略に関する詳細",
-          "為替変動が良品計画の収益に与える具体的な影響度合い",
-          "アナリストによる目標株価やレーティング"
+          "良品計画の最新の四半期決算情報（特にインバウンド関連売上高や海外事業の動向）",
+          "今後のインバウンド戦略や店舗展開に関する具体的な情報",
+          "原材料価格や物流コストの変動が業績に与える影響に関する詳細データ",
+          "競合他社の動向と市場シェアに関する情報"
         ],
         "warnings": [
-          "本分析は2026年10月9日時点のデータに基づいています。",
-          "株価は様々な要因で変動するため、過去のパフォーマンスは将来の成果を保証するものではありません。",
-          "投資判断は自己責任で行ってください。"
+          "株価は過去60日間で22%以上上昇しており、短期的な調整のリスクがあります。",
+          "RSIが「強い」状態にあるため、過熱感には注意が必要です。",
+          "円安は諸刃の剣であり、輸入コスト増による利益圧迫の可能性も考慮すべきです。"
         ],
         "conclusion": "new_research_candidate",
-        "confidence": "medium"
+        "confidence": "high"
       }
     },
     {
@@ -668,24 +660,24 @@
       "rank": 2,
       "previous_rank": 2,
       "rank_change": 0,
-      "attention_change": 1.2,
-      "change_score": 11.8,
+      "attention_change": 0.0,
+      "change_score": 10.0,
       "signals": [
         "20日高値を更新"
       ],
-      "priority_score": 65.98,
-      "retrieved_at": "2026-10-11T22:59:57+00:00",
+      "priority_score": 65.44,
+      "retrieved_at": "2026-10-13T01:28:46+00:00",
       "analysis": {
         "ticker": "9722.T",
         "company_name": "藤田観光",
-        "summary": "藤田観光はホテル・宿泊業で、2026年10月09日時点で株価が大幅上昇し、20日高値を更新。インバウンド関連度が高い。",
-        "why_research_today": "2026年10月09日時点で、藤田観光は株価が大幅に上昇し、特に過去60日間で70.394%の上昇を見せています。また、20日高値を更新しており、市場からの注目度が高いことを示唆しています。インバウンド関連度も高く、現在の円安トレンドも追い風となる可能性があるため、追加調査の価値があります。",
+        "summary": "藤田観光はホテル・宿泊事業を展開。2026-10-09時点で株価が大幅上昇し、20日高値を更新。RSIは過熱圏。インバウンド需要の恩恵を受ける可能性が高い。",
+        "why_research_today": "2026-10-09時点で、藤田観光は株価が大幅に上昇し、特に過去60日間で70.394%のリターンを記録し、20日高値を更新しています。また、インバウンドウェイトが5と高く、インバウンド関連銘柄としての注目度が高く、為替市場での円安傾向も追い風となる可能性があるため、追加調査の価値があります。",
         "inbound_relevance_score": 5,
-        "inbound_relevance_reason": "ホテル・宿泊業を主軸とする事業内容から、訪日外国人観光客の動向が業績に与える影響が大きいと判断されるため。",
+        "inbound_relevance_reason": "藤田観光はホテル・宿泊事業を主軸としており、訪日外国人観光客の増加が直接的な収益拡大に繋がりやすいため、インバウンド関連性が非常に高いと評価されます。",
         "positive_factors": [
           {
             "title": "株価の強い上昇トレンド",
-            "description": "2026年10月09日時点で、株価は過去1日で3.2258%、5日で6.4892%、20日で13.596%、60日で70.394%と大幅に上昇しており、強い上昇トレンドを示しています。",
+            "description": "2026-10-09時点で、株価は過去1日で3.2258%、5日で6.4892%、20日で13.596%、60日で70.394%と大幅に上昇しており、強い上昇トレンドを示しています。",
             "factor_type": "fact",
             "impact": "positive",
             "evidence_fields": [
@@ -697,7 +689,7 @@
           },
           {
             "title": "20日高値更新",
-            "description": "2026年10月09日時点で、20日高値を更新しており、市場の強い関心と買い圧力を示唆しています。",
+            "description": "2026-10-09に20日高値を更新しており、短期的な勢いがあることを示唆しています。",
             "factor_type": "fact",
             "impact": "positive",
             "evidence_fields": [
@@ -705,18 +697,27 @@
             ]
           },
           {
-            "title": "高いインバウンド関連度",
-            "description": "ホテル・宿泊業を主軸とする藤田観光は、インバウンド関連度が5と高く、訪日外国人観光客の増加が業績に直接的に寄与する可能性が高いです。",
+            "title": "移動平均線からの乖離",
+            "description": "20日移動平均線から11.3392%、60日移動平均線から27.2619%上方に乖離しており、強い買い圧力が継続していると解釈できます。",
+            "factor_type": "interpretation",
+            "impact": "positive",
+            "evidence_fields": [
+              "distance_ma20_pct",
+              "distance_ma60_pct"
+            ]
+          },
+          {
+            "title": "高いインバウンド関連性",
+            "description": "インバウンドウェイトが5と高く、訪日外国人観光客の需要回復が直接的な業績向上に寄与する可能性が高いです。",
             "factor_type": "fact",
             "impact": "positive",
             "evidence_fields": [
-              "inbound_weight",
-              "category"
+              "inbound_weight"
             ]
           },
           {
             "title": "円安の進行",
-            "description": "2026年10月11日時点でドル円は158.305円であり、過去20日間で3.1814%の円安が進行しています。一般的に円安は訪日外国人観光客にとって日本の旅行費用を相対的に安くするため、訪日需要を刺激し、インバウンド関連企業の収益にプラスに作用する可能性があります。",
+            "description": "2026-10-09時点でドル円が158.063円と円安水準にあり、過去20日間で2.3181%の円安が進行しています。これは訪日外国人観光客にとって日本旅行の費用が相対的に安くなるため、訪日需要をさらに刺激する要因となり得ます。",
             "factor_type": "interpretation",
             "impact": "positive",
             "evidence_fields": [
@@ -727,8 +728,8 @@
         ],
         "negative_factors": [
           {
-            "title": "短期的な過熱感（RSI）",
-            "description": "2026年10月09日時点のRSI14は72.87と70を超えており、短期的に買われすぎの状態、すなわち過熱感があることを示唆しています。",
+            "title": "RSIの過熱感",
+            "description": "2026-10-09時点でRSI14が72.87と70を超えており、短期的に買われすぎの状態にあるため、調整局面に入る可能性があります。",
             "factor_type": "interpretation",
             "impact": "negative",
             "evidence_fields": [
@@ -738,7 +739,7 @@
           },
           {
             "title": "高い株価変動性",
-            "description": "過去20日間のボラティリティが36.0926%と高く、株価の変動が大きいことを示しています。これは投資リスクを高める可能性があります。",
+            "description": "過去20日間のボラティリティが36.0926%と高く、株価の変動が大きいことを示しており、投資リスクが高い可能性があります。",
             "factor_type": "fact",
             "impact": "negative",
             "evidence_fields": [
@@ -747,7 +748,7 @@
           },
           {
             "title": "出来高の減少",
-            "description": "出来高比率が0.505と低いことは、直近の株価上昇に対して出来高が伴っていない可能性があり、上昇の持続性に対する懸念や、市場の関心が一時的である可能性を示唆しています。",
+            "description": "ボリュームレシオが0.505と1を下回っており、過去の平均的な出来高と比較して取引量が減少している可能性があります。これは、現在の株価上昇の持続性に対する懸念材料となり得ます。",
             "factor_type": "interpretation",
             "impact": "negative",
             "evidence_fields": [
@@ -755,62 +756,71 @@
             ]
           },
           {
-            "title": "円安によるコスト増の可能性",
-            "description": "一般的に円安は、輸入に依存する燃料費や食材費などのコストを増加させる可能性があり、ホテル・宿泊業の収益性を圧迫する要因となり得ます。",
+            "title": "輸入コスト増加のリスク",
+            "description": "円安は訪日需要にプラスですが、ホテル運営における輸入食材や燃料などのコスト増に繋がり、収益を圧迫する可能性があります。",
             "factor_type": "general_risk",
             "impact": "negative",
             "evidence_fields": [
-              "JPY=X.return_20d_pct"
+              "JPY=X.close"
+            ]
+          },
+          {
+            "title": "一般的な市場リスク",
+            "description": "日経平均が2026-10-09に-0.0162%と小幅ながら下落しており、市場全体のセンチメントが悪化した場合、個別銘柄にも影響が及ぶ可能性があります。",
+            "factor_type": "general_risk",
+            "impact": "negative",
+            "evidence_fields": [
+              "^N225.return_1d_pct"
             ]
           }
         ],
         "scenarios": [
           {
             "name": "bull",
-            "description": "訪日外国人観光客数が予想を上回るペースで回復し、円安がさらに進行することで、藤田観光の宿泊施設稼働率と客単価が大幅に向上する。国内旅行需要も堅調に推移し、事業全体の収益性が大きく改善する。",
+            "description": "訪日外国人観光客数が予想を上回るペースで回復し、円安がさらに進行することで、藤田観光の宿泊施設稼働率と客単価が大幅に向上する。国内旅行需要も堅調に推移し、事業拡大が加速する。",
             "conditions": [
               "訪日客数増加",
               "円安進行",
-              "国内経済の好調"
+              "国内経済の好調維持"
             ]
           },
           {
             "name": "base",
-            "description": "訪日外国人観光客数は緩やかな回復を続け、円安は現状維持または小幅な変動に留まる。藤田観光は既存施設の効率的な運営とサービス向上により、安定した収益を確保する。",
+            "description": "訪日外国人観光客数は緩やかな回復基調を維持し、円安も現状レベルで推移する。藤田観光は安定した稼働率と収益を確保し、堅実な業績を達成する。",
             "conditions": [
               "訪日客数緩やかな回復",
-              "為替安定",
-              "堅実な事業運営"
+              "円安安定",
+              "安定した経済成長"
             ]
           },
           {
             "name": "bear",
-            "description": "世界経済の減速や地政学的リスクの高まりにより、訪日外国人観光客数が減少する。円高に転換するか、円安が輸入コストを大幅に押し上げ、収益性が悪化する。国内旅行需要も低迷し、競争激化により業績が低迷する。",
+            "description": "世界経済の減速や新たなパンデミック、地政学的リスクの顕在化により、訪日外国人観光客数が大幅に減少する。円高に転換し、輸入コストが増加することで収益性が悪化する。",
             "conditions": [
-              "訪日客数減少",
-              "円高またはコスト増",
-              "経済悪化",
-              "競争激化"
+              "世界経済の減速",
+              "新たな感染症の流行",
+              "円高進行",
+              "地政学的リスクの悪化"
             ]
           }
         ],
         "counter_arguments": [
-          "藤田観光の株価は2026年10月09日時点で既に高いパフォーマンスを示しており、インバウンド回復や円安の恩恵は市場に織り込み済みである可能性があります。",
-          "RSIが70を超えていることから、短期的な調整局面に入る可能性も考慮すべきです。"
+          "現在の高いランキング（2位）と強い株価上昇は、既に市場がインバウンド回復や円安の恩恵を織り込んでいる可能性を示唆しています。",
+          "RSIが70を超えて過熱圏にあるため、短期的な調整や利益確定売りが発生するリスクがあり、現在の株価水準での新規参入は慎重な検討が必要です。"
         ],
         "additional_data_needed": [
-          "直近の決算発表内容や業績見通し（特にインバウンド関連事業の具体的な数値）。",
-          "競合他社との比較分析（稼働率、客単価、収益性など）。",
-          "今後の設備投資計画やM&A戦略。",
-          "燃料費や食材費などのコスト構造に関する詳細情報。"
+          "藤田観光の最新の決算情報、特にインバウンド関連事業の具体的な売上高や利益率。",
+          "今後の事業戦略や設備投資計画、特にインバウンド需要に対応するための具体的な施策。",
+          "競合他社との比較分析（稼働率、客単価、ブランド力など）。",
+          "為替変動に対するヘッジ戦略やコスト管理に関する情報。",
+          "アナリストによる目標株価やレーティング。"
         ],
         "warnings": [
-          "2026年10月09日時点のRSI14が72.87と短期的な過熱感を示しており、株価が調整局面に入る可能性があります。",
-          "株価のボラティリティが高く、急激な価格変動リスクが存在します。",
-          "円安はインバウンド需要にプラスですが、同時に輸入コスト増という負の側面も持ちます。"
+          "RSIが72.87と過熱圏にあり、短期的な株価調整のリスクがあります。",
+          "過去20日間のボラティリティが36.0926%と高く、株価の変動が大きい点には注意が必要です。"
         ],
         "conclusion": "new_research_candidate",
-        "confidence": "medium"
+        "confidence": "high"
       }
     },
     {
@@ -847,147 +857,14 @@
       "inbound_score": 100,
       "attention_score": 89.2,
       "rank": 3,
-      "previous_rank": 8,
-      "rank_change": 5,
-      "attention_change": 14.3,
-      "change_score": 32.5,
-      "signals": [
-        "順位が5位上昇"
-      ],
-      "priority_score": 72.19,
-      "retrieved_at": "2026-10-11T22:59:57+00:00",
-      "analysis": {
-        "ticker": "2477.T",
-        "company_name": "手間いらず",
-        "summary": "手間いらずは旅行DX企業。2026-10-09時点で順位が5位上昇し、60日間で株価が44.99%上昇。インバウンド関連として注目。",
-        "why_research_today": "手間いらずは、2026-10-09時点でランキングが8位から3位へと5位上昇しており、特に注目すべき銘柄です。60日間で株価が44.99%上昇するなど、強いモメンタムを示しています。旅行DXという事業内容からインバウンド需要の恩恵を受ける可能性が高く、円安の進行も追い風となり得るため、追加調査の価値があります。",
-        "inbound_relevance_score": 5,
-        "inbound_relevance_reason": "手間いらずは「旅行DX」を事業とする企業であり、宿泊施設向け予約管理システムなどを提供しています。訪日外国人観光客の増加は宿泊施設の需要を高め、同社のサービス利用拡大に直結するため、インバウンドとの関連性が非常に高いと判断されます。",
-        "positive_factors": [
-          {
-            "title": "順位が大幅上昇",
-            "description": "2026-10-09時点で、当社のランキングが前回の8位から3位へと5位上昇しました。これは市場からの注目度が高まっていることを示唆しています。",
-            "factor_type": "fact",
-            "impact": "positive",
-            "evidence_fields": [
-              "stock.rank",
-              "stock.previous_rank",
-              "stock.rank_change",
-              "stock.signals"
-            ]
-          },
-          {
-            "title": "株価の強いモメンタム",
-            "description": "2026-10-09時点で、過去60日間で株価が44.99%上昇しており、60日移動平均線からも14.47%上方に乖離しています。これは強い上昇トレンドを示しています。",
-            "factor_type": "fact",
-            "impact": "positive",
-            "evidence_fields": [
-              "stock.return_60d_pct",
-              "stock.distance_ma60_pct"
-            ]
-          },
-          {
-            "title": "円安によるインバウンド需要拡大期待",
-            "description": "2026-10-11時点でドル円が158.31円と円安傾向にあり、過去20日間で3.18%の円安が進行しています。これは訪日外国人観光客にとって日本旅行の費用が相対的に安くなるため、インバウンド需要のさらなる拡大に寄与する可能性があります。",
-            "factor_type": "interpretation",
-            "impact": "positive",
-            "evidence_fields": [
-              "external_drivers.JPY=X.close",
-              "external_drivers.JPY=X.return_20d_pct"
-            ]
-          },
-          {
-            "title": "RSIが「強い」状態",
-            "description": "2026-10-09時点のRSI14は61.28であり、「強い」状態を示しています。これは買われすぎの過熱感を示す70超には達しておらず、まだ上昇余地がある可能性を示唆しています。",
-            "factor_type": "fact",
-            "impact": "positive",
-            "evidence_fields": [
-              "stock.rsi14",
-              "stock.rsi_state"
-            ]
-          }
-        ],
-        "negative_factors": [
-          {
-            "title": "高い株価変動性",
-            "description": "2026-10-09時点の過去20日間の株価変動率（ボラティリティ）は27.05%と高く、株価が大きく変動するリスクがあります。",
-            "factor_type": "fact",
-            "impact": "negative",
-            "evidence_fields": [
-              "stock.volatility20_pct"
-            ]
-          },
-          {
-            "title": "短期的な過熱感の可能性",
-            "description": "過去60日間で株価が44.99%と大きく上昇しており、短期的な利益確定売りが出やすい状況にある可能性があります。RSIは70超ではないものの、急騰後の調整リスクは考慮すべきです。",
-            "factor_type": "interpretation",
-            "impact": "negative",
-            "evidence_fields": [
-              "stock.return_60d_pct",
-              "stock.rsi14"
-            ]
-          },
-          {
-            "title": "円安の負の側面",
-            "description": "一般的に円安は輸入コストや燃料費の増加を招く可能性があります。手間いらずの事業は直接的な輸入依存度は低いと推測されますが、日本経済全体への影響を通じて間接的に事業環境に影響を与える可能性はあります。",
-            "factor_type": "general_risk",
-            "impact": "negative",
-            "evidence_fields": [
-              "external_drivers.JPY=X.close"
-            ]
-          }
-        ],
-        "scenarios": [
-          {
-            "name": "bull",
-            "description": "訪日外国人観光客数が想定を上回るペースで回復・増加し、政府の観光振興策が強化される。円安がさらに進行し、日本への旅行需要が爆発的に高まる。手間いらずが新たなサービスを成功させ、市場シェアを拡大する。",
-            "conditions": [
-              "訪日客数急増",
-              "大幅な円安継続",
-              "新規事業成功",
-              "市場シェア拡大"
-            ]
-          },
-          {
-            "name": "base",
-            "description": "訪日外国人観光客数は緩やかな回復基調を維持し、手間いらずの既存事業は安定的に推移する。円相場は現在の水準で推移し、大きな変動はない。",
-            "conditions": [
-              "訪日客数緩やかな回復",
-              "円相場安定",
-              "既存事業堅調"
-            ]
-          },
-          {
-            "name": "bear",
-            "description": "世界経済の減速や地政学的リスクの高まりにより、訪日外国人観光客数が伸び悩む、または減少する。円高に転換し、日本旅行の魅力が薄れる。競合他社の台頭や、手間いらずのサービスに対する需要が低下する。",
-            "conditions": [
-              "訪日客数減少",
-              "円高進行",
-              "競合激化",
-              "サービス需要低下"
-            ]
-          }
-        ],
-        "counter_arguments": [
-          "「順位が5位上昇」という事実は、以前の順位が低かっただけで、必ずしも持続的な成長を示すものではない可能性があります。",
-          "過去60日間の株価急騰は、短期的な投機資金の流入によるもので、ファンダメンタルズの変化を伴わない可能性があります。",
-          "RSIが「強い」状態であっても、市場全体のセンチメントや突発的なニュースによって急落するリスクは常に存在します。"
-        ],
-        "additional_data_needed": [
-          "直近の決算発表内容と業績見通し",
-          "インバウンド関連事業の具体的な進捗状況と収益への寄与度",
-          "競合他社の動向と市場シェア",
-          "経営戦略や今後の成長ドライバーに関する詳細情報",
-          "株価バリュエーション（PER, PBRなど）"
-        ],
-        "warnings": [
-          "本分析は2026-10-09時点の限られた情報に基づいています。",
-          "株価の変動は様々な要因に影響されるため、本分析は将来の株価を保証するものではありません。",
-          "インバウンド需要は国際情勢や感染症リスクなど外部要因に大きく左右される可能性があります。"
-        ],
-        "conclusion": "new_research_candidate",
-        "confidence": "medium"
-      }
+      "previous_rank": 3,
+      "rank_change": 0,
+      "attention_change": 0.0,
+      "change_score": 0.0,
+      "signals": [],
+      "priority_score": 62.44,
+      "retrieved_at": "2026-10-13T01:28:46+00:00",
+      "analysis": null
     },
     {
       "ticker": "3086.T",
@@ -1025,15 +902,132 @@
       "rank": 4,
       "previous_rank": 4,
       "rank_change": 0,
-      "attention_change": -0.2,
-      "change_score": 15.3,
+      "attention_change": 0.0,
+      "change_score": 15.0,
       "signals": [
         "5日連続上昇",
         "20日高値を更新"
       ],
-      "priority_score": 65.14,
-      "retrieved_at": "2026-10-11T22:59:57+00:00",
-      "analysis": null
+      "priority_score": 65.05,
+      "retrieved_at": "2026-10-13T01:28:46+00:00",
+      "analysis": {
+        "ticker": "3086.T",
+        "company_name": "J.フロント リテイリング",
+        "summary": "J.フロント リテイリングは百貨店・小売業で、2026年10月9日時点で5日連続上昇し、20日高値を更新。インバウンド関連銘柄として注目されます。",
+        "why_research_today": "J.フロント リテイリングは、2026年10月9日時点で5日連続上昇し、20日高値を更新するなど、短期的な株価モメンタムが強い状況です。また、インバウンド関連銘柄としての注目度が高く、足元の円安進行も追い風となる可能性があります。これらの要因から、追加調査の価値があると考えられます。",
+        "inbound_relevance_score": 5,
+        "inbound_relevance_reason": "百貨店事業を主軸とするJ.フロント リテイリングは、訪日外国人観光客による消費恩恵を直接的に受けるため、インバウンド関連銘柄としての関連性が非常に高いです。",
+        "positive_factors": [
+          {
+            "title": "短期的な株価モメンタムの強さ",
+            "description": "2026年10月9日時点で、株価は5日連続で上昇しており、同日に20日高値を更新しました。これは短期的な買い圧力が強いことを示唆しています。",
+            "factor_type": "fact",
+            "impact": "positive",
+            "evidence_fields": [
+              "stock.return_5d_pct",
+              "stock.signals"
+            ]
+          },
+          {
+            "title": "インバウンド需要回復への期待",
+            "description": "J.フロント リテイリングはインバウンド関連銘柄としての評価が高く（inbound_weight: 5）、2026年10月9日時点のドル円レートが158.063円と円安傾向にあることは、訪日外国人観光客の消費意欲を刺激し、同社の売上増加に寄与する可能性があります。",
+            "factor_type": "interpretation",
+            "impact": "positive",
+            "evidence_fields": [
+              "stock.inbound_weight",
+              "external_drivers.JPY=X.close"
+            ]
+          },
+          {
+            "title": "市場全体の堅調な動き",
+            "description": "2026年10月9日時点の日経平均株価は過去20日間で5.7632%上昇しており、市場全体の地合いが比較的良好であることも、同社株価にとってプラスに作用する可能性があります。",
+            "factor_type": "interpretation",
+            "impact": "positive",
+            "evidence_fields": [
+              "external_drivers.^N225.return_20d_pct"
+            ]
+          }
+        ],
+        "negative_factors": [
+          {
+            "title": "中長期的な株価の低迷",
+            "description": "2026年10月9日時点で、過去60日間の株価リターンは-13.0051%と大幅なマイナスであり、60日移動平均線からも-4.2795%下回っています。これは中長期的な下落トレンドにある可能性を示唆しています。",
+            "factor_type": "fact",
+            "impact": "negative",
+            "evidence_fields": [
+              "stock.return_60d_pct",
+              "stock.distance_ma60_pct"
+            ]
+          },
+          {
+            "title": "海外市場の不確実性",
+            "description": "2026年10月12日時点のS&P 500およびNASDAQ総合指数は直近1日で下落しており、VIX指数も2.4933%上昇しています。これはグローバル市場の不確実性が高まっている可能性があり、日本市場にも影響を及ぼす可能性があります。",
+            "factor_type": "general_risk",
+            "impact": "negative",
+            "evidence_fields": [
+              "external_drivers.^GSPC.return_1d_pct",
+              "external_drivers.^IXIC.return_1d_pct",
+              "external_drivers.^VIX.return_1d_pct"
+            ]
+          },
+          {
+            "title": "円安による輸入コスト増",
+            "description": "円安は訪日需要にプラスとなる一方、百貨店が扱う輸入品や燃料コストの増加につながる可能性があり、収益性を圧迫するリスクがあります。",
+            "factor_type": "general_risk",
+            "impact": "negative",
+            "evidence_fields": [
+              "external_drivers.JPY=X.close"
+            ]
+          }
+        ],
+        "scenarios": [
+          {
+            "name": "bull",
+            "description": "訪日外国人観光客数が想定を上回るペースで回復し、高額品消費がさらに活発化する。円安が継続し、購買意欲を刺激する。国内消費も堅調に推移し、百貨店事業全体が好調を維持する。",
+            "conditions": [
+              "訪日外国人観光客数の大幅な増加",
+              "円安の継続",
+              "国内個人消費の回復"
+            ]
+          },
+          {
+            "name": "base",
+            "description": "訪日外国人観光客数は緩やかに回復し、国内消費は現状維持または微増。円安は高止まりするものの、輸入コスト増とのバランスで収益は横ばいから微増で推移する。",
+            "conditions": [
+              "訪日外国人観光客数の緩やかな回復",
+              "国内消費の横ばい",
+              "円安の安定"
+            ]
+          },
+          {
+            "name": "bear",
+            "description": "世界経済の減速や地政学的リスクにより、訪日外国人観光客数が減少。円高に転換し、インバウンド需要が冷え込む。国内景気が悪化し、消費マインドが冷え込むことで百貨店売上が低迷する。",
+            "conditions": [
+              "世界経済の減速",
+              "円高への転換",
+              "国内景気の悪化"
+            ]
+          }
+        ],
+        "counter_arguments": [
+          "J.フロント リテイリングのランキングは4位であり、上位銘柄と比較すると相対的な注目度はまだ高いとは言えません。また、直近の5日連続上昇や20日高値更新といった短期的な好材料がある一方で、過去60日間では株価が大きく下落しており、中長期的なトレンドは依然として弱気である可能性も考慮すべきです。",
+          "RSI14が53.29と中立圏にあるため、短期的な過熱感や売られ過ぎの兆候は見られず、明確なトレンド転換を示すには至っていません。"
+        ],
+        "additional_data_needed": [
+          "直近の四半期決算発表内容とガイダンス",
+          "インバウンド売上高の具体的な内訳と成長率",
+          "競合他社との比較分析（特にインバウンド戦略）",
+          "百貨店以外の事業（パルコ等）の収益貢献度",
+          "コスト構造（特に輸入コストや人件費）への円安の影響度合い"
+        ],
+        "warnings": [
+          "本分析は2026年10月9日時点のデータに基づいています。市場環境や企業状況は常に変化するため、最新の情報に基づいた継続的なモニタリングが必要です。",
+          "過去の株価動向は将来のパフォーマンスを保証するものではありません。",
+          "インバウンド需要は地政学的リスクや感染症の再拡大など、予測困難な外部要因に大きく左右される可能性があります。"
+        ],
+        "conclusion": "new_research_candidate",
+        "confidence": "medium"
+      }
     },
     {
       "ticker": "3099.T",
@@ -1069,13 +1063,13 @@
       "inbound_score": 100,
       "attention_score": 85.4,
       "rank": 5,
-      "previous_rank": 3,
-      "rank_change": -2,
-      "attention_change": -2.3,
-      "change_score": 8.45,
+      "previous_rank": 5,
+      "rank_change": 0,
+      "attention_change": 0.0,
+      "change_score": 0.0,
       "signals": [],
-      "priority_score": 62.31,
-      "retrieved_at": "2026-10-11T22:59:57+00:00",
+      "priority_score": 59.78,
+      "retrieved_at": "2026-10-13T01:28:46+00:00",
       "analysis": null
     },
     {
@@ -1114,15 +1108,134 @@
       "rank": 6,
       "previous_rank": 6,
       "rank_change": 0,
-      "attention_change": 2.6,
-      "change_score": 18.9,
+      "attention_change": 0.0,
+      "change_score": 15.0,
       "signals": [
         "4日連続上昇",
         "20日高値を更新"
       ],
-      "priority_score": 63.49,
-      "retrieved_at": "2026-10-11T22:59:57+00:00",
-      "analysis": null
+      "priority_score": 62.32,
+      "retrieved_at": "2026-10-13T01:28:46+00:00",
+      "analysis": {
+        "ticker": "6098.T",
+        "company_name": "リクルートホールディングス",
+        "summary": "リクルートHDは2026-10-09に4日連続上昇し、20日高値を更新。短期・中期で強い上昇トレンドを示しており、追加調査の価値あり。",
+        "why_research_today": "リクルートホールディングス（6098.T）は、2026-10-09に4日連続上昇し、終値17755.0円で20日高値を更新しました。過去60日間で45.06%の上昇、過去20日間で13.16%の上昇と、短期から中期にかけて非常に強い上昇トレンドを示しています。また、RSI14が64.49と「強い」状態にあり、市場の注目度が高いことが伺えます。これらの強いモメンタムとテクニカルシグナルから、追加調査の候補として注目すべきです。",
+        "inbound_relevance_score": 2,
+        "inbound_relevance_reason": "リクルートホールディングスは「旅行・予約」カテゴリーに属しており、旅行予約サイトや関連サービスを通じて訪日外国人観光客の需要を間接的に取り込む可能性があります。直接的なインバウンド事業の比重は高くないものの、観光需要の増加は事業機会となり得ます。",
+        "positive_factors": [
+          {
+            "title": "強い株価モメンタム",
+            "description": "2026-10-09時点で、株価は4日連続で上昇し、過去20日間の高値を更新しました。過去60日間で45.06%、過去20日間で13.16%と、短期から中期にかけて顕著な上昇トレンドを示しています。",
+            "factor_type": "fact",
+            "impact": "positive",
+            "evidence_fields": [
+              "stock.return_1d_pct",
+              "stock.return_5d_pct",
+              "stock.return_20d_pct",
+              "stock.return_60d_pct",
+              "stock.signals"
+            ]
+          },
+          {
+            "title": "移動平均線からの乖離",
+            "description": "株価は20日移動平均線から6.57%、60日移動平均線から15.68%上方に乖離しており、強い上昇圧力が継続していることを示唆しています。",
+            "factor_type": "fact",
+            "impact": "positive",
+            "evidence_fields": [
+              "stock.distance_ma20_pct",
+              "stock.distance_ma60_pct"
+            ]
+          },
+          {
+            "title": "円安の継続",
+            "description": "2026-10-09のドル円レートは158.063円/米ドルであり、過去20日間で2.32%の円安が進行しています。円安は訪日外国人観光客にとって日本での支出を相対的に安価にするため、訪日需要を刺激する可能性があります。",
+            "factor_type": "interpretation",
+            "impact": "positive",
+            "evidence_fields": [
+              "external_drivers.JPY=X.close",
+              "external_drivers.JPY=X.return_20d_pct"
+            ]
+          }
+        ],
+        "negative_factors": [
+          {
+            "title": "RSIの過熱感",
+            "description": "RSI14は64.49と「強い」状態にあり、短期的な過熱感を示唆しています。一般的にRSIが70を超えると買われ過ぎと判断されるため、今後の動向には注意が必要です。",
+            "factor_type": "interpretation",
+            "impact": "negative",
+            "evidence_fields": [
+              "stock.rsi14",
+              "stock.rsi_state"
+            ]
+          },
+          {
+            "title": "市場全体の軟調な動き",
+            "description": "2026-10-09の日経平均は-0.02%とわずかに下落しており、米国市場も2026-10-12時点でS&P 500が-0.06%、NASDAQ総合が-0.44%と軟調な動きを見せています。市場全体のセンチメント悪化は個別銘柄にも影響を与える可能性があります。",
+            "factor_type": "fact",
+            "impact": "negative",
+            "evidence_fields": [
+              "external_drivers.^N225.return_1d_pct",
+              "external_drivers.^GSPC.return_1d_pct",
+              "external_drivers.^IXIC.return_1d_pct"
+            ]
+          },
+          {
+            "title": "円安によるコスト増リスク",
+            "description": "円安は訪日需要にプラスとなり得る一方で、海外からの仕入れや燃料費など、輸入コストの増加を通じて企業収益にマイナスの影響を与える可能性があります。",
+            "factor_type": "general_risk",
+            "impact": "negative",
+            "evidence_fields": [
+              "external_drivers.JPY=X.close"
+            ]
+          }
+        ],
+        "scenarios": [
+          {
+            "name": "bull",
+            "description": "訪日外国人観光客数が想定を上回るペースで回復し、リクルートHDの旅行・予約関連サービス利用が大幅に増加。国内の労働市場も堅調に推移し、人材関連事業も好調を維持。市場全体のセンチメントも改善し、株価はさらに上昇する。",
+            "conditions": [
+              "訪日外国人観光客数の急増",
+              "国内経済の力強い回復",
+              "円安の継続と企業収益へのプラス影響"
+            ]
+          },
+          {
+            "name": "base",
+            "description": "訪日外国人観光客数は緩やかに回復し、リクルートHDの関連事業も安定成長を続ける。国内事業は現状維持か微増。市場は大きな変動なく推移し、株価は現在のトレンドを維持しながら推移する。",
+            "conditions": [
+              "訪日外国人観光客数の緩やかな回復",
+              "国内経済の安定成長",
+              "市場の大きな変動なし"
+            ]
+          },
+          {
+            "name": "bear",
+            "description": "世界経済の減速や地政学的リスクの高まりにより、訪日外国人観光客数が伸び悩み、旅行・予約関連事業が低迷。国内の景気後退により人材関連事業も悪化。円安が輸入コスト増を招き、収益を圧迫。市場全体の株価下落に連動して、株価も調整局面を迎える。",
+            "conditions": [
+              "世界経済の減速",
+              "訪日外国人観光客数の伸び悩み",
+              "円安によるコスト増の顕在化"
+            ]
+          }
+        ],
+        "counter_arguments": [
+          "リクルートホールディングスは「旅行・予約」カテゴリーに属するものの、事業全体に占めるインバウンド関連の直接的な寄与度は限定的である可能性があり、インバウンド関連株としての評価が過大である可能性がある。",
+          "現在の株価は過去60日間で45%以上上昇しており、RSIも高い水準にあるため、短期的な調整が入る可能性も考慮すべきである。現在のランキング（6位）は、この強いモメンタムを反映しているが、その持続性には疑問符がつく。"
+        ],
+        "additional_data_needed": [
+          "リクルートホールディングスの事業セグメント別売上高と利益の内訳、特に旅行・予約関連事業における訪日外国人向けサービスの具体的な貢献度。",
+          "最新の決算発表における経営陣のガイダンスや市場見通し。",
+          "競合他社の動向や市場シェアに関する情報。",
+          "円安が同社の収益に与える具体的な影響（プラス・マイナス両面）に関する詳細な分析。"
+        ],
+        "warnings": [
+          "RSI14が64.49と「強い」状態にあり、短期的な過熱感があるため、今後の調整リスクに留意が必要です。",
+          "市場全体のセンチメントが軟調に転じた場合、個別銘柄の上昇トレンドも影響を受ける可能性があります。"
+        ],
+        "conclusion": "new_research_candidate",
+        "confidence": "medium"
+      }
     },
     {
       "ticker": "4680.T",
@@ -1158,17 +1271,158 @@
       "inbound_score": 80,
       "attention_score": 82.3,
       "rank": 7,
-      "previous_rank": 5,
-      "rank_change": -2,
-      "attention_change": -3.7,
-      "change_score": 25.55,
+      "previous_rank": 7,
+      "rank_change": 0,
+      "attention_change": 0.0,
+      "change_score": 15.0,
       "signals": [
         "5日連続上昇",
         "20日高値を更新"
       ],
-      "priority_score": 65.27,
-      "retrieved_at": "2026-10-11T22:59:57+00:00",
-      "analysis": null
+      "priority_score": 62.11,
+      "retrieved_at": "2026-10-13T01:28:46+00:00",
+      "analysis": {
+        "ticker": "4680.T",
+        "company_name": "ラウンドワン",
+        "summary": "2026-10-09時点で5日連続上昇、20日高値を更新。レジャー・観光施設としてインバウンド需要への注目度が高い。",
+        "why_research_today": "ラウンドワンは2026-10-09時点で5日連続上昇し、20日高値を更新しています。レジャー・観光施設としてインバウンド需要との関連性が高く、ドル円が158円台と円安傾向にある中で、注目スコアも82.3と高い水準を維持しており、追加調査の価値があります。",
+        "inbound_relevance_score": 4,
+        "inbound_relevance_reason": "ラウンドワンはレジャー・観光施設を運営しており、訪日外国人観光客の増加が売上や収益に寄与する可能性が高いため、インバウンド関連銘柄としての関連性が高いと評価されます。",
+        "positive_factors": [
+          {
+            "title": "株価の好調な推移",
+            "description": "2026-10-09時点で株価は5日連続で上昇しており、過去20日間の高値を更新しました。5日間で4.55%、20日間で8.31%の上昇を見せています。",
+            "factor_type": "fact",
+            "impact": "positive",
+            "evidence_fields": [
+              "stock.return_5d_pct",
+              "stock.return_20d_pct",
+              "stock.signals"
+            ]
+          },
+          {
+            "title": "インバウンド需要への期待",
+            "description": "レジャー・観光施設であるラウンドワンはインバウンド関連銘柄としての注目度が高く（インバウンドウェイト4）、2026-10-09時点のドル円レートが158.063円と円安傾向にあることは、訪日外国人観光客の増加にプラスに作用する可能性があります。",
+            "factor_type": "interpretation",
+            "impact": "positive",
+            "evidence_fields": [
+              "stock.inbound_weight",
+              "external_drivers.JPY=X.close"
+            ]
+          },
+          {
+            "title": "高い注目スコア",
+            "description": "注目スコアが82.3と高い水準にあり、市場からの関心が高いことを示唆しています。",
+            "factor_type": "fact",
+            "impact": "positive",
+            "evidence_fields": [
+              "stock.attention_score"
+            ]
+          },
+          {
+            "title": "RSIは中立圏",
+            "description": "RSI14が59.17と中立圏にあり、短期的な過熱感や売られ過ぎの状態にはありません。",
+            "factor_type": "fact",
+            "impact": "neutral",
+            "evidence_fields": [
+              "stock.rsi14",
+              "stock.rsi_state"
+            ]
+          }
+        ],
+        "negative_factors": [
+          {
+            "title": "取引量の減少",
+            "description": "出来高比率が0.89と1を下回っており、直近の株価上昇に対して取引活動がやや低調である可能性が示唆されます。",
+            "factor_type": "fact",
+            "impact": "negative",
+            "evidence_fields": [
+              "stock.volume_ratio"
+            ]
+          },
+          {
+            "title": "高いボラティリティ",
+            "description": "20日ボラティリティが31.41%と比較的高い水準にあり、株価の変動リスクが大きいことを示しています。",
+            "factor_type": "fact",
+            "impact": "negative",
+            "evidence_fields": [
+              "stock.volatility20_pct"
+            ]
+          },
+          {
+            "title": "円安によるコスト増の可能性",
+            "description": "円安は訪日需要にプラスとなり得る一方、輸入コストや燃料コストの増加を通じて、企業の費用負担を増大させる可能性があります。",
+            "factor_type": "general_risk",
+            "impact": "negative",
+            "evidence_fields": [
+              "external_drivers.JPY=X.close"
+            ]
+          },
+          {
+            "title": "市場全体の不確実性",
+            "description": "2026-10-09時点の日経平均はわずかに下落しており、S&P 500やNASDAQ総合も2026-10-12時点で下落しているなど、市場全体に不確実性が存在します。VIX指数も上昇傾向にあり、市場の警戒感を示唆しています。",
+            "factor_type": "general_risk",
+            "impact": "negative",
+            "evidence_fields": [
+              "external_drivers.^N225.return_1d_pct",
+              "external_drivers.^GSPC.return_1d_pct",
+              "external_drivers.^IXIC.return_1d_pct",
+              "external_drivers.^VIX.return_1d_pct"
+            ]
+          }
+        ],
+        "scenarios": [
+          {
+            "name": "bull",
+            "description": "インバウンド需要が想定以上に回復し、ラウンドワンの施設利用が大幅に増加。国内レジャー需要も堅調に推移し、業績が大きく改善するシナリオ。",
+            "conditions": [
+              "訪日外国人観光客数の継続的な増加",
+              "円安の維持またはさらなる進行",
+              "国内消費の回復",
+              "市場全体の好調な推移"
+            ]
+          },
+          {
+            "name": "base",
+            "description": "現在の株価上昇トレンドが緩やかに継続し、インバウンド需要も着実に回復。業績は安定的に推移するが、大きなサプライズはないシナリオ。",
+            "conditions": [
+              "インバウンド需要の緩やかな回復",
+              "国内レジャー市場の安定",
+              "コスト上昇が限定的",
+              "市場全体の横ばいまたは微増"
+            ]
+          },
+          {
+            "name": "bear",
+            "description": "世界経済の減速や地政学的リスクの高まりにより、インバウンド需要が停滞。円安によるコスト増が収益を圧迫し、株価が下落するシナリオ。",
+            "conditions": [
+              "世界経済の悪化によるインバウンド需要の減少",
+              "円安による輸入・燃料コストの急増",
+              "国内消費の低迷",
+              "市場全体の調整局面入り"
+            ]
+          }
+        ],
+        "counter_arguments": [
+          "株価は上昇しているものの、2026-10-09時点でのランキングは7位で変動がなく、他の注目銘柄と比較して相対的な優位性が明確ではない可能性があります。",
+          "出来高比率が1を下回っており、株価上昇の勢いが持続的であるかについては慎重な見方が必要です。",
+          "高いボラティリティは、上昇局面だけでなく下落局面でのリスクも高める可能性があります。"
+        ],
+        "additional_data_needed": [
+          "ラウンドワンの最新の四半期決算情報（売上高、利益率、インバウンド売上比率など）",
+          "具体的なインバウンド顧客の利用状況や動向に関するデータ",
+          "競合他社との比較分析（価格競争力、施設魅力度など）",
+          "今後の設備投資計画や新規出店戦略",
+          "為替変動が業績に与える具体的な影響度に関する情報"
+        ],
+        "warnings": [
+          "本分析は2026-10-09時点の公開情報に基づいています。市場環境や企業状況は常に変化するため、最新の情報に基づいた継続的な調査が必要です。",
+          "株価の変動は様々な要因によって引き起こされ、本分析は将来の株価を保証するものではありません。",
+          "高いボラティリティは、投資リスクを高める可能性があります。"
+        ],
+        "conclusion": "new_research_candidate",
+        "confidence": "medium"
+      }
     },
     {
       "ticker": "9024.T",
@@ -1204,16 +1458,16 @@
       "inbound_score": 80,
       "attention_score": 80.6,
       "rank": 8,
-      "previous_rank": 7,
-      "rank_change": -1,
-      "attention_change": 4.7,
-      "change_score": 24.55,
+      "previous_rank": 8,
+      "rank_change": 0,
+      "attention_change": 0.0,
+      "change_score": 15.0,
       "signals": [
         "7日連続上昇",
         "20日高値を更新"
       ],
-      "priority_score": 63.78,
-      "retrieved_at": "2026-10-11T22:59:57+00:00",
+      "priority_score": 60.92,
+      "retrieved_at": "2026-10-13T01:28:46+00:00",
       "analysis": null
     },
     {
@@ -1250,135 +1504,16 @@
       "inbound_score": 100,
       "attention_score": 80.0,
       "rank": 9,
-      "previous_rank": 16,
-      "rank_change": 7,
-      "attention_change": 12.2,
-      "change_score": 60.8,
+      "previous_rank": 9,
+      "rank_change": 0,
+      "attention_change": 0.0,
+      "change_score": 10.0,
       "signals": [
-        "今日初めてTOP10入り",
-        "順位が7位上昇",
         "20日高値を更新"
       ],
-      "priority_score": 74.24,
-      "retrieved_at": "2026-10-11T22:59:57+00:00",
-      "analysis": {
-        "ticker": "9616.T",
-        "company_name": "共立メンテナンス",
-        "summary": "共立メンテナンスは2026-10-09にTOP10入りし、順位が7位上昇。ホテル・宿泊業でインバウンド関連性が高く、円安も追い風。",
-        "why_research_today": "2026-10-09において、共立メンテナンスは当社の注目銘柄ランキングで初めてTOP10入りし、前日比で7位上昇しました。また、20日高値を更新しており、短期的な株価の勢いが見られます。ホテル・宿泊業としてインバウンド需要の恩恵を受けやすい特性があり、継続的な円安傾向も追い風となる可能性があります。",
-        "inbound_relevance_score": 5,
-        "inbound_relevance_reason": "共立メンテナンスはホテル・宿泊事業を主軸としており、訪日外国人観光客の増加が直接的に業績に寄与するため、インバウンド関連性が高いと評価されます。",
-        "positive_factors": [
-          {
-            "title": "ランキング急上昇",
-            "description": "2026-10-09に当社の注目銘柄ランキングで初めてTOP10入りし、前日比で7位上昇したという事実。",
-            "factor_type": "fact",
-            "impact": "positive",
-            "evidence_fields": [
-              "stock.rank",
-              "stock.previous_rank",
-              "stock.rank_change",
-              "stock.signals"
-            ]
-          },
-          {
-            "title": "株価の勢い",
-            "description": "2026-10-09に20日高値を更新し、直近1日、5日、60日でそれぞれ2.12%、3.77%、13.21%の上昇を見せている事実。",
-            "factor_type": "fact",
-            "impact": "positive",
-            "evidence_fields": [
-              "stock.return_1d_pct",
-              "stock.return_5d_pct",
-              "stock.return_60d_pct",
-              "stock.signals"
-            ]
-          },
-          {
-            "title": "インバウンド関連性",
-            "description": "ホテル・宿泊業であり、インバウンド関連度スコアが5と高く、訪日外国人観光客の増加が業績に寄与する可能性。",
-            "factor_type": "interpretation",
-            "impact": "positive",
-            "evidence_fields": [
-              "stock.category",
-              "stock.inbound_weight"
-            ]
-          },
-          {
-            "title": "円安の恩恵",
-            "description": "2026-10-11時点のドル円レートが158.31円/米ドルと20日間で3.18%の円安傾向にあり、訪日外国人観光客にとって日本旅行の魅力が増し、インバウンド需要をさらに押し上げる可能性。",
-            "factor_type": "interpretation",
-            "impact": "positive",
-            "evidence_fields": [
-              "external_drivers.JPY=X.close",
-              "external_drivers.JPY=X.return_20d_pct"
-            ]
-          }
-        ],
-        "negative_factors": [
-          {
-            "title": "出来高比率の低下",
-            "description": "2026-10-09の出来高比率が0.964と1を下回っており、取引活動がやや減少している事実。",
-            "factor_type": "fact",
-            "impact": "negative",
-            "evidence_fields": [
-              "stock.volume_ratio"
-            ]
-          },
-          {
-            "title": "円安によるコスト増",
-            "description": "2026-10-11時点の円安傾向は、輸入食材や燃料などのコスト増加につながり、収益を圧迫する可能性。",
-            "factor_type": "interpretation",
-            "impact": "negative",
-            "evidence_fields": [
-              "external_drivers.JPY=X.close"
-            ]
-          },
-          {
-            "title": "市場全体の変動リスク",
-            "description": "VIX指数は低下傾向にあるものの、市場全体の変動は常に存在し、個別銘柄にも影響を及ぼす一般的なリスク。",
-            "factor_type": "general_risk",
-            "impact": "negative",
-            "evidence_fields": [
-              "external_drivers.^VIX.close"
-            ]
-          }
-        ],
-        "scenarios": [
-          {
-            "name": "bull",
-            "description": "訪日外国人観光客数が予想を上回るペースで回復し、円安がさらに進行。共立メンテナンスが新規施設展開やサービス強化で市場シェアを拡大し、収益性が大幅に改善する。",
-            "conditions": []
-          },
-          {
-            "name": "base",
-            "description": "訪日外国人観光客数は堅調に推移し、円相場も現在の水準で安定。共立メンテナンスは既存施設の稼働率を維持し、安定した収益を確保する。",
-            "conditions": []
-          },
-          {
-            "name": "bear",
-            "description": "世界経済の減速や地政学的リスクにより訪日外国人観光客数が伸び悩み、円高に転換。競争激化や人件費・エネルギーコストの増加が収益を圧迫し、業績が悪化する。",
-            "conditions": []
-          }
-        ],
-        "counter_arguments": [
-          "RSI14が54.43と中立圏にあり、短期的な過熱感や売られ過ぎの状態ではないため、株価の方向性についてより慎重な分析が必要。",
-          "2026-10-09の出来高比率が1を下回っていることから、株価上昇の持続性には注意が必要。"
-        ],
-        "additional_data_needed": [
-          "最新の決算情報（売上高、利益、セグメント別業績など）",
-          "ホテル稼働率や客室単価のトレンド、特にインバウンド関連施設のデータ",
-          "競合他社との比較分析（価格競争力、ブランド力、施設数など）",
-          "今後の設備投資計画や新規出店計画",
-          "為替変動が業績に与える具体的な影響に関する企業の見解"
-        ],
-        "warnings": [
-          "本分析は2026-10-09時点の公開情報に基づいています。",
-          "株価の変動は市場全体の動向、経済情勢、企業固有の要因など様々な要素に影響されます。",
-          "本分析は追加調査の必要性を示すものであり、投資判断や売買推奨を意図するものではありません。"
-        ],
-        "conclusion": "new_research_candidate",
-        "confidence": "medium"
-      }
+      "priority_score": 59.0,
+      "retrieved_at": "2026-10-13T01:28:46+00:00",
+      "analysis": null
     },
     {
       "ticker": "3769.T",
@@ -1414,146 +1549,16 @@
       "inbound_score": 60,
       "attention_score": 75.9,
       "rank": 10,
-      "previous_rank": 27,
-      "rank_change": 17,
-      "attention_change": 19.7,
-      "change_score": 75.0,
+      "previous_rank": 10,
+      "rank_change": 0,
+      "attention_change": 0.0,
+      "change_score": 15.0,
       "signals": [
-        "今日初めてTOP10入り",
-        "順位が17位上昇",
         "20日移動平均を上抜け"
       ],
-      "priority_score": 75.63,
-      "retrieved_at": "2026-10-11T22:59:57+00:00",
-      "analysis": {
-        "ticker": "3769.T",
-        "company_name": "GMOペイメントゲートウェイ",
-        "summary": "GMOペイメントゲートウェイは決済サービスを提供。2026年10月9日に注目度ランキングが急上昇し、20日移動平均を上抜け。インバウンド関連性も高い。",
-        "why_research_today": "2026年10月9日、GMOペイメントゲートウェイ（3769.T）は注目度ランキングで初めてTOP10入りし、前日から17位順位を上げました。これは市場からの関心が高まっている事実を示唆しており、さらに20日移動平均を上抜けたことも短期的な上昇トレンドへの転換を示唆するテクニカルな好材料です。これらの変化は、同社が新たな調査候補として浮上したことを示しています。",
-        "inbound_relevance_score": 3,
-        "inbound_relevance_reason": "GMOペイメントゲートウェイは決済サービスを提供しており、訪日外国人観光客による消費活動におけるキャッシュレス決済の需要増加は、同社のサービス利用拡大に繋がる可能性があります。円安の進行も訪日需要を後押しし、間接的に同社にプラスに作用し得ます。",
-        "positive_factors": [
-          {
-            "title": "注目度ランキング急上昇",
-            "description": "2026年10月9日に注目度ランキングで初めてTOP10入りし、前日から17位順位を上げたことは、市場からの関心が高まっている事実を示唆します。",
-            "factor_type": "fact",
-            "impact": "positive",
-            "evidence_fields": [
-              "stock.rank",
-              "stock.previous_rank",
-              "stock.rank_change",
-              "stock.signals"
-            ]
-          },
-          {
-            "title": "20日移動平均の上抜け",
-            "description": "2026年10月9日の株価が20日移動平均を上回ったことは、短期的な上昇トレンドへの転換を示唆するテクニカルな好材料です。",
-            "factor_type": "fact",
-            "impact": "positive",
-            "evidence_fields": [
-              "stock.distance_ma20_pct",
-              "stock.signals"
-            ]
-          },
-          {
-            "title": "短期的な株価上昇",
-            "description": "2026年10月9日時点で、過去1日および5日間でそれぞれ4.0952%、5.1627%の上昇を記録しており、短期的な買い圧力が確認できます。",
-            "factor_type": "fact",
-            "impact": "positive",
-            "evidence_fields": [
-              "stock.return_1d_pct",
-              "stock.return_5d_pct"
-            ]
-          },
-          {
-            "title": "円安進行によるインバウンド需要への期待",
-            "description": "2026年10月11日時点でドル円が158.305円と過去20日間で3.1814%の円安が進行しており、訪日外国人観光客にとって日本での消費が割安になるため、インバウンド需要の増加が期待されます。決済サービスを提供する同社にとって、これは間接的な追い風となり得ます。",
-            "factor_type": "interpretation",
-            "impact": "positive",
-            "evidence_fields": [
-              "external_drivers.JPY=X.close",
-              "external_drivers.JPY=X.return_20d_pct"
-            ]
-          }
-        ],
-        "negative_factors": [
-          {
-            "title": "中期的な株価下落トレンド",
-            "description": "過去60日間で株価が-8.5205%下落しており、60日移動平均線からも-3.7717%乖離していることから、中期的な下落トレンドが継続している可能性があります。",
-            "factor_type": "fact",
-            "impact": "negative",
-            "evidence_fields": [
-              "stock.return_60d_pct",
-              "stock.distance_ma60_pct"
-            ]
-          },
-          {
-            "title": "高い株価変動性",
-            "description": "過去20日間のボラティリティが33.7508%と高く、株価の変動が大きい状態にあり、投資リスクが高いことを示唆します。",
-            "factor_type": "fact",
-            "impact": "negative",
-            "evidence_fields": [
-              "stock.volatility20_pct"
-            ]
-          },
-          {
-            "title": "決済サービス市場の競争激化リスク",
-            "description": "決済サービス市場は新規参入や技術革新が活発であり、競争激化による収益性への圧力が常に存在する可能性があります。",
-            "factor_type": "general_risk",
-            "impact": "negative",
-            "evidence_fields": [
-              "stock.category"
-            ]
-          }
-        ],
-        "scenarios": [
-          {
-            "name": "bull",
-            "description": "訪日外国人観光客数が予想を上回って回復し、キャッシュレス決済の利用が急速に拡大する。GMOペイメントゲートウェイが新たな提携やサービスで市場シェアを拡大し、収益が大きく成長する。",
-            "conditions": [
-              "訪日外国人観光客数の大幅増加",
-              "キャッシュレス決済比率の向上",
-              "新規顧客獲得やサービス拡大による市場シェア拡大"
-            ]
-          },
-          {
-            "name": "base",
-            "description": "訪日外国人観光客数は緩やかに回復し、キャッシュレス決済の普及も着実に進む。同社は安定した事業基盤を維持し、市場成長に合わせて堅実に業績を伸ばす。",
-            "conditions": [
-              "訪日外国人観光客数の緩やかな回復",
-              "決済市場の安定的な成長",
-              "既存事業の堅調な推移"
-            ]
-          },
-          {
-            "name": "bear",
-            "description": "世界経済の減速や地政学的リスクにより訪日外国人観光客数が伸び悩む。決済市場での競争が激化し、同社の収益性が圧迫される。または、新たな規制や技術変化への対応が遅れる。",
-            "conditions": [
-              "訪日外国人観光客数の低迷",
-              "決済市場での競争激化",
-              "規制強化や技術変化への対応遅れ"
-            ]
-          }
-        ],
-        "counter_arguments": [
-          "過去60日間の株価は下落しており、短期的な上昇が一時的な反発に過ぎない可能性も考慮すべきです。",
-          "注目度ランキングの急上昇は、必ずしも持続的な株価上昇を保証するものではなく、一時的なニュースやテーマによるものかもしれません。",
-          "決済サービスはインバウンド需要の恩恵を受ける一方で、国内景気や消費動向にも左右されるため、インバウンド関連性のみで判断するのは早計です。"
-        ],
-        "additional_data_needed": [
-          "GMOペイメントゲートウェイの具体的なインバウンド関連事業の売上比率や成長率",
-          "競合他社との比較分析（サービス内容、手数料、市場シェアなど）",
-          "最新の決算情報や業績見通し",
-          "キャッシュレス決済市場全体の成長予測と、その中での同社のポジショニング"
-        ],
-        "warnings": [
-          "過去60日間の株価は下落傾向にあり、中期的なトレンドには注意が必要です。",
-          "ボラティリティが高いため、株価の変動リスクが大きいことを認識しておくべきです。",
-          "RSIは中立ですが、今後のトレンド転換には注意が必要です。"
-        ],
-        "conclusion": "new_research_candidate",
-        "confidence": "high"
-      }
+      "priority_score": 57.63,
+      "retrieved_at": "2026-10-13T01:28:46+00:00",
+      "analysis": null
     },
     {
       "ticker": "8233.T",
@@ -1589,13 +1594,13 @@
       "inbound_score": 100,
       "attention_score": 74.8,
       "rank": 11,
-      "previous_rank": 10,
-      "rank_change": -1,
-      "attention_change": 2.7,
-      "change_score": 6.55,
+      "previous_rank": 11,
+      "rank_change": 0,
+      "attention_change": 0.0,
+      "change_score": 0.0,
       "signals": [],
-      "priority_score": 54.32,
-      "retrieved_at": "2026-10-11T22:59:57+00:00",
+      "priority_score": 52.36,
+      "retrieved_at": "2026-10-13T01:28:46+00:00",
       "analysis": null
     },
     {
@@ -1632,15 +1637,15 @@
       "inbound_score": 100,
       "attention_score": 73.4,
       "rank": 12,
-      "previous_rank": 11,
-      "rank_change": -1,
-      "attention_change": 1.7,
-      "change_score": 20.05,
+      "previous_rank": 12,
+      "rank_change": 0,
+      "attention_change": 0.0,
+      "change_score": 15.0,
       "signals": [
         "20日移動平均を上抜け"
       ],
-      "priority_score": 57.4,
-      "retrieved_at": "2026-10-11T22:59:57+00:00",
+      "priority_score": 55.88,
+      "retrieved_at": "2026-10-13T01:28:46+00:00",
       "analysis": null
     },
     {
@@ -1677,13 +1682,13 @@
       "inbound_score": 60,
       "attention_score": 72.7,
       "rank": 13,
-      "previous_rank": 12,
-      "rank_change": -1,
-      "attention_change": 1.7,
-      "change_score": 5.05,
+      "previous_rank": 13,
+      "rank_change": 0,
+      "attention_change": 0.0,
+      "change_score": 0.0,
       "signals": [],
-      "priority_score": 52.41,
-      "retrieved_at": "2026-10-11T22:59:57+00:00",
+      "priority_score": 50.89,
+      "retrieved_at": "2026-10-13T01:28:46+00:00",
       "analysis": null
     },
     {
@@ -1720,13 +1725,13 @@
       "inbound_score": 100,
       "attention_score": 72.0,
       "rank": 14,
-      "previous_rank": 13,
-      "rank_change": -1,
-      "attention_change": 2.0,
-      "change_score": 5.5,
+      "previous_rank": 14,
+      "rank_change": 0,
+      "attention_change": 0.0,
+      "change_score": 0.0,
       "signals": [],
-      "priority_score": 52.05,
-      "retrieved_at": "2026-10-11T22:59:57+00:00",
+      "priority_score": 50.4,
+      "retrieved_at": "2026-10-13T01:28:46+00:00",
       "analysis": null
     },
     {
@@ -1763,15 +1768,13 @@
       "inbound_score": 100,
       "attention_score": 71.0,
       "rank": 15,
-      "previous_rank": 9,
-      "rank_change": -6,
-      "attention_change": -2.2,
-      "change_score": 18.3,
-      "signals": [
-        "順位が6位下落"
-      ],
-      "priority_score": 55.19,
-      "retrieved_at": "2026-10-11T22:59:57+00:00",
+      "previous_rank": 15,
+      "rank_change": 0,
+      "attention_change": 0.0,
+      "change_score": 0.0,
+      "signals": [],
+      "priority_score": 49.7,
+      "retrieved_at": "2026-10-13T01:28:46+00:00",
       "analysis": null
     },
     {
@@ -1808,13 +1811,13 @@
       "inbound_score": 80,
       "attention_score": 67.1,
       "rank": 16,
-      "previous_rank": 14,
-      "rank_change": -2,
-      "attention_change": -1.5,
-      "change_score": 7.25,
+      "previous_rank": 16,
+      "rank_change": 0,
+      "attention_change": 0.0,
+      "change_score": 0.0,
       "signals": [],
-      "priority_score": 49.14,
-      "retrieved_at": "2026-10-11T22:59:57+00:00",
+      "priority_score": 46.97,
+      "retrieved_at": "2026-10-13T01:28:46+00:00",
       "analysis": null
     },
     {
@@ -1851,15 +1854,15 @@
       "inbound_score": 80,
       "attention_score": 62.9,
       "rank": 17,
-      "previous_rank": 18,
-      "rank_change": 1,
-      "attention_change": 0.6,
-      "change_score": 8.4,
+      "previous_rank": 17,
+      "rank_change": 0,
+      "attention_change": 0.0,
+      "change_score": 5.0,
       "signals": [
         "4日連続上昇"
       ],
-      "priority_score": 46.55,
-      "retrieved_at": "2026-10-11T22:59:57+00:00",
+      "priority_score": 45.53,
+      "retrieved_at": "2026-10-13T01:28:46+00:00",
       "analysis": null
     },
     {
@@ -1896,15 +1899,13 @@
       "inbound_score": 100,
       "attention_score": 61.7,
       "rank": 18,
-      "previous_rank": 30,
-      "rank_change": 12,
-      "attention_change": 7.9,
-      "change_score": 36.85,
-      "signals": [
-        "順位が12位上昇"
-      ],
-      "priority_score": 54.24,
-      "retrieved_at": "2026-10-11T22:59:57+00:00",
+      "previous_rank": 18,
+      "rank_change": 0,
+      "attention_change": 0.0,
+      "change_score": 0.0,
+      "signals": [],
+      "priority_score": 43.19,
+      "retrieved_at": "2026-10-13T01:28:46+00:00",
       "analysis": null
     },
     {
@@ -1941,15 +1942,13 @@
       "inbound_score": 80,
       "attention_score": 60.1,
       "rank": 19,
-      "previous_rank": 15,
-      "rank_change": -4,
-      "attention_change": -8.4,
-      "change_score": 22.6,
-      "signals": [
-        "順位が4位下落"
-      ],
-      "priority_score": 48.85,
-      "retrieved_at": "2026-10-11T22:59:57+00:00",
+      "previous_rank": 19,
+      "rank_change": 0,
+      "attention_change": 0.0,
+      "change_score": 0.0,
+      "signals": [],
+      "priority_score": 42.07,
+      "retrieved_at": "2026-10-13T01:28:46+00:00",
       "analysis": null
     },
     {
@@ -1986,15 +1985,15 @@
       "inbound_score": 100,
       "attention_score": 58.9,
       "rank": 20,
-      "previous_rank": 19,
-      "rank_change": -1,
-      "attention_change": 0.1,
-      "change_score": 7.65,
+      "previous_rank": 20,
+      "rank_change": 0,
+      "attention_change": 0.0,
+      "change_score": 5.0,
       "signals": [
         "5日連続上昇"
       ],
-      "priority_score": 43.52,
-      "retrieved_at": "2026-10-11T22:59:57+00:00",
+      "priority_score": 42.73,
+      "retrieved_at": "2026-10-13T01:28:46+00:00",
       "analysis": null
     },
     {
@@ -2031,15 +2030,13 @@
       "inbound_score": 80,
       "attention_score": 57.6,
       "rank": 21,
-      "previous_rank": 32,
-      "rank_change": 11,
-      "attention_change": 4.9,
-      "change_score": 32.35,
-      "signals": [
-        "順位が11位上昇"
-      ],
-      "priority_score": 50.02,
-      "retrieved_at": "2026-10-11T22:59:57+00:00",
+      "previous_rank": 21,
+      "rank_change": 0,
+      "attention_change": 0.0,
+      "change_score": 0.0,
+      "signals": [],
+      "priority_score": 40.32,
+      "retrieved_at": "2026-10-13T01:28:46+00:00",
       "analysis": null
     },
     {
@@ -2076,16 +2073,15 @@
       "inbound_score": 100,
       "attention_score": 57.0,
       "rank": 22,
-      "previous_rank": 26,
-      "rank_change": 4,
-      "attention_change": 0.6,
-      "change_score": 15.9,
+      "previous_rank": 22,
+      "rank_change": 0,
+      "attention_change": 0.0,
+      "change_score": 5.0,
       "signals": [
-        "順位が4位上昇",
         "3日連続上昇"
       ],
-      "priority_score": 44.67,
-      "retrieved_at": "2026-10-11T22:59:57+00:00",
+      "priority_score": 41.4,
+      "retrieved_at": "2026-10-13T01:28:46+00:00",
       "analysis": null
     },
     {
@@ -2122,16 +2118,15 @@
       "inbound_score": 80,
       "attention_score": 56.6,
       "rank": 23,
-      "previous_rank": 20,
-      "rank_change": -3,
-      "attention_change": -1.3,
-      "change_score": 14.45,
+      "previous_rank": 23,
+      "rank_change": 0,
+      "attention_change": 0.0,
+      "change_score": 5.0,
       "signals": [
-        "順位が3位下落",
         "3日連続上昇"
       ],
-      "priority_score": 43.95,
-      "retrieved_at": "2026-10-11T22:59:57+00:00",
+      "priority_score": 41.12,
+      "retrieved_at": "2026-10-13T01:28:46+00:00",
       "analysis": null
     },
     {
@@ -2168,15 +2163,13 @@
       "inbound_score": 80,
       "attention_score": 55.2,
       "rank": 24,
-      "previous_rank": 17,
-      "rank_change": -7,
-      "attention_change": -11.9,
-      "change_score": 35.35,
-      "signals": [
-        "順位が7位下落"
-      ],
-      "priority_score": 49.25,
-      "retrieved_at": "2026-10-11T22:59:57+00:00",
+      "previous_rank": 24,
+      "rank_change": 0,
+      "attention_change": 0.0,
+      "change_score": 0.0,
+      "signals": [],
+      "priority_score": 38.64,
+      "retrieved_at": "2026-10-13T01:28:46+00:00",
       "analysis": null
     },
     {
@@ -2213,15 +2206,13 @@
       "inbound_score": 80,
       "attention_score": 53.2,
       "rank": 25,
-      "previous_rank": 22,
-      "rank_change": -3,
-      "attention_change": -4.3,
-      "change_score": 13.95,
-      "signals": [
-        "順位が3位下落"
-      ],
-      "priority_score": 41.43,
-      "retrieved_at": "2026-10-11T22:59:57+00:00",
+      "previous_rank": 25,
+      "rank_change": 0,
+      "attention_change": 0.0,
+      "change_score": 0.0,
+      "signals": [],
+      "priority_score": 37.24,
+      "retrieved_at": "2026-10-13T01:28:46+00:00",
       "analysis": null
     },
     {
@@ -2258,15 +2249,13 @@
       "inbound_score": 60,
       "attention_score": 53.1,
       "rank": 26,
-      "previous_rank": 35,
-      "rank_change": 9,
-      "attention_change": 6.3,
-      "change_score": 31.95,
-      "signals": [
-        "順位が9位上昇"
-      ],
-      "priority_score": 46.76,
-      "retrieved_at": "2026-10-11T22:59:57+00:00",
+      "previous_rank": 26,
+      "rank_change": 0,
+      "attention_change": 0.0,
+      "change_score": 0.0,
+      "signals": [],
+      "priority_score": 37.17,
+      "retrieved_at": "2026-10-13T01:28:46+00:00",
       "analysis": null
     },
     {
@@ -2303,15 +2292,13 @@
       "inbound_score": 60,
       "attention_score": 52.8,
       "rank": 27,
-      "previous_rank": 38,
-      "rank_change": 11,
-      "attention_change": 8.5,
-      "change_score": 37.75,
-      "signals": [
-        "順位が11位上昇"
-      ],
-      "priority_score": 48.28,
-      "retrieved_at": "2026-10-11T22:59:57+00:00",
+      "previous_rank": 27,
+      "rank_change": 0,
+      "attention_change": 0.0,
+      "change_score": 0.0,
+      "signals": [],
+      "priority_score": 36.96,
+      "retrieved_at": "2026-10-13T01:28:46+00:00",
       "analysis": null
     },
     {
@@ -2348,15 +2335,13 @@
       "inbound_score": 100,
       "attention_score": 51.6,
       "rank": 28,
-      "previous_rank": 24,
-      "rank_change": -4,
-      "attention_change": -5.5,
-      "change_score": 18.25,
-      "signals": [
-        "順位が4位下落"
-      ],
-      "priority_score": 41.59,
-      "retrieved_at": "2026-10-11T22:59:57+00:00",
+      "previous_rank": 28,
+      "rank_change": 0,
+      "attention_change": 0.0,
+      "change_score": 0.0,
+      "signals": [],
+      "priority_score": 36.12,
+      "retrieved_at": "2026-10-13T01:28:46+00:00",
       "analysis": null
     },
     {
@@ -2393,16 +2378,15 @@
       "inbound_score": 100,
       "attention_score": 50.4,
       "rank": 29,
-      "previous_rank": 25,
-      "rank_change": -4,
-      "attention_change": -6.6,
-      "change_score": 24.9,
+      "previous_rank": 29,
+      "rank_change": 0,
+      "attention_change": 0.0,
+      "change_score": 5.0,
       "signals": [
-        "順位が4位下落",
         "3日連続上昇"
       ],
-      "priority_score": 42.75,
-      "retrieved_at": "2026-10-11T22:59:57+00:00",
+      "priority_score": 36.78,
+      "retrieved_at": "2026-10-13T01:28:46+00:00",
       "analysis": null
     },
     {
@@ -2439,15 +2423,13 @@
       "inbound_score": 60,
       "attention_score": 49.7,
       "rank": 30,
-      "previous_rank": 40,
-      "rank_change": 10,
-      "attention_change": 12.6,
-      "change_score": 43.9,
-      "signals": [
-        "順位が10位上昇"
-      ],
-      "priority_score": 47.96,
-      "retrieved_at": "2026-10-11T22:59:57+00:00",
+      "previous_rank": 30,
+      "rank_change": 0,
+      "attention_change": 0.0,
+      "change_score": 0.0,
+      "signals": [],
+      "priority_score": 34.79,
+      "retrieved_at": "2026-10-13T01:28:46+00:00",
       "analysis": null
     },
     {
@@ -2484,16 +2466,15 @@
       "inbound_score": 60,
       "attention_score": 47.1,
       "rank": 31,
-      "previous_rank": 28,
-      "rank_change": -3,
-      "attention_change": -8.4,
-      "change_score": 25.1,
+      "previous_rank": 31,
+      "rank_change": 0,
+      "attention_change": 0.0,
+      "change_score": 5.0,
       "signals": [
-        "順位が3位下落",
         "3日連続上昇"
       ],
-      "priority_score": 40.5,
-      "retrieved_at": "2026-10-11T22:59:57+00:00",
+      "priority_score": 34.47,
+      "retrieved_at": "2026-10-13T01:28:46+00:00",
       "analysis": null
     },
     {
@@ -2530,16 +2511,15 @@
       "inbound_score": 100,
       "attention_score": 46.9,
       "rank": 32,
-      "previous_rank": 36,
-      "rank_change": 4,
-      "attention_change": 0.4,
-      "change_score": 15.6,
+      "previous_rank": 32,
+      "rank_change": 0,
+      "attention_change": 0.0,
+      "change_score": 5.0,
       "signals": [
-        "順位が4位上昇",
         "3日連続上昇"
       ],
-      "priority_score": 37.51,
-      "retrieved_at": "2026-10-11T22:59:57+00:00",
+      "priority_score": 34.33,
+      "retrieved_at": "2026-10-13T01:28:46+00:00",
       "analysis": null
     },
     {
@@ -2576,15 +2556,13 @@
       "inbound_score": 80,
       "attention_score": 45.2,
       "rank": 33,
-      "previous_rank": 29,
-      "rank_change": -4,
-      "attention_change": -9.2,
-      "change_score": 23.8,
-      "signals": [
-        "順位が4位下落"
-      ],
-      "priority_score": 38.78,
-      "retrieved_at": "2026-10-11T22:59:57+00:00",
+      "previous_rank": 33,
+      "rank_change": 0,
+      "attention_change": 0.0,
+      "change_score": 0.0,
+      "signals": [],
+      "priority_score": 31.64,
+      "retrieved_at": "2026-10-13T01:28:46+00:00",
       "analysis": null
     },
     {
@@ -2621,15 +2599,13 @@
       "inbound_score": 40,
       "attention_score": 44.3,
       "rank": 34,
-      "previous_rank": 41,
-      "rank_change": 7,
-      "attention_change": 7.9,
-      "change_score": 29.35,
-      "signals": [
-        "順位が7位上昇"
-      ],
-      "priority_score": 39.81,
-      "retrieved_at": "2026-10-11T22:59:57+00:00",
+      "previous_rank": 34,
+      "rank_change": 0,
+      "attention_change": 0.0,
+      "change_score": 0.0,
+      "signals": [],
+      "priority_score": 31.01,
+      "retrieved_at": "2026-10-13T01:28:46+00:00",
       "analysis": null
     },
     {
@@ -2666,13 +2642,13 @@
       "inbound_score": 100,
       "attention_score": 42.3,
       "rank": 35,
-      "previous_rank": 37,
-      "rank_change": 2,
-      "attention_change": -2.7,
-      "change_score": 9.05,
+      "previous_rank": 35,
+      "rank_change": 0,
+      "attention_change": 0.0,
+      "change_score": 0.0,
       "signals": [],
-      "priority_score": 32.32,
-      "retrieved_at": "2026-10-11T22:59:57+00:00",
+      "priority_score": 29.61,
+      "retrieved_at": "2026-10-13T01:28:46+00:00",
       "analysis": null
     },
     {
@@ -2709,15 +2685,13 @@
       "inbound_score": 80,
       "attention_score": 42.2,
       "rank": 36,
-      "previous_rank": 33,
-      "rank_change": -3,
-      "attention_change": -10.4,
-      "change_score": 23.1,
-      "signals": [
-        "順位が3位下落"
-      ],
-      "priority_score": 36.47,
-      "retrieved_at": "2026-10-11T22:59:57+00:00",
+      "previous_rank": 36,
+      "rank_change": 0,
+      "attention_change": 0.0,
+      "change_score": 0.0,
+      "signals": [],
+      "priority_score": 29.54,
+      "retrieved_at": "2026-10-13T01:28:46+00:00",
       "analysis": null
     },
     {
@@ -2754,15 +2728,13 @@
       "inbound_score": 100,
       "attention_score": 41.5,
       "rank": 37,
-      "previous_rank": 43,
-      "rank_change": 6,
-      "attention_change": 5.8,
-      "change_score": 23.7,
-      "signals": [
-        "順位が6位上昇"
-      ],
-      "priority_score": 36.16,
-      "retrieved_at": "2026-10-11T22:59:57+00:00",
+      "previous_rank": 37,
+      "rank_change": 0,
+      "attention_change": 0.0,
+      "change_score": 0.0,
+      "signals": [],
+      "priority_score": 29.05,
+      "retrieved_at": "2026-10-13T01:28:46+00:00",
       "analysis": null
     },
     {
@@ -2799,13 +2771,13 @@
       "inbound_score": 80,
       "attention_score": 40.5,
       "rank": 38,
-      "previous_rank": 39,
-      "rank_change": 1,
-      "attention_change": 2.2,
-      "change_score": 5.8,
+      "previous_rank": 38,
+      "rank_change": 0,
+      "attention_change": 0.0,
+      "change_score": 0.0,
       "signals": [],
-      "priority_score": 30.09,
-      "retrieved_at": "2026-10-11T22:59:57+00:00",
+      "priority_score": 28.35,
+      "retrieved_at": "2026-10-13T01:28:46+00:00",
       "analysis": null
     },
     {
@@ -2842,16 +2814,15 @@
       "inbound_score": 80,
       "attention_score": 39.8,
       "rank": 39,
-      "previous_rank": 34,
-      "rank_change": -5,
-      "attention_change": -10.1,
-      "change_score": 32.65,
+      "previous_rank": 39,
+      "rank_change": 0,
+      "attention_change": 0.0,
+      "change_score": 5.0,
       "signals": [
-        "順位が5位下落",
         "3日連続上昇"
       ],
-      "priority_score": 37.65,
-      "retrieved_at": "2026-10-11T22:59:57+00:00",
+      "priority_score": 29.36,
+      "retrieved_at": "2026-10-13T01:28:46+00:00",
       "analysis": null
     },
     {
@@ -2888,15 +2859,13 @@
       "inbound_score": 80,
       "attention_score": 39.2,
       "rank": 40,
-      "previous_rank": 23,
-      "rank_change": -17,
-      "attention_change": -18.2,
-      "change_score": 45.0,
-      "signals": [
-        "順位が17位下落"
-      ],
-      "priority_score": 40.94,
-      "retrieved_at": "2026-10-11T22:59:57+00:00",
+      "previous_rank": 40,
+      "rank_change": 0,
+      "attention_change": 0.0,
+      "change_score": 0.0,
+      "signals": [],
+      "priority_score": 27.44,
+      "retrieved_at": "2026-10-13T01:28:46+00:00",
       "analysis": null
     },
     {
@@ -2933,15 +2902,13 @@
       "inbound_score": 80,
       "attention_score": 38.0,
       "rank": 41,
-      "previous_rank": 31,
-      "rank_change": -10,
-      "attention_change": -15.4,
-      "change_score": 45.0,
-      "signals": [
-        "順位が10位下落"
-      ],
-      "priority_score": 40.1,
-      "retrieved_at": "2026-10-11T22:59:57+00:00",
+      "previous_rank": 41,
+      "rank_change": 0,
+      "attention_change": 0.0,
+      "change_score": 0.0,
+      "signals": [],
+      "priority_score": 26.6,
+      "retrieved_at": "2026-10-13T01:28:46+00:00",
       "analysis": null
     },
     {
@@ -2978,16 +2945,15 @@
       "inbound_score": 80,
       "attention_score": 37.3,
       "rank": 42,
-      "previous_rank": 21,
-      "rank_change": -21,
-      "attention_change": -20.3,
-      "change_score": 55.0,
+      "previous_rank": 42,
+      "rank_change": 0,
+      "attention_change": 0.0,
+      "change_score": 10.0,
       "signals": [
-        "順位が21位下落",
         "出来高が20日平均の2倍以上"
       ],
-      "priority_score": 42.61,
-      "retrieved_at": "2026-10-11T22:59:57+00:00",
+      "priority_score": 29.11,
+      "retrieved_at": "2026-10-13T01:28:46+00:00",
       "analysis": null
     },
     {
@@ -3024,13 +2990,13 @@
       "inbound_score": 60,
       "attention_score": 36.1,
       "rank": 43,
-      "previous_rank": 45,
-      "rank_change": 2,
-      "attention_change": 6.5,
-      "change_score": 14.75,
+      "previous_rank": 43,
+      "rank_change": 0,
+      "attention_change": 0.0,
+      "change_score": 0.0,
       "signals": [],
-      "priority_score": 29.7,
-      "retrieved_at": "2026-10-11T22:59:57+00:00",
+      "priority_score": 25.27,
+      "retrieved_at": "2026-10-13T01:28:46+00:00",
       "analysis": null
     },
     {
@@ -3067,13 +3033,13 @@
       "inbound_score": 60,
       "attention_score": 35.6,
       "rank": 44,
-      "previous_rank": 42,
-      "rank_change": -2,
-      "attention_change": -0.6,
-      "change_score": 5.9,
+      "previous_rank": 44,
+      "rank_change": 0,
+      "attention_change": 0.0,
+      "change_score": 0.0,
       "signals": [],
-      "priority_score": 26.69,
-      "retrieved_at": "2026-10-11T22:59:57+00:00",
+      "priority_score": 24.92,
+      "retrieved_at": "2026-10-13T01:28:46+00:00",
       "analysis": null
     },
     {
@@ -3110,13 +3076,13 @@
       "inbound_score": 80,
       "attention_score": 35.0,
       "rank": 45,
-      "previous_rank": 47,
-      "rank_change": 2,
-      "attention_change": 9.8,
-      "change_score": 19.7,
+      "previous_rank": 45,
+      "rank_change": 0,
+      "attention_change": 0.0,
+      "change_score": 0.0,
       "signals": [],
-      "priority_score": 30.41,
-      "retrieved_at": "2026-10-11T22:59:57+00:00",
+      "priority_score": 24.5,
+      "retrieved_at": "2026-10-13T01:28:46+00:00",
       "analysis": null
     },
     {
@@ -3153,13 +3119,13 @@
       "inbound_score": 100,
       "attention_score": 33.4,
       "rank": 46,
-      "previous_rank": 44,
-      "rank_change": -2,
-      "attention_change": 0.3,
-      "change_score": 5.45,
+      "previous_rank": 46,
+      "rank_change": 0,
+      "attention_change": 0.0,
+      "change_score": 0.0,
       "signals": [],
-      "priority_score": 25.02,
-      "retrieved_at": "2026-10-11T22:59:57+00:00",
+      "priority_score": 23.38,
+      "retrieved_at": "2026-10-13T01:28:46+00:00",
       "analysis": null
     },
     {
@@ -3196,13 +3162,13 @@
       "inbound_score": 100,
       "attention_score": 27.4,
       "rank": 47,
-      "previous_rank": 46,
-      "rank_change": -1,
-      "attention_change": 0.4,
-      "change_score": 3.1,
+      "previous_rank": 47,
+      "rank_change": 0,
+      "attention_change": 0.0,
+      "change_score": 0.0,
       "signals": [],
-      "priority_score": 20.11,
-      "retrieved_at": "2026-10-11T22:59:57+00:00",
+      "priority_score": 19.18,
+      "retrieved_at": "2026-10-13T01:28:46+00:00",
       "analysis": null
     },
     {
@@ -3239,15 +3205,15 @@
       "inbound_score": 80,
       "attention_score": 24.9,
       "rank": 48,
-      "previous_rank": 50,
-      "rank_change": 2,
-      "attention_change": 8.2,
-      "change_score": 27.3,
+      "previous_rank": 48,
+      "rank_change": 0,
+      "attention_change": 0.0,
+      "change_score": 10.0,
       "signals": [
         "出来高が20日平均の2倍以上"
       ],
-      "priority_score": 25.62,
-      "retrieved_at": "2026-10-11T22:59:57+00:00",
+      "priority_score": 20.43,
+      "retrieved_at": "2026-10-13T01:28:46+00:00",
       "analysis": null
     },
     {
@@ -3284,13 +3250,13 @@
       "inbound_score": 100,
       "attention_score": 19.5,
       "rank": 49,
-      "previous_rank": 48,
-      "rank_change": -1,
-      "attention_change": -5.6,
-      "change_score": 10.9,
+      "previous_rank": 49,
+      "rank_change": 0,
+      "attention_change": 0.0,
+      "change_score": 0.0,
       "signals": [],
-      "priority_score": 16.92,
-      "retrieved_at": "2026-10-11T22:59:57+00:00",
+      "priority_score": 13.65,
+      "retrieved_at": "2026-10-13T01:28:46+00:00",
       "analysis": null
     },
     {
@@ -3327,13 +3293,13 @@
       "inbound_score": 40,
       "attention_score": 18.7,
       "rank": 50,
-      "previous_rank": 49,
-      "rank_change": -1,
-      "attention_change": 2.0,
-      "change_score": 5.5,
+      "previous_rank": 50,
+      "rank_change": 0,
+      "attention_change": 0.0,
+      "change_score": 0.0,
       "signals": [],
-      "priority_score": 14.74,
-      "retrieved_at": "2026-10-11T22:59:57+00:00",
+      "priority_score": 13.09,
+      "retrieved_at": "2026-10-13T01:28:46+00:00",
       "analysis": null
     }
   ],
