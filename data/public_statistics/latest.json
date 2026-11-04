@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-03T10:41:42+09:00",
+  "generated_at": "2026-11-04T09:02:50+09:00",
   "sources": {
     "jnto_visitors": {
       "source_name": "JNTO「訪日外客統計」",
@@ -9,17 +9,17 @@
       "reference_period": "2026-09",
       "published_date": "2026-10-21",
       "release_type": "推計値・暫定値を含む時系列表",
-      "retrieved_at": "2026-11-03T10:41:42+09:00"
+      "retrieved_at": "2026-11-04T09:02:50+09:00"
     },
     "lodging_statistics": {
       "source_name": "観光庁「宿泊旅行統計調査」",
       "source_url": "https://www.mlit.go.jp/kankocho/tokei_hakusyo/shukuhakutokei.html",
-      "excel_url": "https://www.mlit.go.jp/kankocho/content/002025568.xlsx",
-      "reference_period": "2026-07",
-      "published_date": "2026-10-15",
+      "excel_url": "https://www.mlit.go.jp/kankocho/content/002028775.xlsx",
+      "reference_period": "2026-08",
+      "published_date": "2026-10-30",
       "release_type": "第2次速報",
       "survey_scope": "客室数20室以上の施設",
-      "retrieved_at": "2026-11-03T10:41:42+09:00"
+      "retrieved_at": "2026-11-04T09:02:50+09:00"
     },
     "inbound_consumption": {
       "source_name": "観光庁「インバウンド消費動向調査」",
@@ -39,19 +39,19 @@
       "source_key": "jnto_visitors"
     },
     "foreign_guest_nights": {
-      "value": 11677980,
+      "value": 11022500,
       "unit": "人泊",
       "yoy_pct": null,
       "source_key": "lodging_statistics"
     },
     "total_guest_nights_12m": {
-      "value": 638001390,
+      "value": 634415850,
       "unit": "人泊",
-      "yoy_pct": -2.6012,
+      "yoy_pct": -3.2973,
       "source_key": "lodging_statistics"
     },
     "occupancy_rate": {
-      "value": 61.0,
+      "value": 60.9,
       "unit": "%",
       "yoy_pct": null,
       "source_key": "lodging_statistics"
